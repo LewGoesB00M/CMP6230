@@ -1,0 +1,34 @@
+docker exec -it mcs1 bash
+
+	Used from the host terminal, opens a bash terminal in the mcs1 container and executes further commands from that new terminal on the container rather
+	than the host. This requires the mcs1 container to be running. If it isn't, then "docker start mcs1" should be used. "docker ps" can show running containers.
+
+mysql --user=root --password=password
+
+	From the bash terminal inside the mcs1 container, this command will log in to MySQL using the default root account. Alternatively, I could log in to the 
+	account I created by setting user to lewis and password to dockerVBox.
+
+SHOW databases;
+
+	From the MySQL command line inside the container, this command will show all stored databases (9 at this point).
+
+USE Iris;
+	
+	From the MySQL command line inside the container, this command will set all further SQL commands to be executed on the Iris database.
+
+SHOW tables;
+
+	When a database has been selected from the MySQL command line inside the container, this command will show all the tables within the database.
+
+SELECT * FROM Iris;
+
+	When the Iris database has been selected from the MySQL command line inside the container, this command will output the entire contents of the Iris table to
+	the terminal. The Iris database has a table called Iris, which is why this works.
+
+exit
+	
+	Exits the Iris database.
+
+exit
+
+	Exits MySQL.

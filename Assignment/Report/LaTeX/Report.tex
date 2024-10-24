@@ -1,0 +1,123 @@
+% -------------------------------------------------------------------------------
+% Establish page structure & font.
+\documentclass[12pt]{report}
+
+\usepackage[total={6.5in, 9in},
+	left=1in,
+	right=1in,
+	top=1in,
+	bottom=1in,]{geometry} % Page structure
+
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{../../.images/}} % Any additional images I use (BCU logo, etc) are from here.
+
+\usepackage[utf8]{inputenc} % UTF-8 encoding
+\usepackage[T1]{fontenc} % T1 font
+\usepackage{float}  % Allows for floats to be positioned using [H], which correctly
+                    % positions them relative to their location within my LaTeX code.
+\usepackage{subcaption}
+
+% -------------------------------------------------------------------------------
+% Declare biblatex with custom Harvard BCU styling for referencing.
+\usepackage[
+    useprefix=true,
+    maxcitenames=3,
+    maxbibnames=99,
+    style=authoryear,
+    dashed=false, 
+    natbib=true,
+    url=false,
+    backend=biber
+]{biblatex}
+
+% Additional styling options to ensure Harvard referencing format.
+\renewbibmacro*{volume+number+eid}{
+    \printfield{volume}
+    \setunit*{\addnbspace}
+    \printfield{number}
+    \setunit{\addcomma\space}
+    \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+% Declare it as the bibliography source, to be called later via \printbibliography
+\addbibresource{report.bib}
+
+% -------------------------------------------------------------------------------
+% To prevent "Chapter N" display for each chapter
+\usepackage[compact]{titlesec}
+\usepackage{wasysym}
+\usepackage{import}
+
+\titlespacing*{\chapter}{0pt}{-2cm}{0.5cm}
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Huge}
+
+% -------------------------------------------------------------------------------
+% Custom macro to make an un-numbered footnote.
+
+\newcommand\blfootnote[1]{
+    \begingroup
+    \renewcommand\thefootnote{}\footnote{#1}
+    \addtocounter{footnote}{-1}
+    \endgroup
+}
+
+% -------------------------------------------------------------------------------
+% Fancy headers; used to show my name, BCU logo and current chapter for the page.
+\usepackage{fancyhdr}
+\usepackage{calc}
+\pagestyle{fancy}
+
+\setlength\headheight{37pt} % Set custom header height to fit the image.
+
+\renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}} % Include chapter name.
+
+
+% Lewis Higgins - ID 22133848           [BCU LOGO]                [CHAPTER NAME]
+\lhead{Lewis Higgins - ID 22133848~~~~~~~~~~~~~~~\includegraphics[width=1.75cm]{BCU}}
+\fancyhead[R]{\leftmark}
+
+% -------------------------------------------------------------------------------
+
+\title{CMP6230 Report}
+\author{Lewis Higgins - Student ID 22133848}
+\date{December 2024}
+
+% -------------------------------------------------------------------------------
+
+\begin{document}
+
+
+\makeatletter
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{BCU}\\[4ex]
+        {\large \bfseries  \@title }\\[2ex]
+        {\large \bfseries  DRAFT VERSION }\\[2ex]
+        {\@author}\\[30ex]
+        {Word count: XXXX}\\[20ex]
+    \end{center}
+\end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+
+% Page counter trick so that the contents page doesn't increment it.
+\setcounter{page}{0}
+
+\tableofcontents
+\thispagestyle{empty}
+
+% Declaring un-numbered chapter because I prefer how it looks.
+\chapter*{Introduction}
+% Add it to the contents, because un-numbered chapters aren't by default.
+\addcontentsline{toc}{chapter}{Introduction}
+% Put the chapter name in the header.
+\markboth{Introduction}{}
+
+Text text text
+
+
+\end{document}
