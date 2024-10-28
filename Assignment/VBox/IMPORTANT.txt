@@ -1,0 +1,1 @@
+Lab 6 mentions that the VM should have at least 8GB of RAM. This isn't feasible for your laptop, so it'll likely have to be Remote Desktop from here onwards.
