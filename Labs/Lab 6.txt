@@ -1,0 +1,13 @@
+A "DAG" in Airflow is a "Directed Acyclic Graph", which represents the sequence of tasks
+and their dependencies and relationships. DAGs can be set to run at certain intervals, and 
+do seperate things if they fail, such as sending an email to notify the user, or simply 
+try again.
+
+Operators, according to the Airflow documentation, are pre-defined tasks that can be called 
+as methods inside of a DAG. An example is BashOperator, which can execute Bash terminal 
+commands from within the Python script.
+
+XComs, or cross-communications, are used to let tasks communicate with each other. They act 
+like dictionaries, where you push a key with a value. For example, I could push "Key1" with 
+the value "ABC" from Task 1, and then pull it from within Task 2. This would make Task 2 
+dependent on Task 1 if that value is required for Task 2.
