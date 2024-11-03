@@ -78,6 +78,26 @@
 \lhead{Lewis Higgins - ID 22133848~~~~~~~~~~~~~~~\includegraphics[width=1.75cm]{BCU}}
 \fancyhead[R]{\leftmark}
 
+% ------------------------------------------------------------------------------
+% Used to add PDF hyperlinks for figures and the contents page.
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=black,
+}
+
+% ------------------------------------------------------------------------------
+\usepackage{xcolor} 
+\usepackage{colortbl}
+\usepackage{longtable}
+\usepackage{amssymb}
+% ------------------------------------------------------------------------------
+
 
 % -------------------------------------------------------------------------------
 
@@ -111,14 +131,56 @@
 \tableofcontents
 \thispagestyle{empty}
 
-% Declaring un-numbered chapter because I prefer how it looks.
-\chapter*{Introduction}
-% Add it to the contents, because un-numbered chapters aren't by default.
-\addcontentsline{toc}{chapter}{Introduction}
-% Put the chapter name in the header.
-\markboth{Introduction}{}
 
-Text text text
+\chapter{Candidate Data Sources}
+For the first stage of the pipeline, data ingestion, three data sources will be identified in order to find 
+the one that would be most optimal for the production and deployment of a machine learning model to complete 
+a supervised learning task.
+
+\section{Notes - DELETE BEFORE SUBMISSION}
+Lucidchart can generate ERDs from CSVs.
+For each, show the pandas head, column data types and ERD.
+Finding one with multiple CSVs can be good to make the ERD look more complex. 
+\textbf{So far, all of your data is from Kaggle. Consider another source like data.gov.uk, especially
+considering that it can give you raw data for preprocessing.} On Kaggle, the "Provenance" section will 
+have the source if the description doesn't. If neither have a source, it's probably fake data.
+
+\begin{itemize}
+    \item Loan data \begin{itemize}
+        \item Fictional, so hard to give a good problem statement because this isn't real.
+        \item Classification - Should they be given a loan?
+        \item Unlikely to be of any use, should find another.
+    \end{itemize}
+    \item Smoke detection \begin{itemize}
+        \item Real data
+        \item Lots to explain (how the alarms work etc)
+        \item Preprocessed, but you could still do more (remove timestamp etc)
+        \item Classification - Should the smoke/fire alarm sound?
+    \end{itemize}
+    \item Employee data \begin{itemize}
+        \item Allegedly real data though it seems hard to believe.
+        \item Classification - Is the employee likely to find another job instead?
+    \end{itemize}
+    \item Australian weather \begin{itemize}
+        \item Promising. Real data, but very large. Can do lots of preprocessing.
+        \item Classification - Will it rain tomorrow?
+    \end{itemize}
+    \item Cardiovascular disease \begin{itemize}
+        \item Good data, enormous amount of it (laptop might not handle it), good source. 
+        \item However, it's already been processed. Check if that's fine or not.
+        \item Classification - Do they have heart disease?
+    \end{itemize}
+    \item Diabetes \begin{itemize}
+        \item In consideration for CMP6200, cannot use a dataset in both.
+        \item It's actually real data according to the Kaggle page, from "multiple healthcare providers" and the 
+        electronic health records (EHRs) they keep.
+        \item Preprocessed already, but duplicates exist in it.
+        \item Only 9 features, is that a bad thing?
+        \item Classification - Do they have diabetes?
+    \end{itemize}
+\end{itemize}
+\section{Candidate 1 - Smoke Detection Dataset}
+
 
 
 \end{document}

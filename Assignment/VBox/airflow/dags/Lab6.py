@@ -17,6 +17,8 @@ def read_heart_csv():
     # THIS LINE IS MANDATORY DUE TO THIS USING SQLALCHEMY 1.4, WHICH USES "LAZY" CONNECTIONS.
     # THIS MEANS THAT WITHOUT THIS, IT WILL ALWAYS SAY "Engine object has no attribute X" BECAUSE IT HASN'T CONNECTED YET.
     eng_conn = eng_conn.connect()
+    
+    
     df_iris.to_sql("Heart", con=eng_conn, if_exists="replace")
     eng_conn.close()
 
