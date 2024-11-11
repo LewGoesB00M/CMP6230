@@ -1,3 +1,5 @@
 This is the shared folder between the host Windows PC and guest Ubuntu VM.
 Anything in here is accessible by both.
 Folders in this may appear disorganised (such as ipynb_checkpoints) as these would normally get hidden in your appdata somewhere.
+Code in here should not (and probably cannot) be run on Windows, as it relies on your
+pipeline_ingestion Conda environment on Ubuntu.
