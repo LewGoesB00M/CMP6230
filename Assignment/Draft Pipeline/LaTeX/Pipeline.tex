@@ -40,7 +40,7 @@
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 
 % Declare it as the bibliography source, to be called later via \printbibliography
-\addbibresource{report.bib}
+\addbibresource{pipeline.bib}
 
 % -------------------------------------------------------------------------------
 % To prevent "Chapter N" display for each chapter
@@ -114,10 +114,8 @@
 \begin{titlepage}
     \begin{center}
         \includegraphics[width=0.7\linewidth]{BCU}\\[4ex]
-        {\large \bfseries  \@title }\\[2ex]
-        {\large \bfseries  DRAFT VERSION }\\[2ex]
+        {\huge \bfseries  \@title }\\[50ex]
         {\@author}\\[30ex]
-        {Word count: XXXX}\\[20ex]
     \end{center}
 \end{titlepage}
 \makeatother
@@ -137,56 +135,346 @@ For the first stage of the pipeline, data ingestion, three data sources will be 
 the one that would be most optimal for the production and deployment of a machine learning model to complete 
 a supervised learning task.
 
-\section{Notes - DELETE BEFORE SUBMISSION}
-Lucidchart can generate ERDs from CSVs.
-For each, show the pandas head, column data types and ERD.
-Finding one with multiple CSVs can be good to make the ERD look more complex. 
-\textbf{So far, all of your data is from Kaggle. Consider another source like data.gov.uk, especially
-considering that it can give you raw data for preprocessing.} On Kaggle, the "Provenance" section will 
-have the source if the description doesn't. If neither have a source, it's probably fake data.
+% \section{Notes - DELETE BEFORE SUBMISSION}
+% Lucidchart can generate ERDs from CSVs.
+% For each, show the pandas head, column data types and ERD.
+% Finding one with multiple CSVs can be good to make the ERD look more complex. 
+% \textbf{So far, all of your data is from Kaggle. Consider another source like data.gov.uk, especially
+% considering that it can give you raw data for preprocessing.} On Kaggle, the "Provenance" section will 
+% have the source if the description doesn't. If neither have a source, it's probably fake data.
 
-\begin{itemize}
-    \item Smoke detection \begin{itemize}
-        \item Real data
-        \item Lots to explain (how the alarms work etc)
-        \item Preprocessed, but you could still do more (remove timestamp etc)
-        \item Classification - Should the smoke/fire alarm sound?
-    \end{itemize}
-    \item Employee data \begin{itemize}
-        \item Allegedly real data though it seems hard to believe.
-        \item Classification - Is the employee likely to find another job instead?
-    \end{itemize}
-    \item Australian weather \begin{itemize}
-        \item Promising. Real data, but very large. Can do lots of preprocessing.
-        \item Classification - Will it rain tomorrow?
-    \end{itemize}
-    \item Cardiovascular disease \begin{itemize}
-        \item Good data, enormous amount of it (laptop might not handle it), good source. 
-        \item However, it's already been processed. Check if that's fine or not.
-        \item Classification - Do they have heart disease?
-    \end{itemize}
-    \item Diabetes \begin{itemize}
-        \item In consideration for CMP6200, cannot use a dataset in both.
-        \item It's actually real data according to the Kaggle page, from "multiple healthcare providers" and the 
-        electronic health records (EHRs) they keep.
-        \item Preprocessed already, but duplicates exist in it.
-        \item Only 9 features, is that a bad thing?
-        \item Classification - Do they have diabetes?
-    \end{itemize}
-\end{itemize}
+% \begin{itemize}
+%     \item Smoke detection \begin{itemize}
+%         \item Real data
+%         \item Lots to explain (how the alarms work etc)
+%         \item Preprocessed, but you could still do more (remove timestamp etc)
+%         \item Classification - Should the smoke/fire alarm sound?
+%     \end{itemize}
+%     \item Employee data \begin{itemize}
+%         \item Allegedly real data though it seems hard to believe.
+%         \item Classification - Is the employee likely to find another job instead?
+%     \end{itemize}
+%     \item Australian weather \begin{itemize}
+%         \item Promising. Real data, but very large. Can do lots of preprocessing.
+%         \item Classification - Will it rain tomorrow?
+%     \end{itemize}
+%     \item Cardiovascular disease \begin{itemize}
+%         \item Good data, enormous amount of it (laptop might not handle it), good source. 
+%         \item However, it's already been processed. Check if that's fine or not.
+%         \item Classification - Do they have heart disease?
+%     \end{itemize}
+%     \item Diabetes \begin{itemize}
+%         \item In consideration for CMP6200, cannot use a dataset in both.
+%         \item It's actually real data according to the Kaggle page, from "multiple healthcare providers" and the 
+%         electronic health records (EHRs) they keep.
+%         \item Preprocessed already, but duplicates exist in it.
+%         \item Only 9 features, is that a bad thing?
+%         \item Classification - Do they have diabetes?
+%     \end{itemize}
+%     \item Indian Liver Patients \begin{itemize}
+%         \item Alternative source [OpenML]
+%         \item Alternative file format [ARFF]
+%         \item 900 rows
+%         \item Classification - Are they a liver patient?
+%         \item Good option mostly due to alt file format. Unfortunately still OBT though.
+%     \end{itemize}
+%     \item Student performance \begin{itemize}
+%         \item Data from two unnamed Portugeuse schools
+%         \item Lots of columns, perhaps too many.
+%     \end{itemize}
+% \end{itemize}
 
-All tasks of sheet 1, sheet 2 "should be analysed and you should write the plan for it", because sheet 2
-refers moreso to the final report itself due both Dec 13 (draft) and Jan 10 (final).
-Because the amount of rows is not relevant in this particular module, you can use smaller ones 
-like the 305 row Heart set.
-Week 8's lab is likely to be of vital importance to the final assessment of this module, as it 
-goes through the use of MLFlow. 
+% All tasks of sheet 1, sheet 2 "should be analysed and you should write the plan for it", because sheet 2
+% refers moreso to the final report itself due both Dec 13 (draft) and Jan 10 (final).
+% Because the amount of rows is not relevant in this particular module, you can use smaller ones 
+% like the 305 row Heart set.
+% Week 8's lab is likely to be of vital importance to the final assessment of this module, as it 
+% goes through the use of MLFlow. 
 
-\textbf{It's infeasible to do this on your laptop. Tuesday and Wednesday you'll need to smash this out
-\textit{quickly.}}
+% \textbf{It's infeasible to do this on your laptop. Tuesday and Wednesday you'll need to smash this out
+% \textit{quickly.}}
 
-\section{Candidate 1 - Smoke Detection Dataset}
+% #############################################################################
+% GENERAL TODO: 
+%
+% All Entity Relationship Diagrams. 
+% General polish.
+% Use more terminology (nominal data, etc)
+% Add some more href links, especially for candidate 1.
+% Maybe don't have datasets as citations but rather as links.
+% Attempt to find a dataset that's not a flat-file CSV.
+% If you do the ERDs, the tables probably don't need the data types.
+% Candidate 2 is a shittier version of a different dataset which I didn't know until after writing it.
+%
+% #############################################################################
+
+% Added notes - Wednesday's plan
+% Last night was the first time I've ever had a panic attack and broke down over university work.
+% As such, it's possible that the work I did is low-quality and rushed. It'll be worth going over it analytically.
+% You need to do the ERDs, and rewrite Candidate 1 to use better terminology. 
+% Candidate 3 might be fucked because you're not even using those JSONs.
+% Your word count is actually quite high already.
+
+\section{Candidate 1 - Indian Liver Patient Dataset}
+This dataset consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the UCI 
+Machine Learning Repository \autocite{bendi_ramana_ilpd_2022}, and has been previously used by \textcite{straw_investigating_2022} 
+in their analysis of sex-related bias in supervised learning models. The UCI ML Repository is a popular host of datasets used by students, 
+educators and researchers worldwide for machine learning \autocite{uci_machine_learning_repository_about_nodate}, and hosts these datasets 
+on the cloud for public download and usage, as long as credit is given. This dataset in particular aims to assist in the diagnosis of liver
+disease due to increasing mortality rates from conditions like liver cirrhosis, and contains 584 records with 10 features
+as well as the "Selector" classification column, where those wihout liver disease are classed as 1, and those with liver disease 
+are classed as 2. For the purposes of the ML model, these can be changed to 0 and 1 respectively. 
+The dataset is a single flat-file Comma-Seperated Values (CSV) file, which stores data by seperating each column with commas
+and each row with line breaks. This CSV file uses a One Big Table (OBT) schema, as seen in the entity relationship diagram 
+in Figure \ref{fig:ILPD-ERD}, wherein all of the data within this dataset is stored in a single table. % Do the ERD at some point.
+Descriptions of the columns in the dataset, as well as the associated data types, can be found in Table \ref{tab:ILPD-Types}.
 
 
+A minor issue with this file is that it has no headers in its CSV file, meaning that when imported, Pandas will interpret the first 
+row of data as the names of the columns, though this can be combated by adding the "names" argument when calling Pandas' "read\_csv" function,
+seen below in Figure \ref{fig:pandasNames}. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.75\textwidth}
+       \includegraphics[width=1\linewidth]{pandasNoNames.png}
+       \caption{Importing without supplying column names.}
+       \label{fig:pandasNames} 
+    \end{subfigure}
+    
+    \begin{subfigure}{1\textwidth}
+       \includegraphics[width=1\linewidth]{pandasNames.png}
+       \caption{Importing with the column names.}
+       \label{fig:PN2}
+    \end{subfigure}
+    \caption{Importing the erroneous CSV using Pandas. The column headers are highlighted in a red box.}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+        \begin{tabular}{ |p{0.2\textwidth}|p{0.2\textwidth}| p{0.35\textwidth}|}
+            \hline
+            \cellcolor{blue!25}Column & \cellcolor{blue!25}Format & \cellcolor{blue!25}Description\\
+            \hline
+            Age & Integer & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published.} \\
+            \hline
+            Gender & String (Binary) & The patient's gender, either "Male" or "Female".\\
+            \hline
+            TB & Float & Total bilirubin. Bilirubin is a substance produced by the liver, and a high presence of it may be indicative of
+            liver problems \autocite{mayo_clinic_bilirubin_nodate}.\\
+            \hline
+            DB & Float & Direct bilirubin. This is a slightly different form of bilirubin that is formed after the liver has processed it.\\
+            \hline
+            Alkphos & Integer & Levels of alkaline phosphate - an enzyme in the body produced by the liver. Too much may indicate liver disease. \autocite{clevelandclinic_alkaline_nodate}\\
+            \hline
+            Sgpt & Integer & Another enzyme found in the liver, where too much can indicate liver problems.\\
+            \hline
+            Sgot & Integer & Levels of AST in the blood, where too much indicates liver problems.\\
+            \hline
+            TP & Float & Total proteins.\\
+            \hline
+            ALB & Float & Albumin - a protein in blood plasma. Too little of this may indicate liver problems.\\
+            \hline
+            A/G Ratio & Float & The ratio of albumin to globulin, which is another blood protein.\\
+            \hline
+            Selector & Integer & The classifier, indicating if the person has liver disease. The target column for the ML model.\\
+            \hline
+    \end{tabular}
+    \caption{The data types of each column in the Indian Liver Patient Dataset.}\label{tab:ILPD-Types}
+\end{table}
+
+This dataset can be used to develop a supervised machine learning model for binary classification using the ten predictor 
+variables and the ground truth Selector column, which will be used in measuring the accuracy of the model. There is a clear 
+positive purpose for developing such a model; as previously mentioned, mortality rates from liver disease are high, and an early
+diagnosis that could leverage the power of machine learning can greatly enhance the odds of successful treatment.
+
+
+% \section{Candidate 2 - Cardiovascular Disease Dataset}
+% The second dataset is also a real dataset of heart disease patients from four areas worldwide: Ohio, Hungary, Switzerland, and Virginia,
+% and was identified through the UCI ML repository. The dataset consists of 14 features and a classifier column, with the data types and descriptions of each 
+% shown in Table \ref{tab:Heart-Types}. The overall purpose of this dataset is for the analysis and diagnosis of heart disease, which is the leading 
+% cause of death for both men and women in the US \autocite{cdc_heart_2024}. Unlike Candidate 1, this dataset consists of four seperate CSV files, where each CSV is for one of the 
+% aforementioned locations. 
+
+% \begin{table}[H]
+%     \centering
+%         \begin{tabular}{ |p{0.2\textwidth}|p{0.2\textwidth}| p{0.35\textwidth}|}
+%             \hline
+%             \cellcolor{blue!25}Column & \cellcolor{blue!25}Format & \cellcolor{blue!25}Description\\
+%             \hline
+%             Patient Identification Number & Integer & The patient's unique ID. This won't be used as a predictor because it has no affiliation. \\
+%             \hline
+%             Age & Integer & The patient's age.\\
+%             \hline
+%             Gender & Integer (Binary) & The patient's gender, where 0 is female and 1 is male. \\
+%             \hline
+%             Chest pain type & Integer (Nominal) & The type of pain the patient has, where 0 is typical angina, 1 is atypical angina, 2 is pain that is not angina, and 3 is no pain.\\
+%             \hline
+%             Resting blood pressure & Integer & The patient's blood pressure (It is not stated if this is their systolic or diastolic pressure).\\
+%             \hline
+%             Serum cholesterol & Integer & Total cholesterol in the blood. Too much can clog arteries and cause heart disease and/or attacks.\\
+%             \hline
+%             Fasting blood sugar & Integer (Binary) & 0 if under 120mg/dl, 1 if over 120mg/dl.\\
+%             \hline
+%             Resting ECG results & Integer (Nominal) & 0 if normal, 1 if ST-T wave abormality (irregular beat), 2 if ventricular hypertrophy.\\
+%             \hline
+%             Maximum heart rate & Integer & The highest heart rate documented for the patient.\\
+%             \hline
+%             Exercise induced angina & Integer (Binary) & 0 if they do not get chest pain during exercise, 1 if they do.\\
+%             \hline
+%             Oldpeak & Float & The difference in ST depression (a particular part of the heart's beating motion) when exercising compared to resting.\\
+%             \hline
+%             ST segment slope & Integer (Nominal) & The trend in the patient's ST segment reading, where 1 is upsloping, 2 is flat and 3 is downsloping. \\
+%             \hline
+%             Classifier & Integer (Binary) & If the patient has heart disease or not (0 if no, 1 if yes).\\
+%             \hline
+%     \end{tabular}
+%     \caption{The data types of each column in the Cardiovascular Disease Dataset.}\label{tab:Heart-Types}
+% \end{table}
+
+\section{Candidate 2 - Loan Approval Classification Dataset}
+\href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} was sourced from Kaggle's cloud servers under 
+an Apache 2.0 license, which states that the dataset can be used as long as credit is given to the original author,
+and takes the form of a flat-file CSV using a One Big Table schema. Unlike Candidate 1, this dataset does not consist of real data, and 
+instead consists of synthetic data. This is likely due to the fact that this dataset, if it used real data, would contain extremely personal 
+information that could not be shared online due to legislation such as GDPR. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
+which also did not provide an original source and is presumably synthetic data. The dataset consists of 45,000 records and 14 features, with 
+one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. As such, it is well suited 
+for a binary classification model, using the first 13 features as predictor variables. This can also be observed from the 28 notebooks on Kaggle that 
+utilise this dataset. The data types for each column can be seen in the entity relationship diagram in Figure \ref{fig:LoanERD} and 
+descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
+
+\begin{table}[H]
+    \centering
+        \begin{tabular}{ |p{0.4\textwidth}| p{0.425\textwidth}|}
+            \hline
+            \cellcolor{blue!25}Column & \cellcolor{blue!25}Description\\
+            \hline
+            person\_age & The age of the person.\\
+            \hline
+            person\_gender & The person's gender.\\
+            \hline
+            person\_education & The person's highest level of education.\\
+            \hline
+            person\_emp\_exp & The person's years of employment experience.\\
+            \hline
+            person\_home\_ownership & Home ownership status (for example rent, own, mortgage)\\
+            \hline
+            loan\_amnt & The amount of money requested.\\
+            \hline
+            loan\_intent & The purpose of the loan.\\
+            \hline
+            loan\_int\_rate & The interest rate of the loan.\\
+            \hline
+            loan\_percent\_income & Loan amount as a percentage of the person's yearly income.\\
+            \hline
+            cb\_person\_cred\_hist\_length & Length of credit history in years.\\
+            \hline
+            credit\_score & Credit score of the person.\\
+            \hline
+            previous\_loan\_defaults\_on\_file & If the person has defaulted on a loan before. \\
+            \hline
+            loan\_status & Whether the loan should be approved. 1 if yes, 0 if no.\\
+            \hline
+    \end{tabular}
+    \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
+\end{table}
+
+\pagebreak
+
+\section{Candidate 3 - Spotify Likes Dataset}
+\href{https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation/data}{This dataset} was sourced from \href{https://www.kaggle.com/datasets}{Kaggle}, a platform similar to the UCI ML repository in its purpose for students and researchers
+that acts as a search engine for datasets, but also allows its users to host competitions, upload their machine learning models, and also upload 
+their own Python notebooks. This dataset is stored on their servers on the cloud, and is free to download and use. The data itself is split over 
+a CSV file and two JavaScript Object Notation (JSON) files. JSON files 
+store data in \textbf{key-value pairs}, such as in the example snippet of this dataset depicted in Figure \ref{fig:spotifySnippet}.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{spotifySnippet.png}
+    \caption{A snippet of the JSON data, viewed in Visual Studio Code.}
+    \label{fig:spotifySnippet}
+\end{figure}
+
+Every row in the JSON files is part of "audio\_features", and is seperated by curly braces \{\}. Each column is then given as a 
+key-value pair, such as the first row in the image, where "danceability" is the key, and 0.352 is the associated value.
+
+\noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
+\href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
+Liked and disliked songs are seperated into two JSON files, named "dislike" and "good". The CSV has 14 features, though the JSON files have 18,
+depicted in Figure \ref{fig:SpotifyERD}.
+
+
+While a machine learning classification problem can definitely be performed on this dataset to identify if the author would like a song, 
+it has significantly less of a positive impact than Candidates 1 and 2, as this dataset is the author's subjective belief rather than objective
+fact that can be applied to other people. Nevertheless, the data types and descriptions of each column can be found in Table \ref{tab:Spotify-Types}.
+
+\begin{table}[H]
+    \centering
+        \begin{tabular}{ |p{0.2\textwidth}|p{0.2\textwidth}| p{0.425\textwidth}|}
+            \hline
+            \cellcolor{blue!25}Column & \cellcolor{blue!25}Format & \cellcolor{blue!25}Description\\
+            \hline
+            Danceability & Float & How suitable a song is for dancing, calculated from the tempo, rhythm stability, beat strength and overall regularity. 1.0 means it is very danceable. \\
+            \hline
+            Energy & Float & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.\\
+            \hline
+            Key & Integer & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.} \\
+            \hline
+            Loudness & Float & The averaged decibel volume of a song, typically between -60 and 0 dB.\\
+            \hline
+            Mode & Integer (Binary) & Whether a song is in major or minor scale. 1 is major and 0 is minor.\\
+            \hline
+            Speechiness & Float & The calculated presence of spoken words in a song.\\
+            \hline
+            Acousticness & Float & A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.\\
+            \hline
+            Instrumentalness & Float & Whether a song has no vocals.\\
+            \hline
+            Liveness & Float & Whether a live audience can be heard as part of a song.\\
+            \hline
+            Valence & Float & The musical positiveness of a song.\\
+            \hline
+            Tempo & Float & The beats per minute of a song.\\
+            \hline
+            Duration\_MS & Integer & The duration of a song in milliseconds.\\
+            \hline
+            Time signature & Integer & The estimated time signature of the song.\\
+            \hline
+            \cellcolor{red!15}Liked & Integer (Binary) & The target variable, indicative of whether the author liked the song or not.\\
+            \hline
+            \cellcolor{green!15}Type & String & Always "audio\_features". Not a relevant predictor.\\
+            \hline
+            \cellcolor{green!15}ID & String & Spotify's own unique ID for a song. Not a relevant predictor.\\
+            \hline
+            \cellcolor{green!15}URI & String & Spotify's URI for the song. Not a relevant predictor.\\
+            \hline
+            \cellcolor{green!15}Track HREF & String & A link to the song on Spotify's API. Not a relevant predictor.\\  
+            \hline
+            \cellcolor{green!15}Analysis URL & String & A link to the song's audio analysis data. Not a relevant predictor. \\
+            \hline
+    \end{tabular}
+    \caption{The descriptions of each column in the Spotify songs dataset \autocite{spotify_web_nodate}. Red columns are only present in the CSV, whereas green columns are only present in the JSONs.}\label{tab:Spotify-Types}
+\end{table}
+
+These measurements and the descriptions are \href{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}{part of Spotify's API},
+and are automatically calculated when songs are uploaded to the service. The ground truth of the dataset is present in the CSV file as the "liked" classifier 
+column, and a train/test split can be implemented for predictions, which is aided by the fact that this dataset is well balanced (100 liked to 95 disliked).
+
+\section{Chosen dataset}
+AAAAA
+
+
+
+\chapter{Planning the Machine Learning Pipeline}
+\section{Data Ingestion}
+The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data and transferring 
+it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. It is of vital importance that 
+data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
+here will directly impact all future stages.
+
+\printbibliography[keyword={Dataset}, title = {Datasets}]
+
+\printbibliography
 
 \end{document}

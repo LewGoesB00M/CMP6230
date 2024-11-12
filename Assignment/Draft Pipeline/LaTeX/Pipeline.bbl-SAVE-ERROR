@@ -63,6 +63,48 @@
       \endverb
       \keyw{Dataset}
     \endentry
+    \entry{cdc_heart_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b451ae487bde3a3338f110920744afa8}{%
+           family={{CDC}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{b451ae487bde3a3338f110920744afa8}
+      \strng{fullhash}{b451ae487bde3a3338f110920744afa8}
+      \strng{fullhashraw}{b451ae487bde3a3338f110920744afa8}
+      \strng{bibnamehash}{b451ae487bde3a3338f110920744afa8}
+      \strng{authorbibnamehash}{b451ae487bde3a3338f110920744afa8}
+      \strng{authornamehash}{b451ae487bde3a3338f110920744afa8}
+      \strng{authorfullhash}{b451ae487bde3a3338f110920744afa8}
+      \strng{authorfullhashraw}{b451ae487bde3a3338f110920744afa8}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Learn facts about how race, ethnicity, age, and other risk factors can contribute to heart disease r}
+      \field{day}{24}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{title}{Heart Disease Facts}
+      \field{titleaddon}{Heart Disease}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\62LH2WJX\\index.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html
+      \endverb
+      \verb{url}
+      \verb https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html
+      \endverb
+    \endentry
     \entry{clevelandclinic_alkaline_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=18a3b2aa5b80cdc35c37255cff78fbaa}{%
@@ -135,41 +177,6 @@
       \endverb
       \verb{url}
       \verb https://www.mayoclinic.org/tests-procedures/bilirubin/about/pac-20393041
-      \endverb
-    \endentry
-    \entry{spotify_web_nodate}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=fd539ca17a17132049c4fef4619df638}{%
-           family={{Spotify}},
-           familyi={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{fd539ca17a17132049c4fef4619df638}
-      \strng{fullhash}{fd539ca17a17132049c4fef4619df638}
-      \strng{fullhashraw}{fd539ca17a17132049c4fef4619df638}
-      \strng{bibnamehash}{fd539ca17a17132049c4fef4619df638}
-      \strng{authorbibnamehash}{fd539ca17a17132049c4fef4619df638}
-      \strng{authornamehash}{fd539ca17a17132049c4fef4619df638}
-      \strng{authorfullhash}{fd539ca17a17132049c4fef4619df638}
-      \strng{authorfullhashraw}{fd539ca17a17132049c4fef4619df638}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{url}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Web {API} Reference {|} Spotify for Developers}
-      \field{urlday}{12}
-      \field{urlmonth}{11}
-      \field{urlyear}{2024}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb Web API Reference | Spotify for Developers:C\:\\Users\\Lewis\\Zotero\\storage\\UZU2GFS3\\get-audio-features.html:text/html
-      \endverb
-      \verb{urlraw}
-      \verb https://developer.spotify.com/documentation/web-api/reference/get-audio-features
-      \endverb
-      \verb{url}
-      \verb https://developer.spotify.com/documentation/web-api/reference/get-audio-features
       \endverb
     \endentry
     \entry{straw_investigating_2022}{article}{}{}
