@@ -63,6 +63,47 @@
       \endverb
       \keyw{Dataset}
     \endentry
+    \entry{butterfield_22b_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ba7478fb46c21cd7069f6f7450705da1}{%
+           family={Butterfield},
+           familyi={B\bibinitperiod},
+           given={Sean},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{fullhash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{fullhashraw}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{bibnamehash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{authorbibnamehash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{authornamehash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{authorfullhash}{ba7478fb46c21cd7069f6f7450705da1}
+      \strng{authorfullhashraw}{ba7478fb46c21cd7069f6f7450705da1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{an open, interactive, online textbook for college music theory}
+      \field{langid}{english}
+      \field{title}{22b Lesson - Pitch-class integer notation}
+      \field{titleaddon}{Inquiry-Based Music Theory}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\JGG2BQLZ\\b2-tx-pcintnotation.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html
+      \endverb
+      \verb{url}
+      \verb https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html
+      \endverb
+    \endentry
     \entry{clevelandclinic_alkaline_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=18a3b2aa5b80cdc35c37255cff78fbaa}{%
@@ -100,6 +141,43 @@
       \endverb
       \verb{url}
       \verb https://my.clevelandclinic.org/health/diagnostics/22029-alkaline-phosphatase-alp
+      \endverb
+    \endentry
+    \entry{incycle_software_mlops_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fa72046c8b51fe678ff3c2bc85964b93}{%
+           family={{InCycle Software}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{fullhash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{fullhashraw}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{bibnamehash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{authorbibnamehash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{authornamehash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{authorfullhash}{fa72046c8b51fe678ff3c2bc85964b93}
+      \strng{authorfullhashraw}{fa72046c8b51fe678ff3c2bc85964b93}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Leverage {MLOps}, Azure and {InCycle}'s Enterprise Accelerator to dramatically increase model training and deployment speed.}
+      \field{langid}{english}
+      \field{title}{{MLOps} {ENTERPRISE} {ACCELERATOR}}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\IJKQUNZN\\azure-machine-learning-enterprise-accelerator.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.incyclesoftware.com/azure-machine-learning-enterprise-accelerator
+      \endverb
+      \verb{url}
+      \verb https://www.incyclesoftware.com/azure-machine-learning-enterprise-accelerator
       \endverb
     \endentry
     \entry{mayo_clinic_bilirubin_nodate}{online}{}{}

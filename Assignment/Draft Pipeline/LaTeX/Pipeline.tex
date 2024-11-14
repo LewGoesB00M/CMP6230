@@ -204,21 +204,11 @@ a supervised learning task.
 % Maybe don't have datasets as citations but rather as links.
 % Attempt to find a dataset that's not a flat-file CSV.
 % If you do the ERDs, the tables probably don't need the data types.
-% Candidate 2 is a shittier version of a different dataset which I didn't know until after writing it.
-%
 % #############################################################################
 
-% Added notes - Wednesday's plan
-% Last night was the first time I've ever had a panic attack and broke down over university work.
-% As such, it's possible that the work I did is low-quality and rushed. It'll be worth going over it analytically.
-% You need to do the ERDs, and rewrite Candidate 1 to use better terminology. 
-% Candidate 3 might be fucked because you're not even using those JSONs.
-% Your word count is actually quite high already.
-
 \section{Candidate 1 - Indian Liver Patient Dataset}
-This dataset consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the UCI 
-Machine Learning Repository \autocite{bendi_ramana_ilpd_2022}, and has been previously used by \textcite{straw_investigating_2022} 
-in their analysis of sex-related bias in supervised learning models. The UCI ML Repository is a popular host of datasets used by students, 
+\href{https://archive.ics.uci.edu/dataset/225}{This dataset} \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
+UCI Machine Learning Repository, and has been previously used by \textcite{straw_investigating_2022} in their analysis of sex-related bias in supervised learning models. The UCI ML Repository is a popular host of datasets used by students, 
 educators and researchers worldwide for machine learning \autocite{uci_machine_learning_repository_about_nodate}, and hosts these datasets 
 on the cloud for public download and usage, as long as credit is given. This dataset in particular aims to assist in the diagnosis of liver
 disease due to increasing mortality rates from conditions like liver cirrhosis, and contains 584 records with 10 features
@@ -419,7 +409,7 @@ fact that can be applied to other people. Nevertheless, the data types and descr
             \hline
             Energy & Float & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.\\
             \hline
-            Key & Integer & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.} \\
+            Key & Integer & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} \\
             \hline
             Loudness & Float & The averaged decibel volume of a song, typically between -60 and 0 dB.\\
             \hline
@@ -466,14 +456,86 @@ AAAAA
 
 
 
-\chapter{Planning the Machine Learning Pipeline}
-\section{Data Ingestion}
-The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data and transferring 
-it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. It is of vital importance that 
-data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
-here will directly impact all future stages.
+\chapter{Planning the MLOps Pipeline}
+All machine learning operations (MLOps) follow a five-step repeatable pipeline, outlined in Figure \ref{fig:MLPipeline}, where the output of one stage
+becomes the input of the next. The pipeline begins with raw data and finishes with a trained machine learning model, and is often 
+repeated at certain intervals, which could be as simple as once a day, or it could be repeated as new data becomes available. 
+This repetition is performed automatically, so that the final model can become progressively more accurate. Because the process 
+must be repeatable and automated, it is essential that data is validated to ensure that one run of the pipeline where the data may have 
+been corrupted somehow would not cause issues, which would quickly spiral out of control as the pipeline is repeated again and again.
+These validation procedures and the software utilised for them are documented in Section \ref{sec:Software}.
+Overall, MLOps pipelines standardise the development and deployment process of machine learning models, ensuring continuous integration
+(CI) and continuous delivery (CD) and enhancing collaboration between data scientists and development teams.
 
-\printbibliography[keyword={Dataset}, title = {Datasets}]
+% --- Week 8 Thursday ---
+% "The machine learning part is not important in this module, but rather the pipeline is."
+% Don't answer the task sheet questions in a single sentence. You want to give a deep analysis of what it is,
+% which I believe I've already done. Talk about why it was collected in the first place, which you have NOT done.
+
+% References are expected in this report as seen in the examples. Emphasised that it's an ACADEMIC report.
+% It's fine to use OBT datasets. Create an ERD. You could potentially create tables by splitting the OBT.
+
+% Detailed discussion on the five stages. See sheet for questions you need to answer for each.
+% Tools and techniques on a per-stage basis rather than their own section? Up to you.
+% You can relate your explanations of the stages to your chosen dataset. "For example, in the selected dataset,
+% this stage would be applied by..."
+
+% An important part is WHO is involved. You've not really looked into that though it shouldn't be hard to find out.
+
+% [I didn't even realise there was a third page of the sheet. Not ideal]
+% Discussion of the selected dataset. Isn't it repeating the first section though?
+% Will you store it in MariaDB or a "graph database" (?)
+% Physical/logical structure of the data AFTER ingestion.
+% She mentioned creating a star schema of the data. Could you? IF it's one with many features, maybe.
+
+% This info is apparently all available within the first three weeks of the module.
+% Remember that you missed Week 3, so if it was there you wouldn't know.
+
+% Example shown in class is not listed on Moodle.
+% They gave references to sources about what CSVs are and ERDs.
+% You should probably do the same, and also give one for OBT as you never explained it.
+% Just saying varchar without a character amount could be fine in the ERD.
+% They made a table of comparisons between the three, with stuff like the data types.
+
+% NO DESIGNATED WORD COUNT!
+% You're writing a plan that will probably change in the next assessment?
+% You do not need to do implementation here (though you can???)
+% IF you do so, an extra ZIP is needed with the dataset and code.
+% You should do that - add a ZIP with the datasets and a Jupyter notebook with brief analysis (heads, types, etc).
+
+% Also, if Airflow stops working after installing MLFlow, FastAPI and Uvicorn, you need to uninstall and reinstall
+% FLask. pip uninstall flask, pip install flask==2.2.5
+% -------------------------
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{MLPipeline.png}
+    \caption{The five key steps in an MLOps pipeline \autocite{incycle_software_mlops_nodate}.}
+    \label{fig:MLPipeline}
+\end{figure}
+
+\section{Data Ingestion}
+The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data from its original source
+and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. 
+It is of vital importance that data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
+here will directly impact all future stages, as previously discussed. 
+
+\section{Data Preparation / Preprocessing}
+In this stage...
+
+\section{Model Development}
+In this stage...
+
+\section{Model Deployment}
+In this stage...
+
+\section{Model Monitoring}
+In this stage...
+
+\section{Software used in an MLOps pipeline}\label{sec:Software}
+The software used for this pipeline will be... 
+Conda, airflow, MariaDB, etc.
 
 \printbibliography
 
