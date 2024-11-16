@@ -1,0 +1,8 @@
+Pandas head & dtypes of all datasets.
+Screenshots from Kaggle / UCI.
+"Level of measurement" in description table: nominal etc...
+
+I still think the Spotify dataset is a mistake, and you could 
+likely do better by finding a relational DB.
+
+Sources for claims made in OLAP vs OLTP table
