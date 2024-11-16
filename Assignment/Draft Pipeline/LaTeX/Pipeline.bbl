@@ -19,6 +19,44 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{aws_oltp_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4847e034bb0a55fcbc8a3380d6a3ab80}{%
+           family={{AWS}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{bibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorbibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authornamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{What's the Difference Between {OLAP} and {OLTP}? How to Use Data Processing Services with {AWS}.}
+      \field{langid}{american}
+      \field{title}{{OLTP} vs {OLAP} - Difference Between Data Processing Systems - {AWS}}
+      \field{titleaddon}{Amazon Web Services, Inc.}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\Y45ETN6N\\the-difference-between-olap-and-oltp.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://aws.amazon.com/compare/the-difference-between-olap-and-oltp/
+      \endverb
+      \verb{url}
+      \verb https://aws.amazon.com/compare/the-difference-between-olap-and-oltp/
+      \endverb
+    \endentry
     \entry{bendi_ramana_ilpd_2022}{misc}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=abb1d997bd86ec93c55caf015c337afd}{%
@@ -62,6 +100,45 @@
       \verb https://archive.ics.uci.edu/dataset/225
       \endverb
       \keyw{Dataset}
+    \endentry
+    \entry{brice-vergnou_brice-vergnouspotify_recommendation_2024}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2dd5b0e72822899a43abe319c129ed37}{%
+           family={Brice-Vergnou},
+           familyi={B\bibinithyphendelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{fullhash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{fullhashraw}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{bibnamehash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{authorbibnamehash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{authornamehash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{authorfullhash}{2dd5b0e72822899a43abe319c129ed37}
+      \strng{authorfullhashraw}{2dd5b0e72822899a43abe319c129ed37}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Finding which songs I like or not based on songs statistics}
+      \field{day}{16}
+      \field{month}{10}
+      \field{note}{original-date: 2021-07-27T10:05:51Z}
+      \field{title}{Brice-Vergnou/spotify\_recommendation}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/Brice-Vergnou/spotify_recommendation
+      \endverb
+      \verb{url}
+      \verb https://github.com/Brice-Vergnou/spotify_recommendation
+      \endverb
+      \keyw{ai,api,artificial-intelligence,eda,exploratory-data-analysis,python3,random-forest,random-forest-classifier,scikit-learn,scikitlearn-machine-learning,sklearn,spotify,spotify-api,spotify-playlist}
     \endentry
     \entry{butterfield_22b_nodate}{online}{}{}
       \name{author}{1}{}{%

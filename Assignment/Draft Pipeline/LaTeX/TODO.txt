@@ -1,5 +1,10 @@
 Pandas head & dtypes of all datasets.
-Screenshots from Kaggle / UCI.
+    - DTypes done, not heads.
+
+
+Candidate 2 is mega unfinished. Very bad given it's your 
+selected dataset.
+
 "Level of measurement" in description table: nominal etc...
 
 I still think the Spotify dataset is a mistake, and you could 

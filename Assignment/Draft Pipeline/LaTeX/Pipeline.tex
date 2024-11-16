@@ -210,7 +210,16 @@ a supervised learning task.
 \href{https://archive.ics.uci.edu/dataset/225}{This dataset} \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
 UCI Machine Learning Repository, and has been previously used by \textcite{straw_investigating_2022} in their analysis of sex-related bias in supervised learning models. The UCI ML Repository is a popular host of datasets used by students, 
 educators and researchers worldwide for machine learning \autocite{uci_machine_learning_repository_about_nodate}, and hosts these datasets 
-on the cloud for public download and usage, as long as credit is given. This dataset in particular aims to assist in the diagnosis of liver
+on the cloud for public download and usage, as long as credit is given.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{ILPD-UCI.png}
+    \caption{A snapshot of the dataset's UCI repository page.}
+    \label{fig:ILPD-UCI}
+\end{figure}
+
+This dataset in particular aims to assist in the diagnosis of liver
 disease due to increasing mortality rates from conditions like liver cirrhosis, and contains 584 records with 10 features
 as well as the "Selector" classification column, where those wihout liver disease are classed as 1, and those with liver disease 
 are classed as 2. For the purposes of the ML model, these can be changed to 0 and 1 respectively. 
@@ -247,15 +256,45 @@ seen below in Figure \ref{fig:pandasNames}.
     \caption{Importing the erroneous CSV using Pandas. The column headers are highlighted in a red box.}
 \end{figure}
 
+A preliminary analysis of the file to ascertain the data types of each column, seen in Figure \ref{fig:ILPD-DTypes}, also revealed that there were 4 missing values in the A/G ratio column.
+It is possible that these missing values could be imputed rather than deleted, as it may be possible to calculate what the A/G ratio of these rows would have been in the 
+Data Preprocessing stage of a pipeline.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.3\linewidth]{pandas/ILPD-DTypes.png}
+    \caption{The data types of the Indian Liver Patient Dataset.}
+    \label{fig:ILPD-DTypes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.75\textwidth}
+        \centering
+       \includegraphics[width=0.3\linewidth]{pandas/ILPD-NA.png}
+       \caption{Four missing values are identified.}
+       \label{fig:NAs1} 
+    \end{subfigure}
+    
+    \begin{subfigure}{1\textwidth}
+        \centering
+       \includegraphics[width=1\linewidth]{pandas/ILPD-NAValues.png}
+       \caption{The four rows in question.}
+       \label{fig:NAs2}
+    \end{subfigure}
+    \caption{The identification of four missing values in the A/G ratio column.}
+\end{figure}
+
+
 \begin{table}[H]
     \centering
-        \begin{tabular}{ |p{0.4\textwidth}| p{0.45\textwidth}|}
+        \begin{tabular}{ |p{0.2\textwidth}| p{0.45\textwidth}|}
             \hline
             \cellcolor{blue!25}Column & \cellcolor{blue!25}Description\\
             \hline
             Age & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published.} \\
             \hline
-            Gender (Binary) & The patient's gender, either "Male" or "Female".\\
+            Gender & The patient's gender, either "Male" or "Female".\\
             \hline
             TB & Total bilirubin. Bilirubin is a substance produced by the liver, and a high presence of it may be indicative of
             liver problems \autocite{mayo_clinic_bilirubin_nodate}.\\
@@ -277,7 +316,7 @@ seen below in Figure \ref{fig:pandasNames}.
             Selector & The classifier, indicating if the person has liver disease. The target column for the ML model.\\
             \hline
     \end{tabular}
-    \caption{The data types of each column in the Indian Liver Patient Dataset.}\label{tab:ILPD-Types}
+    \caption{The descriptions of each column in the Indian Liver Patient Dataset.}\label{tab:ILPD-Types}
 \end{table}
 
 This dataset can be used to develop a supervised machine learning model for binary classification using the ten predictor 
@@ -329,16 +368,25 @@ diagnosis that could leverage the power of machine learning can greatly enhance 
 %     \caption{The data types of each column in the Cardiovascular Disease Dataset.}\label{tab:Heart-Types}
 % \end{table}
 
-\section{Candidate 2 - Loan Approval Classification Dataset}
+\section{Candidate 2 - Loan Approval Classification Dataset}\label{sec:Dataset}
 \href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} was sourced from Kaggle's cloud servers under 
 an Apache 2.0 license, which states that the dataset can be used as long as credit is given to the original author,
-and takes the form of a flat-file CSV using a One Big Table schema. Unlike Candidate 1, this dataset does not consist of real data, and 
+and takes the form of a flat-file CSV using a One Big Table schema. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Loan-Kaggle.png}
+    \caption{A snapshot of the Loan dataset's Kaggle page.}
+    \label{fig:Loan-Kaggle}
+\end{figure}
+
+Unlike Candidate 1, this dataset does not consist of real data, and 
 instead consists of synthetic data. This is likely due to the fact that this dataset, if it used real data, would contain extremely personal 
 information that could not be shared online due to legislation such as GDPR. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
 which also did not provide an original source and is presumably synthetic data. The dataset consists of 45,000 records and 14 features, with 
 one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. As such, it is well suited 
 for a binary classification model, using the first 13 features as predictor variables. This can also be observed from the 28 notebooks on Kaggle that 
-utilise this dataset. The data types for each column can be seen in the entity relationship diagram in Figure \ref{fig:Loan-ERD} and 
+utilise this dataset. The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
 descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{figure}[H]
@@ -346,6 +394,20 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
     \includegraphics[width=.75\linewidth]{Loan-ERD.png}
     \caption{An entity relationship diagram of the Loan Approval Classification Dataset.}
     \label{fig:Loan-ERD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\linewidth]{pandas/Loan-DTypes.png}
+    \caption{The data types of the Loan Approval Classification Dataset.}
+    \label{fig:Loan-DTypes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\linewidth]{pandas/Loan-NA.png}
+    \caption{No missing values in the dataset.}
+    \label{fig:Loan-NAs}
 \end{figure}
 
 
@@ -385,14 +447,26 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
     \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
 \end{table}
 
+
+
 \pagebreak
 
 \section{Candidate 3 - Spotify Likes Dataset}
 \href{https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation/data}{This dataset} was sourced from \href{https://www.kaggle.com/datasets}{Kaggle}, a platform similar to the UCI ML repository in its purpose for students and researchers
 that acts as a search engine for datasets, but also allows its users to host competitions, upload their machine learning models, and also upload 
-their own Python notebooks. This dataset is stored on their servers on the cloud, and is free to download and use. The data itself is split over 
-a CSV file and two JavaScript Object Notation (JSON) files, with all three utilising a One Big Table schema. JSON files 
-store data in \textbf{key-value pairs}, such as in the example snippet of this dataset depicted in Figure \ref{fig:spotifySnippet}.  
+their own Python notebooks. This dataset is stored on their servers on the cloud, and is free to download and use.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Spotify-Kaggle.png}
+    \caption{A snapshot of the Spotify dataset's Kaggle page.}
+    \label{fig:Spotify-Kaggle}
+\end{figure}
+
+The data itself is split over 
+two JavaScript Object Notation (JSON) files, but also fully present in an included CSV file, with all three utilising a One Big Table schema. The 
+download also includes two Python files, which have the JSON data stored in Python dictionaries for ease of access, though these will not be used in 
+this brief analysis. JSON files store data in \textbf{key-value pairs}, such as in the example snippet of this dataset depicted in Figure \ref{fig:spotifySnippet}.  
 
 \begin{figure}[H]
     \centering
@@ -402,7 +476,7 @@ store data in \textbf{key-value pairs}, such as in the example snippet of this d
 \end{figure}
 
 Every row in the JSON files is part of the single "audio\_features" key, and each new row is seperated by curly braces \{\}. Each column is then given as a 
-key-value pair, such as the first row in the image, where "danceability" is the key, and 0.352 is the associated value.
+key-value pair, such as the first row in Figure \ref{fig:spotifySnippet}, where "danceability" is the key, and 0.352 is the associated value.
 
 \noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
 \href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
@@ -416,8 +490,12 @@ Liked and disliked songs are seperated into two JSON files, named "dislike" and 
     \label{fig:JSON-ERD}
 \end{figure}
 
+This dataset has been used to create machine learning models before, most notably by its own author, who has a public Github repository 
+showcasing their work \autocite{brice-vergnou_brice-vergnouspotify_recommendation_2024}. 
 Before publicising this data, however, the author had done some preprocessing of their own, having included the additional CSV file,
 produced as a result of merging the two JSON files into one CSV and removing unnecessary columns, as depicted in Figure \ref{fig:Spotify-ERD}.
+Therefore, my preliminary Pandas analysis of the data types and missing values will only be performed on this CSV, seen in Figures \ref{fig:Spotify-DTypes}
+and \ref{fig:Spotify-NA}.
 
 \begin{figure}[H]
     \centering
@@ -426,9 +504,23 @@ produced as a result of merging the two JSON files into one CSV and removing unn
     \label{fig:Spotify-ERD}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.4\linewidth]{pandas/Spotify-DTypes.png}
+    \caption{The data types of the Spotify Likes Dataset.}
+    \label{fig:Spotify-DTypes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.4\linewidth]{pandas/Spotify-NA.png}
+    \caption{No missing values in the dataset.}
+    \label{fig:Spotify-NA}
+\end{figure}
+
 While a machine learning classification problem can definitely be performed on this dataset to identify if the author would like a song, 
 it has significantly less of a positive impact than Candidates 1 and 2, as this dataset is the author's subjective belief rather than objective
-fact that can be applied to other people. Nevertheless, the data types and descriptions of each column can be found in Table \ref{tab:Spotify-Types}.
+fact that can be applied to other people. Nevertheless, the descriptions of each column can be found in Table \ref{tab:Spotify-Types}.
 
 \begin{table}[H]
     \centering
@@ -483,8 +575,11 @@ and are automatically calculated when songs are uploaded to the service. The gro
 column, and a train/test split can be implemented for predictions, which is aided by the fact that this dataset is well balanced (100 liked to 95 disliked).
 
 \section{Chosen dataset}
-AAAAA
-
+Of the three candidates presented, the most suitable for a machine learning operations pipeline would be Candidate 2, the loan approval dataset. As mentioned 
+in Section \ref{sec:Dataset}, this dataset possesses many predictor variables and an adequate amount of data to train a supervised learning classification model 
+to classify whether an individual should be allowed a loan or not. While the data in this dataset is synthetic due to its real equivalent being highly protected 
+under data protection legislation, the model trained from said synthetic data could be applied to real data using what it has learned, and could greatly expedite 
+the process of loan approvals.
 
 
 \chapter{Planning the MLOps Pipeline}
@@ -551,10 +646,10 @@ The first step of any machine learning pipeline is data ingestion. This refers t
 and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. 
 It is of vital importance that data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
 here will directly impact all future stages, as previously discussed. Though, when ingesting data, it is important to understand what type of system this data 
-will be used in, of which there are two options: Online Analytics Processing Systems (OLAP), and Online Transactional Processing Systems (OLTP).
+will be used in, of which there are two options: Online Analytics Processing Systems (OLAP), and Online Transactional Processing Systems (OLTP), as well 
+as how it will be loaded into this system, either using an ELT (Extract, Load, Transform) or ETL (Extract, Transform, Load) methodology.
 
 \subsection{OLAP and OLTP}
-
 
 \begin{table}[H]
     \centering
@@ -565,12 +660,29 @@ will be used in, of which there are two options: Online Analytics Processing Sys
             Designed for complex queries and data analysis.
             & Designed for lots of short, fast queries ("transactions").\\
             \hline
-            Typically store massive amounts of data, sometimes petabytes \autocite{aws_oltp_nodate},
+            Typically store massive amounts of data, sometimes petabytes.
             for extremely detailed analysis. 
-            & Usually store less data, 
+            & Usually store less data for speed purposes.\\
+            \hline
+            Usually historical data, infrequently updated. 
+            & Typically real-time data.\\
+            \hline 
+            Uses database schemas such as star or snowflake schema to allow for queries using many joins. 
+            & Uses normalised or denormalised models, such as One Big Table, minimising joins and maximising speed.\\
+            \hline
+            Slow response times, measured in minutes. 
+            & Fast response times, measured in milliseconds.\\
+            \hline
     \end{tabular}
-    \caption{A comparison of OLAP and OLTP systems.}\label{tab:OLAP-OLTP}
+    \caption{A comparison of OLAP and OLTP systems \autocite{aws_oltp_nodate}.}\label{tab:OLAP-OLTP}
 \end{table}
+
+As mentioned in Table \ref{tab:OLAP-OLTP}, OLAP systems are designed for complex and deep data analytics, which helps 
+companies perform tasks such as analysing customer trends, while OLTP systems aim for maximum speed to complete quick transactions, 
+which is necessary in situations like processing payments and orders.
+
+\subsection{ELT and ETL}
+
 
 \section{Data Preparation / Preprocessing}
 In this stage...
@@ -586,7 +698,7 @@ In this stage...
 
 \section{Software used in an MLOps pipeline}\label{sec:Software}
 The software used for this pipeline will be... 
-Conda, airflow, MariaDB, etc.
+Conda, airflow, Docker, MariaDB, etc.
 
 \printbibliography
 
