@@ -642,14 +642,16 @@ Overall, MLOps pipelines standardise the development and deployment process of m
 \end{figure}
 
 \section{Data Ingestion}
+\subsection{Description}
 The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data from its original source
-and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. 
+and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. This stage 
+is undertaken by data scientists.
 It is of vital importance that data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
 here will directly impact all future stages, as previously discussed. Though, when ingesting data, it is important to understand what type of system this data 
 will be used in, of which there are two options: Online Analytics Processing Systems (OLAP), and Online Transactional Processing Systems (OLTP), as well 
 as how it will be loaded into this system, either using an ELT (Extract, Load, Transform) or ETL (Extract, Transform, Load) methodology.
 
-\subsection{OLAP and OLTP}
+\subsubsection{OLAP and OLTP}
 
 \begin{table}[H]
     \centering
@@ -681,24 +683,162 @@ As mentioned in Table \ref{tab:OLAP-OLTP}, OLAP systems are designed for complex
 companies perform tasks such as analysing customer trends, while OLTP systems aim for maximum speed to complete quick transactions, 
 which is necessary in situations like processing payments and orders.
 
-\subsection{ELT and ETL}
+\subsubsection{ELT and ETL}
+ELT and ETL are both acronyms for the order of processes taken when ingesting data, with "Transform" either 
+happening before or after the data is loaded into a storage medium like a data warehouse or data lake. 
+The extract phase refers to the intiial gathering of the data from its original source, such as Kaggle for 
+the selected dataset in this report. The transform phase refers to early modifications made to the data, such 
+as formatting or cleaning, and the load phase refers to the transportation of the data from its original storage
+medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and efficient system to be used 
+in the execution of the pipeline. More details on said systems can be found in Section \ref{sec:Software}.
+
+Regardless of whether ETL or ELT is used, the data is still extracted, loaded and transformed. However,
+the decision of which order to use can be determined from the data itself, with smaller datasets that need 
+complex transformation being more suited to ETL, whereas larger datasets with less transformation needed 
+are better with ELT \autocite{smallcombe_etl_nodate}.
+
+\begin{table}[H]
+    \centering
+        \begin{tabular}{ |p{0.4\textwidth}| p{0.425\textwidth}|}
+            \hline
+            \cellcolor{blue!25}ELT & \cellcolor{blue!25}ETL\\
+            \hline
+            Data is transformed \textbf{after} being loaded into another storage medium.
+            & Data is transformed \textbf{before} being loaded into another storage medium. \\
+            \hline
+            Useful if the data warehouse is a more modern system with good processing power.
+            & Useful if the data warehouse has limited processing abilities of its own,
+            typically seen in older systems.\\
+            \hline
+            Lower latency in the ingestion phase because data is immediately loaded. 
+            & Higher latency in the ingestion phase, because the data is being processed first, 
+            adding an extra time overhead where the pipeline could be held up.\\
+            \hline 
+            Simpler to set up due to the immediate loading of the data.
+            & Can be complex to set up and maintain, as the transformation would occur outside the warehouse.\\
+            \hline
+    \end{tabular}
+    \caption{A comparison of ETL and ELT methodologies (\textcite{bartley_etl_2024}, \textcite{aws_etl_nodate}).}\label{tab:ELT-ETL}
+\end{table}
+
+It can be surmised from the analysis of each method in Table \ref{tab:ELT-ETL} that ETL is best applied 
+to older systems with limited processing power, whereas ELT is better in more modern systems. 
+It can additionally be argued that performing the ETL order of operations blurs the line between the ingestion and 
+preprocessing stages, as the data is transformed before it is actually loaded into the system and
+fully ingested, whereas ELT has a clear split between the ingestion and preprocessing of the data. 
+
+\subsection{In this project}
+The candidate dataset utilises the One Big Table schema, and it was previously established in Section \ref{sec:Dataset}
+that it contains no missing values. The size of the dataset is the largest of the three candidates but is still
+small in comparison to those used in industry. The data will be ingested using ELT into a MariaDB Columnstore 
+OLTP database for quick and efficient loading and querying. MariaDB is\dots
+
+% TALK ABOUT WHAT MARIADB IS, WHAT DOCKER IS, WHAT COLUMNSTORE IS. WITH IMAGES!
 
 
-\section{Data Preparation / Preprocessing}
-In this stage...
+
+\section{Data Preprocessing}
+\subsection{Description}
+After the data has been ingested, the preprocessing stage begins, and is often also conducted by 
+Data Scientists. This stage encompasses the 
+cleaning, integration and transformation of the data in order to optimise the dataset for model development.
+
+Cleaning refers to the identification of missing, inaccurate or malformed data within the dataset,
+as well as its removal or imputation where possible.
+
+Integration is often seen in datasets with multiple tables or that have been retrieved from multiple sources,
+and refers to the combination of the retrieved data into a single flat file. 
+
+Transformation, also known as feature engineering, is a considerable aspect of data preprocessing
+which refers to the manipulation and formatting of the data, such as changing the formats of columns 
+from numeric dates to proper date data types, as well as the handling of categorical data, such as genders, 
+which may originally be strings. Strings cannot be interpreted by machine learning models, and therefore they 
+are encoded into numbers using techniques such as label encoding, which converts the unique values in a column
+to a numerical representation, such as male being 0 and female being 1. Data is also normalised and standardised 
+in this stage, meaning that numerical data is reduced to being between 0 and 1 to adjust the overall scale of the 
+data. This is especially useful with algorithms such as K-Nearest Neighbours, where large differences in distance 
+between data can mislead the classification algorithm \autocite{ibm_what_2021}.
+
+Once these tasks have all been completed, the dataset will be ready to be used for model development.
+
+\subsection{In this project}
+The preprocessing in this project will utilise Python libraries including Pandas, NumPy, Matplotlib 
+and Seaborn. These libraries are all used in data analytics processes to store the data in a format
+readable by Python (Pandas DataFrames), perform calculations (NumPy) and produce visualisations from the 
+data (Matplotlib, Seaborn).
 
 \section{Model Development}
-In this stage...
+\subsection{Description}
+The model development stage uses the processed dataset from the preprocessing stage and leverages 
+machine learning algorithms to solve the problem in question, either a classification problem where 
+data will be identified as being of a certain category (class), or a regression problem where unknown 
+data can be predicted. Both of these problems require the model to be "fitted" and "trained".
+These refer to the utilisation of the processed dataset for the recognition of patterns, 
+associations and correlations within the data. To fit and train the data, it is split into two sets:
+a training set, consisting of a large majority of the data (\~80\%), and a testing set which uses the 
+remaining minority. The algorithm will then use what it has learned from the training set to make predictions 
+on the testing set, from which the accuracy of the model can be ascertained. These processes often yield better
+results with larger datasets, as the algorithm will have more information to learn and make predictions based on,
+which is why it is preferred to not remove data from the dataset unless strictly necessary.
+
+This stage is conducted by machine learning engineers, and its output is that of the trained machine learning 
+model, which can then be deployed.
+
+% SHOULD I DISCUSS HYPERPARAMETER TUNING? IF I DO IT CAN ALSO BE USED IN CMP6202.
+
+\subsection{In this project}
+The candidate dataset poses a classification problem, and as such, the Scikit-Learn Python library 
+will be utilised for its implementation of a Random Forest algorithm
+% DO I USE RANDOM FOREST? IT'S CONSIDERED A GOOD ONE FOR CLASSIFICATION.
 
 \section{Model Deployment}
-In this stage...
+\subsection{Description}
+The developed model from the previous stage of the pipeline can then be integrated into an actual environment,
+and can be utilised as a tool to make decisions. This stage is where software engineers will make the model 
+available for use, and will therefore begin to be provided with unseen data, which refers to data outside of
+the original training dataset. Models are typically deployed using Representational State Transfer APIs, 
+better known as REST APIs \autocite{redhat_what_nodate}. REST APIs make use of typical frontend web 
+HTTP requests (GET, POST, PUT, DELETE) from the client to give instructions to the backend machine learning
+model \autocite{restfulapi_what_2023}. A significant benefit of using REST APIs is the 
+massive portability benefits provided; using a REST API means that the model can provide results to a 
+wide variety of devices such as Windows PCs, Macs, and even phones, as anything that can make HTTP requests 
+can interface with one.
+
+
+\subsection{In this project}
+The produced model will be hosted on a webserver via Uvicorn, and the REST API will be implemented 
+via FastAPI. These two Python packages will provide an interface where the user can input the predictor 
+variables of the dataset (age, credit score, etc.) to receive the model's output result.
 
 \section{Model Monitoring}
-In this stage...
+\subsection{Description}
+After the model is deployed, its performance is continuously monitored by data scientists. The monitoring 
+process consists of the analysis of the model's results via metrics such as F1-score for classification models,
+which is calculated from the model's accuracy and precision \autocite{kundu_f1_nodate}, or Mean Absolute Error
+(MAE) for regression models, which is the average of the differences between predicted and actual values.
+By monitoring the model, any issues with it can be quickly identified and the pipeline can be restarted to 
+yield a higher accuracy model, which can be monitored again.  
+
+\subsection{In this project}
+In this project, software such as MLFlow will be utilised to store and log information for each model 
+iteration. % IDK, I'll have to look into how it works because I've yet to use MLFlow.
 
 \section{Software used in an MLOps pipeline}\label{sec:Software}
-The software used for this pipeline will be... 
-Conda, airflow, Docker, MariaDB, etc.
+For each stage of the pipeline, the implementation of them for the candidate dataset was discussed 
+with a brief overview of the software and libraries for each. This section will explore each in 
+higher detail. 
+
+% GET SOME IMAGES FOR PAGE NUMBER BLOAT!
+Conda, airflow, Docker, Uvicorn, FastAPI, MLFlow, MariaDB, etc.
+
+\chapter{Appendix}
+\section{Data schemas}
+\subsection{One Big Table (OBT)}
+
+\subsection{Star}
+Dimension tables etc
+\subsection{Snowflake}
+Idk
 
 \printbibliography
 

@@ -1,0 +1,1 @@
+Should ETL/ELT discussion be in my ingestion or processing section?

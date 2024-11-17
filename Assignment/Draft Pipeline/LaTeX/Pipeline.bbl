@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{aws_etl_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4847e034bb0a55fcbc8a3380d6a3ab80}{%
+           family={{AWS}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{bibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorbibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authornamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{What's the Difference Between {ETL} and {ELT}? How to Use {ETL} and {ELT} with {AWS}.}
+      \field{langid}{american}
+      \field{title}{{ETL} vs {ELT} - Difference Between Data-Processing Approaches - {AWS}}
+      \field{titleaddon}{Amazon Web Services, Inc.}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://aws.amazon.com/compare/the-difference-between-etl-and-elt/
+      \endverb
+      \verb{url}
+      \verb https://aws.amazon.com/compare/the-difference-between-etl-and-elt/
+      \endverb
+    \endentry
     \entry{aws_oltp_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=4847e034bb0a55fcbc8a3380d6a3ab80}{%
@@ -33,8 +70,10 @@
       \strng{authornamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
       \strng{authorfullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
       \strng{authorfullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \field{extraname}{2}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
@@ -55,6 +94,52 @@
       \endverb
       \verb{url}
       \verb https://aws.amazon.com/compare/the-difference-between-olap-and-oltp/
+      \endverb
+    \endentry
+    \entry{bartley_etl_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9ce583e8a103e2f0a3bb9e1b41107bc1}{%
+           family={Bartley},
+           familyi={B\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{fullhash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{fullhashraw}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{bibnamehash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{authorbibnamehash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{authornamehash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{authorfullhash}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \strng{authorfullhashraw}{9ce583e8a103e2f0a3bb9e1b41107bc1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{{ETL} vs {ELT}: {ETL} (Extract, Transform, Load) and {ELT} differ in two ways: Where the data is transformed and how data warehouses retain the data.}
+      \field{day}{30}
+      \field{langid}{american}
+      \field{month}{10}
+      \field{shorttitle}{{ETL} vs {ELT}}
+      \field{title}{{ETL} vs {ELT}: Key Differences, Comparisons, \& Use Cases}
+      \field{titleaddon}{Rivery}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\JRDM3GTQ\\etl-vs-elt.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://rivery.io/blog/etl-vs-elt/
+      \endverb
+      \verb{url}
+      \verb https://rivery.io/blog/etl-vs-elt/
       \endverb
     \endentry
     \entry{bendi_ramana_ilpd_2022}{misc}{}{}
@@ -220,6 +305,45 @@
       \verb https://my.clevelandclinic.org/health/diagnostics/22029-alkaline-phosphatase-alp
       \endverb
     \endentry
+    \entry{ibm_what_2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cbf44511d041dc6d1dd73cc0c033122c}{%
+           family={{IBM}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{bibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Learn more about one of the most popular and simplest classification and regression classifiers used in machine learning, the k-nearest neighbors algorithm.}
+      \field{day}{4}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{shorttitle}{What is the k-nearest neighbors algorithm?}
+      \field{title}{What is the k-nearest neighbors algorithm? {|} {IBM}}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ibm.com/topics/knn
+      \endverb
+      \verb{url}
+      \verb https://www.ibm.com/topics/knn
+      \endverb
+    \endentry
     \entry{incycle_software_mlops_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=fa72046c8b51fe678ff3c2bc85964b93}{%
@@ -257,6 +381,47 @@
       \verb https://www.incyclesoftware.com/azure-machine-learning-enterprise-accelerator
       \endverb
     \endentry
+    \entry{kundu_f1_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fe2fac09a8de12f794133699cfed010f}{%
+           family={Kundu},
+           familyi={K\bibinitperiod},
+           given={Rohit},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{fullhash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{fullhashraw}{fe2fac09a8de12f794133699cfed010f}
+      \strng{bibnamehash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{authorbibnamehash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{authornamehash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{authorfullhash}{fe2fac09a8de12f794133699cfed010f}
+      \strng{authorfullhashraw}{fe2fac09a8de12f794133699cfed010f}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{F1 score is a machine learning evaluation metric that combines precision and recall scores. Learn how and when to use it to measure model accuracy effectively.}
+      \field{langid}{english}
+      \field{shorttitle}{F1 Score in Machine Learning}
+      \field{title}{F1 Score in Machine Learning: Intro \& Calculation}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\GBDA3VUH\\f1-score-guide.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.v7labs.com/blog/f1-score-guide
+      \endverb
+      \verb{url}
+      \verb https://www.v7labs.com/blog/f1-score-guide
+      \endverb
+    \endentry
     \entry{mayo_clinic_bilirubin_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9ab1990f375ca3c464c8bda5fb2a417e}{%
@@ -290,6 +455,127 @@
       \endverb
       \verb{url}
       \verb https://www.mayoclinic.org/tests-procedures/bilirubin/about/pac-20393041
+      \endverb
+    \endentry
+    \entry{redhat_what_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a82007c47b25723539a00ff94e8b3d27}{%
+           family={{RedHat}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{fullhash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{fullhashraw}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{bibnamehash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{authorbibnamehash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{authornamehash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{authorfullhash}{a82007c47b25723539a00ff94e8b3d27}
+      \strng{authorfullhashraw}{a82007c47b25723539a00ff94e8b3d27}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A {REST} {API} (also known as {RESTful} {API}) is an application programming interface that conforms to the constraints of {REST} architecture. {REST} stands for representational state transfer.}
+      \field{langid}{english}
+      \field{title}{What is a {REST} {API}?}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\854TRGEM\\what-is-a-rest-api.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.redhat.com/en/topics/api/what-is-a-rest-api
+      \endverb
+      \verb{url}
+      \verb https://www.redhat.com/en/topics/api/what-is-a-rest-api
+      \endverb
+    \endentry
+    \entry{restfulapi_what_2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=deaf6208448626a9788f0e408fc177d9}{%
+           family={{RestfulAPI}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{fullhash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{fullhashraw}{deaf6208448626a9788f0e408fc177d9}
+      \strng{bibnamehash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{authorbibnamehash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{authornamehash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{authorfullhash}{deaf6208448626a9788f0e408fc177d9}
+      \strng{authorfullhashraw}{deaf6208448626a9788f0e408fc177d9}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{REST} is an acronym for {REpresentational} State Transfer. It is an architectural style for hypermedia systems and was first presented by Roy Fielding.}
+      \field{day}{12}
+      \field{langid}{american}
+      \field{month}{12}
+      \field{title}{What is {REST}?}
+      \field{titleaddon}{{REST} {API} Tutorial}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\EMXV6DHC\\restfulapi.net.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://restfulapi.net/
+      \endverb
+      \verb{url}
+      \verb https://restfulapi.net/
+      \endverb
+    \endentry
+    \entry{smallcombe_etl_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f501bbf252a3a76247223ab51a330ed}{%
+           family={Smallcombe},
+           familyi={S\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{fullhash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{fullhashraw}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{bibnamehash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{authorbibnamehash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{authornamehash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{authorfullhash}{5f501bbf252a3a76247223ab51a330ed}
+      \strng{authorfullhashraw}{5f501bbf252a3a76247223ab51a330ed}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{{ETL} vs. {ELT}: Which is best? Integrate.io explores cost, data type and volume, and other factors that impact data integration method choice.}
+      \field{langid}{english}
+      \field{shorttitle}{{ETL} vs {ELT}}
+      \field{title}{{ETL} vs {ELT}: 5 Critical Differences}
+      \field{titleaddon}{Integrate.io}
+      \field{urlday}{17}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\6XXYSCXL\\etl-vs-elt.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.integrate.io/blog/etl-vs-elt/
+      \endverb
+      \verb{url}
+      \verb https://www.integrate.io/blog/etl-vs-elt/
       \endverb
     \endentry
     \entry{spotify_web_nodate}{online}{}{}
