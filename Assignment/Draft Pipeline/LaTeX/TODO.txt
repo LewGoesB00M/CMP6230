@@ -22,3 +22,7 @@ Arrow/PyArrow
 
 Give more metrics in monitoring, EX4 gives 
 a table.
+
+Will it be ingested ELT? It might be better 
+to use ETL given that it's a CSV. Idk
+The examples use ETL.

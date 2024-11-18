@@ -153,7 +153,10 @@ as well as the "Selector" classification column, where those wihout liver diseas
 are classed as 2. For the purposes of the ML model, these can be changed to 0 and 1 respectively. 
 The dataset is a single flat-file Comma-Seperated Values (CSV) file, which stores data by seperating each column with commas
 and each row with line breaks. This CSV file uses a One Big Table (OBT) schema, as seen in the entity relationship diagram 
-in Figure \ref{fig:ILPD-ERD}, wherein all of the data within this dataset is stored in a single table. % Do the ERD at some point.
+in Figure \ref{fig:ILPD-ERD}, wherein all of the data within this dataset is stored in a single table. 
+The OBT schema is a denormalised schema that is useful for simple querying due to there being no need for table joins. 
+However, it is prone to data duplication and redundancy, which can increase necessary storage requirements.
+
 Descriptions of the columns in the dataset, as well as the associated data types, can be found in Table \ref{tab:ILPD-Types}.
 
 \begin{figure}[H]
@@ -216,32 +219,42 @@ Data Preprocessing stage of a pipeline.
 
 \begin{table}[H]
     \centering
-        \begin{tabular}{ |p{0.2\textwidth}| p{0.45\textwidth}|}
+        \begin{tabular}{ |p{0.2\textwidth}| p{0.4\textwidth}| p{0.2\textwidth}|}
             \hline
-            \cellcolor{blue!25}Column & \cellcolor{blue!25}Description\\
+            \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
             \hline
-            Age & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published.} \\
+            Age & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published.} 
+            & Ratio\\
             \hline
-            Gender & The patient's gender, either "Male" or "Female".\\
+            Gender & The patient's gender, either "Male" or "Female". & Nominal\\
             \hline
             TB & Total bilirubin. Bilirubin is a substance produced by the liver, and a high presence of it may be indicative of
-            liver problems \autocite{mayo_clinic_bilirubin_nodate}.\\
+            liver problems \autocite{mayo_clinic_bilirubin_nodate}. & Ratio\\
             \hline
-            DB & Direct bilirubin. This is a slightly different form of bilirubin that is formed after the liver has processed it.\\
+            DB & Direct bilirubin. This is a slightly different form of bilirubin that is formed after the liver has processed it.
+            & Ratio\\
             \hline
-            Alkphos & Levels of alkaline phosphate - an enzyme in the body produced by the liver. Too much may indicate liver disease. \autocite{clevelandclinic_alkaline_nodate}\\
+            Alkphos & Levels of alkaline phosphate - an enzyme in the body produced by the liver. Too much may indicate liver disease. \autocite{clevelandclinic_alkaline_nodate}
+            & Ratio\\
             \hline
-            Sgpt & Another enzyme found in the liver, where too much can indicate liver problems.\\
+            Sgpt & Another enzyme found in the liver, where too much can indicate liver problems.
+            & Ratio\\
             \hline
-            Sgot & Levels of AST in the blood, where too much indicates liver problems.\\
+            Sgot & Levels of AST in the blood, where too much indicates liver problems.
+            & Ratio\\
             \hline
-            TP & Total proteins.\\
+            TP & Total proteins.
+            & Ratio\\
             \hline
-            ALB & Albumin - a protein in blood plasma. Too little of this may indicate liver problems.\\
+            ALB & Albumin - a protein in blood plasma. Too little of this may indicate liver problems.
+            & Ratio\\
             \hline
-            A/G Ratio & The ratio of albumin to globulin, which is another blood protein.\\
+            A/G Ratio & The ratio of albumin to globulin, which is another blood protein.
+            & Ratio % IS THIS RATIO?
+            \\
             \hline
-            Selector & The classifier, indicating if the person has liver disease. The target column for the ML model.\\
+            Selector & The classifier, indicating if the person has liver disease. The target column for the ML model.
+            & Nominal\\
             \hline
     \end{tabular}
     \caption{The descriptions of each column in the Indian Liver Patient Dataset.}\label{tab:ILPD-Types}
@@ -295,7 +308,7 @@ diagnosis that could leverage the power of machine learning can greatly enhance 
 %     \end{tabular}
 %     \caption{The data types of each column in the Cardiovascular Disease Dataset.}\label{tab:Heart-Types}
 % \end{table}
-
+\pagebreak
 \section{Candidate 2 - Loan Approval Classification Dataset}\label{sec:Dataset}
 \href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} \autocite{lo_loan_nodate} was sourced from Kaggle's cloud servers under 
 an Apache 2.0 license, which states that the dataset can be used as long as credit is given to the original author,
@@ -341,35 +354,39 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{table}[H]
     \centering
-        \begin{tabular}{ |p{0.4\textwidth}| p{0.425\textwidth}|}
+    \begin{tabular}{|p{0.4\textwidth}| p{0.4\textwidth}| p{0.15\textwidth} |}
+        \hline
+        \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
             \hline
-            \cellcolor{blue!25}Column & \cellcolor{blue!25}Description\\
+            person\_age & The age of the person. & Ratio\\
             \hline
-            person\_age & The age of the person.\\
+            person\_gender & The person's gender. & Nominal\\
             \hline
-            person\_gender & The person's gender.\\
+            person\_education & The person's highest level of education. & Ordinal\\
             \hline
-            person\_education & The person's highest level of education.\\
+            person\_emp\_exp & The person's years of employment experience. & Ratio\\
             \hline
-            person\_emp\_exp & The person's years of employment experience.\\
+            person\_home\_ownership & Home ownership status (for example rent, own, mortgage)
+            & Nominal\\
             \hline
-            person\_home\_ownership & Home ownership status (for example rent, own, mortgage)\\
+            loan\_amnt & The amount of money requested. & Ratio\\
             \hline
-            loan\_amnt & The amount of money requested.\\
+            loan\_intent & The purpose of the loan. & Nominal\\
             \hline
-            loan\_intent & The purpose of the loan.\\
+            loan\_int\_rate & The interest rate of the loan. & Ratio\\
             \hline
-            loan\_int\_rate & The interest rate of the loan.\\
+            loan\_percent\_income & Loan amount as a percentage of the person's yearly income.
+            & Ratio\\
             \hline
-            loan\_percent\_income & Loan amount as a percentage of the person's yearly income.\\
+            cb\_person\_cred\_hist\_length & Length of credit history in years. & Ratio\\
             \hline
-            cb\_person\_cred\_hist\_length & Length of credit history in years.\\
+            credit\_score & Credit score of the person. & Ratio\\
             \hline
-            credit\_score & Credit score of the person.\\
+            previous\_loan\_defaults\_on\_file & If the person has defaulted on a loan before.
+            & Nominal \\
             \hline
-            previous\_loan\_defaults\_on\_file & If the person has defaulted on a loan before. \\
-            \hline
-            loan\_status & Whether the loan should be approved. 1 if yes, 0 if no.\\
+            loan\_status & Whether the loan should be approved. 1 if yes, 0 if no.
+            & Nominal\\
             \hline
     \end{tabular}
     \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
@@ -452,47 +469,66 @@ fact that can be applied to other people. Nevertheless, the descriptions of each
 
 \begin{table}[H]
     \centering
-        \begin{tabular}{ |p{0.2\textwidth} | p{0.5\textwidth}|}
+    \begin{tabular}{ |p{0.2\textwidth}| p{0.45\textwidth}| p{0.2\textwidth}|}
+        \hline
+        \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
             \hline
-            \cellcolor{blue!25}Column & \cellcolor{blue!25}Description\\
+            Danceability & How suitable a song is for dancing, calculated from the tempo, rhythm stability, beat strength and overall regularity. 1.0 means it is very danceable.
+            & Ratio \\
             \hline
-            Danceability & How suitable a song is for dancing, calculated from the tempo, rhythm stability, beat strength and overall regularity. 1.0 means it is very danceable. \\
+            Energy & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.
+            & Ratio\\
             \hline
-            Energy & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.\\
+            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} 
+            & Ratio\\
             \hline
-            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} \\
+            Loudness & The averaged decibel volume of a song, typically between -60 and 0 dB.
+            & Interval\\
             \hline
-            Loudness & The averaged decibel volume of a song, typically between -60 and 0 dB.\\
+            Mode & Whether a song is in major or minor scale. 1 is major and 0 is minor.
+            & Nominal\\
             \hline
-            Mode & Whether a song is in major or minor scale. 1 is major and 0 is minor.\\
+            Speechiness & The calculated presence of spoken words in a song.
+            & Ratio\\
             \hline
-            Speechiness & The calculated presence of spoken words in a song.\\
+            Acousticness & A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+            & Ratio\\
             \hline
-            Acousticness & A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.\\
+            Instrumentalness & Whether a song has no vocals.
+            & Ratio\\
             \hline
-            Instrumentalness & Whether a song has no vocals.\\
+            Liveness & Whether a live audience can be heard as part of a song.
+            & Ratio\\
             \hline
-            Liveness & Whether a live audience can be heard as part of a song.\\
+            Valence & The musical positiveness of a song.
+            & Ratio\\
             \hline
-            Valence & The musical positiveness of a song.\\
+            Tempo & The beats per minute of a song.
+            & Ratio\\
             \hline
-            Tempo & The beats per minute of a song.\\
+            Duration\_MS & The duration of a song in milliseconds.
+            & Ratio\\
             \hline
-            Duration\_MS & The duration of a song in milliseconds.\\
+            Time signature & The estimated time signature of the song.
+            & Ratio\\
             \hline
-            Time signature & The estimated time signature of the song.\\
+            \cellcolor{red!15}Liked & The target variable, indicative of whether the author liked the song or not.
+            & Ratio\\
             \hline
-            \cellcolor{red!15}Liked & The target variable, indicative of whether the author liked the song or not.\\
+            \cellcolor{green!15}Type & Always "audio\_features". Not a relevant predictor.
+            & Nominal\\
             \hline
-            \cellcolor{green!15}Type & Always "audio\_features". Not a relevant predictor.\\
+            \cellcolor{green!15}ID & Spotify's own unique ID for a song. Not a relevant predictor.
+            & Nominal\\
             \hline
-            \cellcolor{green!15}ID & Spotify's own unique ID for a song. Not a relevant predictor.\\
+            \cellcolor{green!15}URI & Spotify's URI for the song. Not a relevant predictor.
+            & Nominal\\
             \hline
-            \cellcolor{green!15}URI & Spotify's URI for the song. Not a relevant predictor.\\
+            \cellcolor{green!15}Track HREF & A link to the song on Spotify's API. Not a relevant predictor.
+            & Nominal\\  
             \hline
-            \cellcolor{green!15}Track HREF & A link to the song on Spotify's API. Not a relevant predictor.\\  
-            \hline
-            \cellcolor{green!15}Analysis URL & A link to the song's audio analysis data. Not a relevant predictor. \\
+            \cellcolor{green!15}Analysis URL & A link to the song's audio analysis data. Not a relevant predictor. 
+            & Nominal\\
             \hline
     \end{tabular}
     \caption{The descriptions of each column in the Spotify songs dataset \autocite{spotify_web_nodate}. Red columns are only present in the CSV, whereas green columns are only present in the JSONs.}\label{tab:Spotify-Types}
@@ -510,6 +546,10 @@ in Section \ref{sec:Dataset}, this dataset possesses many predictor variables an
 to classify whether an individual should be allowed a loan or not. While the data in this dataset is synthetic due to its real equivalent being highly protected 
 under data protection legislation, the model trained from said synthetic data could be applied to real data using what it has learned, and could greatly expedite 
 the process of loan approvals.
+
+As previously mentioned, the dataset is hosted on Kaggle's cloud database in a CSV file. Libraries such as Pandas
+natively work with these types of files which will allow for quick ingestion. However, when the dataset has been ingested,
+
 
 
 \chapter{Planning the MLOps Pipeline}\label{ch:MLOps}
@@ -702,7 +742,7 @@ medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and ef
 in the execution of the pipeline. More details on said systems can be found in Section \ref{sec:Software}.
 
 Regardless of whether ETL or ELT is used, the data is still extracted, loaded and transformed. However,
-the decision of which order to use can be determined from the data itself, with datasets that will need 
+the decision of which order to use can be determined from the data itself, with smaller datasets that may need 
 complex transformation from their raw form being more suited to ETL, whereas large datasets with less 
 transformation needed can be better with ELT \autocite{smallcombe_etl_nodate}.
 
