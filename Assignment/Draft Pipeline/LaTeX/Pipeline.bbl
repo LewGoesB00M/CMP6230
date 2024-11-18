@@ -19,6 +19,80 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{apache_streaming_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
+           family={{Apache}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Streaming, Serialization, and {IPC} — Apache Arrow v18.0.0}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+      \verb{url}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+    \endentry
+    \entry{apache_use_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
+           family={{Apache}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Platform created by the community to programmatically author, schedule and monitor workflows.}
+      \field{langid}{english}
+      \field{title}{Use Cases}
+      \field{titleaddon}{Apache Airflow}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\ZMFKNSMA\\use-cases.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://airflow.apache.org/use-cases/
+      \endverb
+      \verb{url}
+      \verb https://airflow.apache.org/use-cases/
+      \endverb
+    \endentry
     \entry{aws_etl_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=4847e034bb0a55fcbc8a3380d6a3ab80}{%
@@ -94,6 +168,47 @@
       \endverb
       \verb{url}
       \verb https://aws.amazon.com/compare/the-difference-between-olap-and-oltp/
+      \endverb
+    \endentry
+    \entry{aws_what_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4847e034bb0a55fcbc8a3380d6a3ab80}{%
+           family={{AWS}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{fullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{bibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorbibnamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authornamehash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhash}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \strng{authorfullhashraw}{4847e034bb0a55fcbc8a3380d6a3ab80}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Docker is a software platform that allows you to build, test, and deploy applications quickly using containers. Learn about how Docker works, why and when to use Docker, and how to run containers on {AWS}.}
+      \field{langid}{american}
+      \field{shorttitle}{What is Docker?}
+      \field{title}{What is Docker? {|} {AWS}}
+      \field{titleaddon}{Amazon Web Services, Inc.}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\SBDFDFRK\\docker.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://aws.amazon.com/docker/
+      \endverb
+      \verb{url}
+      \verb https://aws.amazon.com/docker/
       \endverb
     \endentry
     \entry{bartley_etl_2024}{online}{}{}
@@ -186,7 +301,7 @@
       \endverb
       \keyw{Dataset}
     \endentry
-    \entry{brice-vergnou_brice-vergnouspotify_recommendation_2024}{software}{}{}
+    \entry{brice-vergnou_brice-vergnouspotify_recommendation_2024}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=2dd5b0e72822899a43abe319c129ed37}{%
            family={Brice-Vergnou},
@@ -207,14 +322,13 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Finding which songs I like or not based on songs statistics}
-      \field{day}{16}
-      \field{month}{10}
-      \field{note}{original-date: 2021-07-27T10:05:51Z}
+      \field{day}{27}
+      \field{month}{7}
       \field{title}{Brice-Vergnou/spotify\_recommendation}
       \field{urlday}{16}
       \field{urlmonth}{11}
       \field{urlyear}{2024}
-      \field{year}{2024}
+      \field{year}{2021}
       \field{dateera}{ce}
       \field{urldateera}{ce}
       \verb{urlraw}
@@ -266,6 +380,41 @@
       \verb https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html
       \endverb
     \endentry
+    \entry{cfi_r-squared_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=097f4a8a6ec1740c8b50fd57ec992468}{%
+           family={{CFI}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{fullhash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{fullhashraw}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{bibnamehash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{authorbibnamehash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{authornamehash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{authorfullhash}{097f4a8a6ec1740c8b50fd57ec992468}
+      \strng{authorfullhashraw}{097f4a8a6ec1740c8b50fd57ec992468}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{R-Squared - Definition, Interpretation, Formula, How to Calculate}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb R-Squared - Definition, Interpretation, Formula, How to Calculate:C\:\\Users\\Lewis\\Zotero\\storage\\7Q3B596E\\r-squared.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://corporatefinanceinstitute.com/resources/data-science/r-squared/
+      \endverb
+      \verb{url}
+      \verb https://corporatefinanceinstitute.com/resources/data-science/r-squared/
+      \endverb
+    \endentry
     \entry{clevelandclinic_alkaline_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=18a3b2aa5b80cdc35c37255cff78fbaa}{%
@@ -303,6 +452,160 @@
       \endverb
       \verb{url}
       \verb https://my.clevelandclinic.org/health/diagnostics/22029-alkaline-phosphatase-alp
+      \endverb
+    \endentry
+    \entry{docker_docker_2022}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c5fd214cdd0d2b3b4272e73b022ba5c2}{%
+           family={{Docker}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{fullhash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{fullhashraw}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{bibnamehash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{authorbibnamehash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{authornamehash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{authorfullhash}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \strng{authorfullhashraw}{c5fd214cdd0d2b3b4272e73b022ba5c2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Docker is a platform designed to help developers build, share, and run container applications. We handle the tedious setup, so you can focus on the code.}
+      \field{day}{10}
+      \field{langid}{american}
+      \field{month}{5}
+      \field{shorttitle}{Docker}
+      \field{title}{Docker: Accelerated Container Application Development}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\KCFLARRJ\\www.docker.com.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.docker.com/
+      \endverb
+      \verb{url}
+      \verb https://www.docker.com/
+      \endverb
+    \endentry
+    \entry{docker_hub_mariadbcolumnstore_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4b4141875f954447d204e6f73d93e2a0}{%
+           family={{Docker Hub}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{fullhash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{fullhashraw}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{bibnamehash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{authorbibnamehash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{authornamehash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{authorfullhash}{4b4141875f954447d204e6f73d93e2a0}
+      \strng{authorfullhashraw}{4b4141875f954447d204e6f73d93e2a0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{MariaDB} {ColumnStore} Engine for Analytics}
+      \field{langid}{english}
+      \field{title}{mariadb/columnstore - Docker Image {|} Docker Hub}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NJ955U8W\\columnstore.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://hub.docker.com/r/mariadb/columnstore
+      \endverb
+      \verb{url}
+      \verb https://hub.docker.com/r/mariadb/columnstore
+      \endverb
+    \endentry
+    \entry{fastapi_fastapi_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f275f2a55ee4abdf8875dce6987e2f5f}{%
+           family={{FastAPI}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{fullhash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{fullhashraw}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{bibnamehash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{authorbibnamehash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{authornamehash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{authorfullhash}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \strng{authorfullhashraw}{f275f2a55ee4abdf8875dce6987e2f5f}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{FastAPI} framework, high performance, easy to learn, fast to code, ready for production}
+      \field{langid}{english}
+      \field{title}{{FastAPI}}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NI7GL2AX\\fastapi.tiangolo.com.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://fastapi.tiangolo.com/
+      \endverb
+      \verb{url}
+      \verb https://fastapi.tiangolo.com/
+      \endverb
+    \endentry
+    \entry{gx_gx_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0a5b65725f6a3ba95821cec61dbb46d3}{%
+           family={{GX}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{fullhash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{fullhashraw}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{bibnamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorbibnamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authornamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorfullhash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorfullhashraw}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Understand what to expect from your data with the most popular data quality framework in the world. {GX} Core is an open source Python framework and the engine of {GX}'s data quality platform.}
+      \field{langid}{english}
+      \field{shorttitle}{{GX} Core}
+      \field{title}{{GX} Core: a powerful, flexible data quality solution}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\GNMFAIQF\\gx-core.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.greatexpectations.io/gx-core
+      \endverb
+      \verb{url}
+      \verb https://www.greatexpectations.io/gx-core
       \endverb
     \endentry
     \entry{ibm_what_2021}{online}{}{}
@@ -422,6 +725,79 @@
       \verb https://www.v7labs.com/blog/f1-score-guide
       \endverb
     \endentry
+    \entry{lo_loan_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=189dce24b7faaf5c6be50dae93b81459}{%
+           family={Lo},
+           familyi={L\bibinitperiod},
+           given={Ta-Wei},
+           giveni={T\bibinithyphendelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{fullhash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{fullhashraw}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{bibnamehash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{authorbibnamehash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{authornamehash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{authorfullhash}{189dce24b7faaf5c6be50dae93b81459}
+      \strng{authorfullhashraw}{189dce24b7faaf5c6be50dae93b81459}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Synthetic Data for binary classification on Loan Approval}
+      \field{langid}{english}
+      \field{title}{Loan Approval Classification Dataset}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data
+      \endverb
+    \endentry
+    \entry{mariadb_mariadb_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7f9733e208088b1ce6df3d4be1765396}{%
+           family={{MariaDB}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{fullhash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{fullhashraw}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{bibnamehash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{authorbibnamehash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{authornamehash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{authorfullhash}{7f9733e208088b1ce6df3d4be1765396}
+      \strng{authorfullhashraw}{7f9733e208088b1ce6df3d4be1765396}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{MariaDB} {ColumnStore}}
+      \field{titleaddon}{{MariaDB} {KnowledgeBase}}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\33FH26QZ\\mariadb-columnstore.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://mariadb.com/kb/en/mariadb-columnstore/
+      \endverb
+      \verb{url}
+      \verb https://mariadb.com/kb/en/mariadb-columnstore/
+      \endverb
+    \endentry
     \entry{mayo_clinic_bilirubin_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9ab1990f375ca3c464c8bda5fb2a417e}{%
@@ -455,6 +831,78 @@
       \endverb
       \verb{url}
       \verb https://www.mayoclinic.org/tests-procedures/bilirubin/about/pac-20393041
+      \endverb
+    \endentry
+    \entry{mlflow_mlflow_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=85f436684e60fe13d1c06f055604e0c8}{%
+           family={{MLFlow}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{fullhash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{fullhashraw}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{bibnamehash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{authorbibnamehash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{authornamehash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{authorfullhash}{85f436684e60fe13d1c06f055604e0c8}
+      \strng{authorfullhashraw}{85f436684e60fe13d1c06f055604e0c8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Description will go into a meta tag in {<}head /{>}}
+      \field{langid}{english}
+      \field{title}{{MLflow} {|} {MLflow}}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NK3X5DTU\\mlflow.org.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://your-docusaurus-site.example.com/
+      \endverb
+      \verb{url}
+      \verb https://your-docusaurus-site.example.com/
+      \endverb
+    \endentry
+    \entry{pandas_pandas_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3a43b4f88325d94022c0efa9c2fa2f5a}{%
+           family={{pandas}},
+           familyi={p\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{fullhash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{fullhashraw}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{bibnamehash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{authorbibnamehash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{authornamehash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{authorfullhash}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \strng{authorfullhashraw}{3a43b4f88325d94022c0efa9c2fa2f5a}
+      \field{sortinit}{p}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{pandas - Python Data Analysis Library}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb pandas - Python Data Analysis Library:C\:\\Users\\Lewis\\Zotero\\storage\\FYLBG7SM\\about.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://pandas.pydata.org/about/
+      \endverb
+      \verb{url}
+      \verb https://pandas.pydata.org/about/
       \endverb
     \endentry
     \entry{redhat_what_nodate}{online}{}{}
@@ -536,6 +984,41 @@
       \verb https://restfulapi.net/
       \endverb
     \endentry
+    \entry{scikit-learn_scikit-learn_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3483ff058deda3dad41fa7925fab2dac}{%
+           family={{scikit-learn}},
+           familyi={s\bibinitperiod}}}%
+      }
+      \strng{namehash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{fullhash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{fullhashraw}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{bibnamehash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{authorbibnamehash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{authornamehash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{authorfullhash}{3483ff058deda3dad41fa7925fab2dac}
+      \strng{authorfullhashraw}{3483ff058deda3dad41fa7925fab2dac}
+      \field{sortinit}{s}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{scikit-learn: machine learning in Python — scikit-learn 1.5.2 documentation}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb scikit-learn\: machine learning in Python — scikit-learn 1.5.2 documentation:C\:\\Users\\Lewis\\Zotero\\storage\\NV75N6EW\\stable.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://scikit-learn.org/stable/
+      \endverb
+      \verb{url}
+      \verb https://scikit-learn.org/stable/
+      \endverb
+    \endentry
     \entry{smallcombe_etl_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=5f501bbf252a3a76247223ab51a330ed}{%
@@ -613,6 +1096,40 @@
       \verb https://developer.spotify.com/documentation/web-api/reference/get-audio-features
       \endverb
     \endentry
+    \entry{sqlalchemy_sqlalchemy_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d233b99a3ccb7f38a032466289b6d227}{%
+           family={{SQLAlchemy}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{fullhash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{fullhashraw}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{bibnamehash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{authorbibnamehash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{authornamehash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{authorfullhash}{d233b99a3ccb7f38a032466289b6d227}
+      \strng{authorfullhashraw}{d233b99a3ccb7f38a032466289b6d227}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Database Toolkit for Python}
+      \field{langid}{english}
+      \field{title}{{SQLAlchemy}}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.sqlalchemy.org
+      \endverb
+      \verb{url}
+      \verb https://www.sqlalchemy.org
+      \endverb
+    \endentry
     \entry{straw_investigating_2022}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=7e9d0be17a22feae653f3ba33103085d}{%
@@ -673,6 +1190,47 @@
       \verb https://informatics.bmj.com/content/29/1/e100457
       \endverb
     \endentry
+    \entry{towardsdatascience_getting_2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bbe66c5bb8208c7e4c238b9f42109862}{%
+           family={{TowardsDataScience}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{fullhash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{fullhashraw}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{bibnamehash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{authorbibnamehash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{authornamehash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{authorfullhash}{bbe66c5bb8208c7e4c238b9f42109862}
+      \strng{authorfullhashraw}{bbe66c5bb8208c7e4c238b9f42109862}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{13}
+      \field{month}{5}
+      \field{shorttitle}{Getting Started with Conda. Just the basics. What is Conda?}
+      \field{title}{Getting Started with Conda. Just the basics. What is Conda? Why… {|} by…}
+      \field{titleaddon}{archive.ph}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\S82Z2H3X\\managing-project-specific-environments-with-conda-b8b50aa8be0e.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://archive.ph/OTuGh
+      \endverb
+      \verb{url}
+      \verb https://archive.ph/OTuGh
+      \endverb
+    \endentry
     \entry{uci_machine_learning_repository_about_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0c8d220c5aed7c0585e2bab2b559521b}{%
@@ -706,6 +1264,41 @@
       \endverb
       \verb{url}
       \verb https://archive.ics.uci.edu/about
+      \endverb
+    \endentry
+    \entry{uvicorn_uvicorn_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=60ff609b792add0d8d2f82f86882a129}{%
+           family={{Uvicorn}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{fullhash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{fullhashraw}{60ff609b792add0d8d2f82f86882a129}
+      \strng{bibnamehash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{authorbibnamehash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{authornamehash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{authorfullhash}{60ff609b792add0d8d2f82f86882a129}
+      \strng{authorfullhashraw}{60ff609b792add0d8d2f82f86882a129}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Uvicorn}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Uvicorn:C\:\\Users\\Lewis\\Zotero\\storage\\L5B47SXP\\www.uvicorn.org.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.uvicorn.org/
+      \endverb
+      \verb{url}
+      \verb https://www.uvicorn.org/
       \endverb
     \endentry
   \enddatalist

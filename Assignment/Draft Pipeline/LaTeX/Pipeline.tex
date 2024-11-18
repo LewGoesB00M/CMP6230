@@ -97,8 +97,7 @@
 \usepackage{longtable}
 \usepackage{amssymb}
 % ------------------------------------------------------------------------------
-
-
+\usepackage{tcolorbox}
 % -------------------------------------------------------------------------------
 
 \title{CMP6230 Draft Pipeline}
@@ -134,77 +133,6 @@
 For the first stage of the pipeline, data ingestion, three data sources will be identified in order to find 
 the one that would be most optimal for the production and deployment of a machine learning model to complete 
 a supervised learning task.
-
-% \section{Notes - DELETE BEFORE SUBMISSION}
-% Lucidchart can generate ERDs from CSVs.
-% For each, show the pandas head, column data types and ERD.
-% Finding one with multiple CSVs can be good to make the ERD look more complex. 
-% \textbf{So far, all of your data is from Kaggle. Consider another source like data.gov.uk, especially
-% considering that it can give you raw data for preprocessing.} On Kaggle, the "Provenance" section will 
-% have the source if the description doesn't. If neither have a source, it's probably fake data.
-
-% \begin{itemize}
-%     \item Smoke detection \begin{itemize}
-%         \item Real data
-%         \item Lots to explain (how the alarms work etc)
-%         \item Preprocessed, but you could still do more (remove timestamp etc)
-%         \item Classification - Should the smoke/fire alarm sound?
-%     \end{itemize}
-%     \item Employee data \begin{itemize}
-%         \item Allegedly real data though it seems hard to believe.
-%         \item Classification - Is the employee likely to find another job instead?
-%     \end{itemize}
-%     \item Australian weather \begin{itemize}
-%         \item Promising. Real data, but very large. Can do lots of preprocessing.
-%         \item Classification - Will it rain tomorrow?
-%     \end{itemize}
-%     \item Cardiovascular disease \begin{itemize}
-%         \item Good data, enormous amount of it (laptop might not handle it), good source. 
-%         \item However, it's already been processed. Check if that's fine or not.
-%         \item Classification - Do they have heart disease?
-%     \end{itemize}
-%     \item Diabetes \begin{itemize}
-%         \item In consideration for CMP6200, cannot use a dataset in both.
-%         \item It's actually real data according to the Kaggle page, from "multiple healthcare providers" and the 
-%         electronic health records (EHRs) they keep.
-%         \item Preprocessed already, but duplicates exist in it.
-%         \item Only 9 features, is that a bad thing?
-%         \item Classification - Do they have diabetes?
-%     \end{itemize}
-%     \item Indian Liver Patients \begin{itemize}
-%         \item Alternative source [OpenML]
-%         \item Alternative file format [ARFF]
-%         \item 900 rows
-%         \item Classification - Are they a liver patient?
-%         \item Good option mostly due to alt file format. Unfortunately still OBT though.
-%     \end{itemize}
-%     \item Student performance \begin{itemize}
-%         \item Data from two unnamed Portugeuse schools
-%         \item Lots of columns, perhaps too many.
-%     \end{itemize}
-% \end{itemize}
-
-% All tasks of sheet 1, sheet 2 "should be analysed and you should write the plan for it", because sheet 2
-% refers moreso to the final report itself due both Dec 13 (draft) and Jan 10 (final).
-% Because the amount of rows is not relevant in this particular module, you can use smaller ones 
-% like the 305 row Heart set.
-% Week 8's lab is likely to be of vital importance to the final assessment of this module, as it 
-% goes through the use of MLFlow. 
-
-% \textbf{It's infeasible to do this on your laptop. Tuesday and Wednesday you'll need to smash this out
-% \textit{quickly.}}
-
-% #############################################################################
-% GENERAL TODO: 
-%
-% All Entity Relationship Diagrams. 
-% General polish.
-% Use more terminology (nominal data, etc)
-% Add some more href links, especially for candidate 1.
-% Maybe don't have datasets as citations but rather as links.
-% Attempt to find a dataset that's not a flat-file CSV.
-% If you do the ERDs, the tables probably don't need the data types.
-% #############################################################################
 
 \section{Candidate 1 - Indian Liver Patient Dataset}
 \href{https://archive.ics.uci.edu/dataset/225}{This dataset} \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
@@ -319,7 +247,7 @@ Data Preprocessing stage of a pipeline.
     \caption{The descriptions of each column in the Indian Liver Patient Dataset.}\label{tab:ILPD-Types}
 \end{table}
 
-This dataset can be used to develop a supervised machine learning model for binary classification using the ten predictor 
+This dataset could be used to solve a binary classification problem using the ten predictor 
 variables and the ground truth Selector column, which will be used in measuring the accuracy of the model. There is a clear 
 positive purpose for developing such a model; as previously mentioned, mortality rates from liver disease are high, and an early
 diagnosis that could leverage the power of machine learning can greatly enhance the odds of successful treatment.
@@ -369,7 +297,7 @@ diagnosis that could leverage the power of machine learning can greatly enhance 
 % \end{table}
 
 \section{Candidate 2 - Loan Approval Classification Dataset}\label{sec:Dataset}
-\href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} was sourced from Kaggle's cloud servers under 
+\href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} \autocite{lo_loan_nodate} was sourced from Kaggle's cloud servers under 
 an Apache 2.0 license, which states that the dataset can be used as long as credit is given to the original author,
 and takes the form of a flat-file CSV using a One Big Table schema. 
 
@@ -383,10 +311,10 @@ and takes the form of a flat-file CSV using a One Big Table schema.
 Unlike Candidate 1, this dataset does not consist of real data, and 
 instead consists of synthetic data. This is likely due to the fact that this dataset, if it used real data, would contain extremely personal 
 information that could not be shared online due to legislation such as GDPR. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
-which also did not provide an original source and is presumably synthetic data. The dataset consists of 45,000 records and 14 features, with 
-one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. As such, it is well suited 
-for a binary classification model, using the first 13 features as predictor variables. This can also be observed from the 28 notebooks on Kaggle that 
-utilise this dataset. The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
+which also did not provide an original source and is also presumably synthetic data. The dataset consists of 45,000 records and 14 features, with 
+one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. 
+31 notebooks on Kaggle created by the site's users utilise this dataset, with many of these choosing to solve the binary classification 
+problem that it presents. The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
 descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{figure}[H]
@@ -447,7 +375,7 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
     \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
 \end{table}
 
-
+This dataset is also frequently updated, with its most recent update occurring on the 29th October. 
 
 \pagebreak
 
@@ -573,6 +501,8 @@ fact that can be applied to other people. Nevertheless, the descriptions of each
 These measurements and the descriptions are \href{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}{part of Spotify's API},
 and are automatically calculated when songs are uploaded to the service. The ground truth of the dataset is present in the CSV file as the "liked" classifier 
 column, and a train/test split can be implemented for predictions, which is aided by the fact that this dataset is well balanced (100 liked to 95 disliked).
+However, its small size and the fact that the model would only be able to predict one person's specific music taste make 
+it a poor candidate.
 
 \section{Chosen dataset}
 Of the three candidates presented, the most suitable for a machine learning operations pipeline would be Candidate 2, the loan approval dataset. As mentioned 
@@ -582,9 +512,16 @@ under data protection legislation, the model trained from said synthetic data co
 the process of loan approvals.
 
 
-\chapter{Planning the MLOps Pipeline}
+\chapter{Planning the MLOps Pipeline}\label{ch:MLOps}
 All machine learning operations (MLOps) follow a five-step repeatable pipeline, outlined in Figure \ref{fig:MLPipeline}, where the output of one stage
-becomes the input of the next. The pipeline begins with raw data and finishes with a trained machine learning model, and is often 
+becomes the input of the next. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{MLPipeline.png}
+    \caption{The five key steps in an MLOps pipeline \autocite{incycle_software_mlops_nodate}.}
+    \label{fig:MLPipeline}
+\end{figure}
+The pipeline begins with raw data and finishes with a trained machine learning model, and is often 
 repeated at certain intervals, which could be as simple as once a day, or it could be repeated as new data becomes available. 
 This repetition is performed automatically, so that the final model can become progressively more accurate. Because the process 
 must be repeatable and automated, it is essential that data is validated to ensure that one run of the pipeline where the data may have 
@@ -592,54 +529,126 @@ been corrupted somehow would not cause issues, which would quickly spiral out of
 These validation procedures and the software utilised for them are documented in Section \ref{sec:Software}.
 Overall, MLOps pipelines standardise the development and deployment process of machine learning models, ensuring continuous integration
 (CI) and continuous delivery (CD) and enhancing collaboration between data scientists and development teams.
+\pagebreak
 
-% --- Week 8 Thursday ---
-% "The machine learning part is not important in this module, but rather the pipeline is."
-% Don't answer the task sheet questions in a single sentence. You want to give a deep analysis of what it is,
-% which I believe I've already done. Talk about why it was collected in the first place, which you have NOT done.
+\section{Software to be used in the pipeline}
+A wide variety of software will be used across the MLOps pipeline, with an overall glossary of them documented in Table \ref{tab:softwareDescriptions}.
+Descriptions on how they will specifically be used in each stage of the pipeline can be found in each stage's respective
+section.
 
-% References are expected in this report as seen in the examples. Emphasised that it's an ACADEMIC report.
-% It's fine to use OBT datasets. Create an ERD. You could potentially create tables by splitting the OBT.
+\begin{longtable}{ |p{0.2\textwidth}| p{0.8\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Overview\\
+    \hline
+    Conda 
+    & A package and environment management system which allows 
+    for software developers and data scientists to easily control the libraries used in their code. Allows 
+    for the creation of \textbf{virtual environments}, which are contained structures where packages can be installed.
+    The use of virtual environments allows for specific versions of packages to be kept, for instance with one environment 
+    storing an older version of a library for compatibility purposes, with another storing a newer version to be used in a different project. 
+    Were it not for these virtual environments, developers would constantly have to uninstall and reinstall specific package versions, wasting 
+    considerable amounts of time. Conda also hosts its own repositories to obtain packages from, and a 
+    major benefit of Conda occurs during the package installation process, which is that it will identify 
+    dependencies and version clashes between packages and solve them automatically, once again saving 
+    considerable amounts of time.
+    
+    In this project, Conda will be used as the environment and package manager to install and contain the 
+    libraries used in the development process. To do so, the Miniconda distribution will be installed, as 
+    this is a smaller distribution to save hard disk space and download time, but still contains the key 
+    Conda backend, as seen in Figure \ref{fig:Miniconda}. \\
+    \hline
+    Apache Airflow &
+    A platform used to orchestrate workflows and pipelines entirely in Python code \autocite{apache_use_nodate}.
+    Airflow creates Directed Acyclic Graphs (DAGs), which map out the order and dependencies of each task in a 
+    pipeline, and runs tasks in the order specified within the DAG, while also accounting for dependencies.
+    Also provides many useful features such as task scheduling, which is especially useful for the automation 
+    of an MLOps pipeline, as well as automatic failure handling, where actions can automatically be performed 
+    on a task's failure, such as stopping the pipeline to prevent wasting computational resources. Airflow 
+    also provides a convenient UI, accessible by using the command "airflow webserver", which will host a 
+    web UI where tasks can be run, paused or stopped, as well as viewed in a tree view that maps the 
+    sequence and dependencies of tasks. Airflow also provides "Operators", which handle running code such 
+    as Python and Bash scripts.
 
-% Detailed discussion on the five stages. See sheet for questions you need to answer for each.
-% Tools and techniques on a per-stage basis rather than their own section? Up to you.
-% You can relate your explanations of the stages to your chosen dataset. "For example, in the selected dataset,
-% this stage would be applied by..."
-
-% An important part is WHO is involved. You've not really looked into that though it shouldn't be hard to find out.
-
-% [I didn't even realise there was a third page of the sheet. Not ideal]
-% Discussion of the selected dataset. Isn't it repeating the first section though?
-% Will you store it in MariaDB or a "graph database" (?)
-% Physical/logical structure of the data AFTER ingestion.
-% She mentioned creating a star schema of the data. Could you? IF it's one with many features, maybe.
-
-% This info is apparently all available within the first three weeks of the module.
-% Remember that you missed Week 3, so if it was there you wouldn't know.
-
-% Example shown in class is not listed on Moodle.
-% They gave references to sources about what CSVs are and ERDs.
-% You should probably do the same, and also give one for OBT as you never explained it.
-% Just saying varchar without a character amount could be fine in the ERD.
-% They made a table of comparisons between the three, with stuff like the data types.
-
-% NO DESIGNATED WORD COUNT!
-% You're writing a plan that will probably change in the next assessment?
-% You do not need to do implementation here (though you can???)
-% IF you do so, an extra ZIP is needed with the dataset and code.
-% You should do that - add a ZIP with the datasets and a Jupyter notebook with brief analysis (heads, types, etc).
-
-% Also, if Airflow stops working after installing MLFlow, FastAPI and Uvicorn, you need to uninstall and reinstall
-% FLask. pip uninstall flask, pip install flask==2.2.5
-% -------------------------
-
+    Airflow will be used within this project at all stages of the pipeline in order to manage the overall 
+    execution and structure of tasks. Operators will be used for the execution of all Python or Bash 
+    commands throughout the pipeline. By using Airflow in this way, the pipeline can become completely 
+    automated with continuous integration and continuous deployment.
+    \\
+    \hline
+    Docker &
+    An open-source containerisation system used to enhance the portability of applications by distributing 
+    them as self-contained, lightweight instances that come with everything they need to run immediately 
+    without needing to worry about system incompatibility (\textcite{aws_what_nodate}, \textcite{docker_docker_2022})
+    and minimise issues where software can run on one computer but not another. Docker could be described 
+    as working similarly to a virtual machine, though it is considerably more lightweight as it is not 
+    virtualising hardware.\\
+    \hline
+    MariaDB Columnstore &
+    A columnar storage engine designed for the processing of petabytes of data with high performance 
+    and real-time response regardless of dataset size \autocite{mariadb_mariadb_nodate}. While 
+    primarily intended for OLAP databases, it also facilitates OLTP databases. A Docker container 
+    for this software will be used in this pipeline.\\
+    \hline 
+    Redis &
+    An in-memory data store used to cache data in a machine's RAM rather than its 
+    persistent storage. The benefits of this are that said data can be loaded many times faster than if 
+    it were loaded from a hard drive. This does therefore mean that Redis will not be used to store persistent data,
+    and it will instead be used to transfer data between different tasks in an Airflow DAG, as Airflow tasks 
+    are independent from each other. Redis will solve this by having relevant data loaded into memory before 
+    the task ends, at which point it will be read by the following task. A Docker container for this 
+    software will be used in this pipeline. Also includes a Python library of the same name that allows 
+    for access to the Redis store from Python scripts.\\
+    \hline
+    Pandas &
+    A library used widely in industry for data analytics. It is capable of importing data of various 
+    types and storing them in a "DataFrame" object, which preprocessing operations can be performed on.
+    It also allows the exporting of data in multiple formats \autocite{pandas_pandas_nodate}.\\
+    \hline
+    SQLAlchemy &
+    A library that allows SQL engine connections to be made from within a Python file. In 
+    doing so, data can be read from and stored into SQL databases \autocite{sqlalchemy_sqlalchemy_nodate}.\\
+    \hline
+    Scikit-learn & 
+    A large open-source Python library containing many different functionalities for machine learning \autocite{scikit-learn_scikit-learn_nodate}, 
+    such as encoders to convert strings to numerical equivalents, scalers to normalise and standardise 
+    the data to reduce variance (described further in Section \ref{sec:Preprocessing}), as well as containing 
+    methods to split data into training and testing sets, and fit, train and predict with various different 
+    machine learning algorithms (described further in Section \ref{sec:Development}).\\
+    \hline
+    FastAPI &
+    A high-performance framework for developing APIs in Python, proclaimed
+    as "One of the fastest Python frameworks available" \autocite{fastapi_fastapi_nodate}.
+    Facilitates an API for clients to access the backend ML model later in the pipeline. \\
+    \hline
+    Uvicorn &
+    A low-level webserver implentation in Python with high performance \autocite{uvicorn_uvicorn_nodate}.\\
+    \hline
+    MLFlow &
+    An open-source platform for the tracking and monitoring of machine learning models, 
+    storing each iteration of the model so that they may be reproduced at a later point \autocite{mlflow_mlflow_nodate},
+    which is especially useful while performing hyperparameter tuning on the model, which is where 
+    small details of the model are changed such as the number of decision trees in a Random Forest.
+    Also facilitates REST APIs, discussed in Section \ref{sec:Deployment}.\\
+    \hline
+    Apache Arrow \newline PyArrow &
+    Software with a Python library interface that allows for the serialization of objects \autocite{apache_streaming_nodate}. 
+    This is important in synergy with Redis and Pandas, as Redis is unable to directly store Pandas dataframes, 
+    so they must first be serialized, converting them to a bytes format that Redis can store in memory.\\
+    \hline
+    Great Expectations &
+    A Python library used for data validation, where "expectations" can be set for a dataset, such as 
+    all data of a column being numeric, and they will be assessed \autocite{gx_gx_nodate}.\\
+    \hline
+\caption{Descriptions of software and libraries across the pipeline.}\label{tab:softwareDescriptions}
+\end{longtable}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.75\linewidth]{MLPipeline.png}
-    \caption{The five key steps in an MLOps pipeline \autocite{incycle_software_mlops_nodate}.}
-    \label{fig:MLPipeline}
+    \includegraphics[width=.75\linewidth]{miniconda.png}
+    \caption{A comparison of the primary Conda distributions \autocite{towardsdatascience_getting_2021}}
+    \label{fig:Miniconda}
 \end{figure}
+
 
 \section{Data Ingestion}
 \subsection{Description}
@@ -693,9 +702,9 @@ medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and ef
 in the execution of the pipeline. More details on said systems can be found in Section \ref{sec:Software}.
 
 Regardless of whether ETL or ELT is used, the data is still extracted, loaded and transformed. However,
-the decision of which order to use can be determined from the data itself, with smaller datasets that need 
-complex transformation being more suited to ETL, whereas larger datasets with less transformation needed 
-are better with ELT \autocite{smallcombe_etl_nodate}.
+the decision of which order to use can be determined from the data itself, with datasets that will need 
+complex transformation from their raw form being more suited to ETL, whereas large datasets with less 
+transformation needed can be better with ELT \autocite{smallcombe_etl_nodate}.
 
 \begin{table}[H]
     \centering
@@ -730,17 +739,45 @@ fully ingested, whereas ELT has a clear split between the ingestion and preproce
 \subsection{In this project}
 The candidate dataset utilises the One Big Table schema, and it was previously established in Section \ref{sec:Dataset}
 that it contains no missing values. The size of the dataset is the largest of the three candidates but is still
-small in comparison to those used in industry. The data will be ingested using ELT into a MariaDB Columnstore 
-OLTP database for quick and efficient loading and querying. MariaDB is\dots
+small in comparison to those used in industry, being only 3.5MB in comparison to gigabytes and petabytes as previously 
+mentioned in Table \ref{tab:OLAP-OLTP}. The data will be ingested using ELT into a MariaDB Columnstore 
+OLTP database for quick and efficient loading and querying. To do so, some of the software originally mentioned in 
+Table \ref{tab:softwareDescriptions} will be used, seen in Table \ref{tab:IngestionSoftware}.
 
-% TALK ABOUT WHAT MARIADB IS, WHAT DOCKER IS, WHAT COLUMNSTORE IS. WITH IMAGES!
+\pagebreak % REMOVE IF NEEDED
+
+
+\begin{longtable}{ |p{0.2\textwidth}| p{0.5\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for ingestion\\
+    \hline
+    Docker &
+    In this stage, Docker will be used to host a container of MariaDB Columnstore.\\
+    \hline
+    MariaDB Columnstore &
+    In this stage, the Columnstore will be hosted on a Docker container at port 3306 \autocite{docker_hub_mariadbcolumnstore_nodate}, 
+    and will be used as the OLTP storage medium of the ingested data.\\
+    \hline 
+    Pandas &
+    In the ingestion phase, it will be used to import the dataset's CSV file, and export it as SQL to 
+    the MariaDB Columnstore through the use of SQLAlchemy.\\
+    \hline
+    SQLAlchemy &
+    Alongside Pandas, SQLAlchemy will export the DataFrame to the MariaDB Columnstore instance.\\
+    \hline
+    Great Expectations &
+    Will be used to validate that imported data is of the correct format and will not cause 
+    errors later in the pipeline.\\
+    \hline
+\caption{Software to be used in ingestion.}\label{tab:IngestionSoftware}
+\end{longtable}
 
 
 
-\section{Data Preprocessing}
+\section{Data Preprocessing}\label{sec:Preprocessing}
 \subsection{Description}
 After the data has been ingested, the preprocessing stage begins, and is often also conducted by 
-Data Scientists. This stage encompasses the 
+Data Scientists. This stage encompasses the
 cleaning, integration and transformation of the data in order to optimise the dataset for model development.
 
 Cleaning refers to the identification of missing, inaccurate or malformed data within the dataset,
@@ -762,12 +799,43 @@ between data can mislead the classification algorithm \autocite{ibm_what_2021}.
 Once these tasks have all been completed, the dataset will be ready to be used for model development.
 
 \subsection{In this project}
-The preprocessing in this project will utilise Python libraries including Pandas, NumPy, Matplotlib 
-and Seaborn. These libraries are all used in data analytics processes to store the data in a format
-readable by Python (Pandas DataFrames), perform calculations (NumPy) and produce visualisations from the 
-data (Matplotlib, Seaborn).
+The preprocessing in this project will analyse the ingested data and transform columns such as "person\_gender"
+to categorically labelled numerical equivalents. To do so, some of the software and libraries originally mentioned 
+in Table \ref{tab:softwareDescriptions} will be used, shown below in Table \ref{tab:PreprocessingSoftware}
 
-\section{Model Development}
+
+\begin{longtable}{ |p{0.2\textwidth}| p{0.5\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for preprocessing\\
+    \hline
+    Pandas & 
+    Will be used alongside SQLAlchemy to load the dataset from the MariaDB Columnstore instance hosted on Docker, 
+    as well as for the actual transformation of the data using the methods provided by Pandas dataframes.\\
+    \hline
+    SQLAlchemy & 
+    Will be used alongside Pandas to query and receive data from the MariaDB Columnstore instance.\\
+    \hline
+    Scikit-learn & 
+    Will be used to normalise and standardise the data, as well as encode any string data into numerical 
+    equivalents.\\
+    \hline
+    Docker &
+    Will host the MariaDB Columnstore container. Additionally for this section, it will also host a 
+    container for Redis to store the processed dataset.\\
+    \hline
+    Redis &
+    Will store the processed dataframe in memory. Cannot directly store the dataframe as mentioned in 
+    Table \ref{tab:softwareDescriptions}, so it must be serialised first using Arrow.\\
+    \hline
+    Arrow & 
+    Will serialise the processed dataframe so that it can then be stored by Redis.\\
+    \hline
+\caption{Descriptions of software to be used for preprocessing.}\label{tab:PreprocessingSoftware}
+\end{longtable}
+
+
+
+\section{Model Development}\label{sec:Development}
 \subsection{Description}
 The model development stage uses the processed dataset from the preprocessing stage and leverages 
 machine learning algorithms to solve the problem in question, either a classification problem where 
@@ -784,14 +852,41 @@ which is why it is preferred to not remove data from the dataset unless strictly
 This stage is conducted by machine learning engineers, and its output is that of the trained machine learning 
 model, which can then be deployed.
 
-% SHOULD I DISCUSS HYPERPARAMETER TUNING? IF I DO IT CAN ALSO BE USED IN CMP6202.
 
 \subsection{In this project}
 The candidate dataset poses a classification problem, and as such, the Scikit-Learn Python library 
-will be utilised for its implementation of a Random Forest algorithm
+will be particularly key in this stage for its implementation of a Random Forest algorithm, which is 
+reputed as one of the most accurate models in many scenarios. However, it can have a steep processing
+time depending on how many decision trees it is told to create. 
+
+\begin{longtable}{ |p{0.2\textwidth}| p{0.5\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for development\\
+    \hline
+    Arrow & 
+    Will deserialize the stored dataframe from Redis after the preprocessing stage.\\
+    \hline
+    Pandas & 
+    Will store the dataframe deserialized by Arrow.\\
+    \hline
+    Redis &
+    Stores the processed dataset to be retrieved at the beginning of this stage.\\
+    \hline
+    Scikit-learn & 
+    Will be used for its implementations of various algorithms, most notably a Random Forest Classifier.
+    Will also provide useful metrics such as accuracy on the training and test data.\\
+    \hline
+    MLFlow &
+    Will be used to store and track each iteration of the model that is produced as this phase is 
+    repeated.\\
+    \hline
+\caption{Descriptions of software to be used for model development.}\label{tab:DevelopmentSoftware}
+\end{longtable}
+
+
 % DO I USE RANDOM FOREST? IT'S CONSIDERED A GOOD ONE FOR CLASSIFICATION.
 
-\section{Model Deployment}
+\section{Model Deployment}\label{sec:Deployment}
 \subsection{Description}
 The developed model from the previous stage of the pipeline can then be integrated into an actual environment,
 and can be utilised as a tool to make decisions. This stage is where software engineers will make the model 
@@ -810,35 +905,70 @@ The produced model will be hosted on a webserver via Uvicorn, and the REST API w
 via FastAPI. These two Python packages will provide an interface where the user can input the predictor 
 variables of the dataset (age, credit score, etc.) to receive the model's output result.
 
-\section{Model Monitoring}
+
+\begin{longtable}{ |p{0.2\textwidth}| p{0.5\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for deployment\\
+    \hline
+    FastAPI &
+    Will be used to provide the API between the user and the ML model, where the user will 
+    give data to API endpoints and the model will supply a prediction.\\
+    \hline
+    Uvicorn &
+    Will be used to host the webserver that the API will run on.\\
+    \hline
+    MLFlow &
+    Will be used as a "bridge" of sorts between the user and the model, and will access and load 
+    it as well as retrieving any necessary artifacts to process the data that the user supplies.\\
+    \hline
+\caption{Descriptions of software to be used for model deployment.}\label{tab:DeploymentSoftware}
+\end{longtable}
+
+
+
+\section{Model Monitoring}\label{sec:Monitoring}
 \subsection{Description}
 After the model is deployed, its performance is continuously monitored by data scientists. The monitoring 
-process consists of the analysis of the model's results via metrics such as F1-score for classification models,
-which is calculated from the model's accuracy and precision \autocite{kundu_f1_nodate}, or Mean Absolute Error
-(MAE) for regression models, which is the average of the differences between predicted and actual values.
+process consists of the analysis of the model's results via metrics such as those found in Table \ref{tab:metrics}
 By monitoring the model, any issues with it can be quickly identified and the pipeline can be restarted to 
 yield a higher accuracy model, which can be monitored again.  
 
+\begin{longtable}{ |p{0.2\textwidth}| p{0.4\textwidth}| p{0.2\textwidth}|}
+    \hline
+    \cellcolor{blue!25}Metric & \cellcolor{blue!25}What is it? & \cellcolor{blue!25}Type\\
+    \hline
+    Accuracy & The number of correct predictions divided by the total amount of predictions. & Classification\\
+    \hline
+    Precision & The ratio of correctly predicted positives to the total amount of positives in the dataset. 
+    & Classification \\
+    \hline
+    F1-score & A measurement calculated from a model's accuracy and precision.\autocite{kundu_f1_nodate} & Classification\\
+    \hline
+    Mean Absolute Error (MAE) & The average of the differences between predicted and actual values. & Regression\\
+    \hline
+    $R^2$ & Also known as the coefficient of determination, shows how well the predicted data fits the 
+    actual data \autocite{cfi_r-squared_nodate}. & Regression \\
+    \hline
+\caption{Descriptions of various metrics to grade ML models.}\label{tab:metrics}
+\end{longtable}
+
+
 \subsection{In this project}
-In this project, software such as MLFlow will be utilised to store and log information for each model 
-iteration. % IDK, I'll have to look into how it works because I've yet to use MLFlow.
+This pipeline aims to produce a binary classification model, so metrics such as F1-score will be useful in the analysis
+of each iteration of the model. To do so, MLFlow will be used to store each iteration's parameters and performance
+metrics.
 
-\section{Software used in an MLOps pipeline}\label{sec:Software}
-For each stage of the pipeline, the implementation of them for the candidate dataset was discussed 
-with a brief overview of the software and libraries for each. This section will explore each in 
-higher detail. 
 
-% GET SOME IMAGES FOR PAGE NUMBER BLOAT!
-Conda, airflow, Docker, Uvicorn, FastAPI, MLFlow, MariaDB, etc.
 
-\chapter{Appendix}
-\section{Data schemas}
-\subsection{One Big Table (OBT)}
 
-\subsection{Star}
-Dimension tables etc
-\subsection{Snowflake}
-Idk
+% \chapter{Appendix}
+% \section{Data schemas}
+% \subsection{One Big Table (OBT)}
+
+% \subsection{Star}
+% Dimension tables etc
+% \subsection{Snowflake}
+% Idk
 
 \printbibliography
 
