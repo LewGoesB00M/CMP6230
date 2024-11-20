@@ -689,6 +689,7 @@ section.
     \label{fig:Miniconda}
 \end{figure}
 
+\pagebreak
 
 \section{Data Ingestion}
 \subsection{Description}
@@ -805,13 +806,15 @@ Table \ref{tab:softwareDescriptions} will be used, seen in Table \ref{tab:Ingest
     SQLAlchemy &
     Alongside Pandas, SQLAlchemy will export the DataFrame to the MariaDB Columnstore instance.\\
     \hline
-    Great Expectations &
-    Will be used to validate that imported data is of the correct format and will not cause 
-    errors later in the pipeline.\\
-    \hline
 \caption{Software to be used in ingestion.}\label{tab:IngestionSoftware}
 \end{longtable}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{diagrams/Ingestion.png}
+    \caption{A diagram of the planned ingestion process.}
+    \label{fig:IngestionDiagram}
+\end{figure}
 
 
 \section{Data Preprocessing}\label{sec:Preprocessing}
@@ -872,6 +875,13 @@ in Table \ref{tab:softwareDescriptions} will be used, shown below in Table \ref{
     \hline
 \caption{Descriptions of software to be used for preprocessing.}\label{tab:PreprocessingSoftware}
 \end{longtable}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{diagrams/Preprocessing.png}
+    \caption{A diagram of the planned preprocessing stage.}
+    \label{fig:PreprocessingDiagram}
+\end{figure}
 
 
 
