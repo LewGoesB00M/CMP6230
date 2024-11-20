@@ -184,7 +184,7 @@ seen below in Figure \ref{fig:pandasNames}.
        \caption{Importing with the column names.}
        \label{fig:PN2}
     \end{subfigure}
-    \caption{Importing the erroneous CSV using Pandas. The column headers are highlighted in a red box.}
+    \caption{Importing and viewing the head of the erroneous CSV using Pandas. The column headers are highlighted in a red box.}
 \end{figure}
 
 A preliminary analysis of the file to ascertain the data types of each column, seen in Figure \ref{fig:ILPD-DTypes}, also revealed that there were 4 missing values in the A/G ratio column.
@@ -346,6 +346,13 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{figure}[H]
     \centering
+    \includegraphics[width=\linewidth]{pandas/Loan-Head.png}
+    \caption{The head of the dataset.}
+    \label{fig:Loan-Head}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=.7\linewidth]{pandas/Loan-NA.png}
     \caption{No missing values in the dataset.}
     \label{fig:Loan-NAs}
@@ -454,6 +461,13 @@ and \ref{fig:Spotify-NA}.
     \includegraphics[width=.4\linewidth]{pandas/Spotify-DTypes.png}
     \caption{The data types of the Spotify Likes Dataset.}
     \label{fig:Spotify-DTypes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pandas/Spotify-Head.png}
+    \caption{The head of the dataset.}
+    \label{fig:Spotify-Head}
 \end{figure}
 
 \begin{figure}[H]
@@ -675,6 +689,10 @@ section.
     This is important in synergy with Redis and Pandas, as Redis is unable to directly store Pandas dataframes, 
     so they must first be serialized, converting them to a bytes format that Redis can store in memory.\\
     \hline
+    Pickle &
+    A base package in Python that functions similarly to Arrow in the serialization of data. Pickle
+    specifically is used to serialize machine learning models.\\
+    \hline
     Great Expectations &
     A Python library used for data validation, where "expectations" can be set for a dataset, such as 
     all data of a column being numeric, and they will be assessed \autocite{gx_gx_nodate}.\\
@@ -758,7 +776,8 @@ transformation needed can be better with ELT \autocite{smallcombe_etl_nodate}.
             \hline
             Useful if the data warehouse is a more modern system with good processing power.
             & Useful if the data warehouse has limited processing abilities of its own,
-            typically seen in older systems.\\
+            typically seen in older or otherwise less powerful systems such as those on 
+            virtual machines.\\
             \hline
             Lower latency in the ingestion phase because data is immediately loaded. 
             & Higher latency in the ingestion phase, because the data is being processed first, 

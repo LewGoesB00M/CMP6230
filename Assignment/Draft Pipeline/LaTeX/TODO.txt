@@ -1,28 +1,15 @@
-Pandas head & dtypes of all datasets.
-    - DTypes done, not heads.
+FINAL TODOs BEFORE SUBMISSION:
+    Section 1 still may benefit from being rewritten.
+    It's loads of pages but maybe one page of actual writing.
 
-Candidate 2 is mega unfinished. Very bad given it's your 
-selected dataset.
+    Especially ensure Candidate 2 is detailed at least given 
+    that it's the selected dataset.
 
-"Level of measurement" in description table: nominal etc...
+    Diagrams, simple & straightforward.
 
-I still think the Spotify dataset is a mistake, and you could 
-likely do better by finding a relational DB.
+    Will it be ingested ELT? It might be better 
+    to use ETL given that it's a CSV. Idk
+    The examples use ETL.
 
-Example 4 seems like the best to base on.
+    Specify inputs and outputs of ML pipeline stages.
 
-EX3 says ELT/ETL is a preprocessing procedure and NOT ingestion. Maybe move section
-
-Create some random images of your own as seen in the examples.
-
-Describe Pandas better.
-
-Jupyter, Uvicorn, FastAPI, MLFlow,
-Arrow/PyArrow
-
-Give more metrics in monitoring, EX4 gives 
-a table.
-
-Will it be ingested ELT? It might be better 
-to use ETL given that it's a CSV. Idk
-The examples use ETL.
