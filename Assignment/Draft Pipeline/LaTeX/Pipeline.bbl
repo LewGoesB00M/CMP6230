@@ -301,44 +301,6 @@
       \endverb
       \keyw{Dataset}
     \endentry
-    \entry{brice-vergnou_brice-vergnouspotify_recommendation_2024}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=2dd5b0e72822899a43abe319c129ed37}{%
-           family={Brice-Vergnou},
-           familyi={B\bibinithyphendelim V\bibinitperiod}}}%
-      }
-      \strng{namehash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{fullhash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{fullhashraw}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{bibnamehash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{authorbibnamehash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{authornamehash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{authorfullhash}{2dd5b0e72822899a43abe319c129ed37}
-      \strng{authorfullhashraw}{2dd5b0e72822899a43abe319c129ed37}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Finding which songs I like or not based on songs statistics}
-      \field{day}{27}
-      \field{month}{7}
-      \field{title}{Brice-Vergnou/spotify\_recommendation}
-      \field{urlday}{16}
-      \field{urlmonth}{11}
-      \field{urlyear}{2024}
-      \field{year}{2021}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://github.com/Brice-Vergnou/spotify_recommendation
-      \endverb
-      \verb{url}
-      \verb https://github.com/Brice-Vergnou/spotify_recommendation
-      \endverb
-      \keyw{ai,api,artificial-intelligence,eda,exploratory-data-analysis,python3,random-forest,random-forest-classifier,scikit-learn,scikitlearn-machine-learning,sklearn,spotify,spotify-api,spotify-playlist}
-    \endentry
     \entry{butterfield_22b_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=ba7478fb46c21cd7069f6f7450705da1}{%
@@ -452,6 +414,41 @@
       \endverb
       \verb{url}
       \verb https://my.clevelandclinic.org/health/diagnostics/22029-alkaline-phosphatase-alp
+      \endverb
+    \endentry
+    \entry{creative_commons_deed_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=42cef1da263e6f8e017a4942c4a82bbb}{%
+           family={{Creative Commons}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{fullhash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{fullhashraw}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{bibnamehash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{authorbibnamehash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{authornamehash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{authorfullhash}{42cef1da263e6f8e017a4942c4a82bbb}
+      \strng{authorfullhashraw}{42cef1da263e6f8e017a4942c4a82bbb}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Deed - {CC}0 1.0 Universal - Creative Commons}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Deed - CC0 1.0 Universal - Creative Commons:C\:\\Users\\Lewis\\Zotero\\storage\\JY66AM6T\\1.0.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://creativecommons.org/publicdomain/zero/1.0/
+      \endverb
+      \verb{url}
+      \verb https://creativecommons.org/publicdomain/zero/1.0/
       \endverb
     \endentry
     \entry{docker_docker_2022}{online}{}{}
@@ -570,6 +567,127 @@
       \verb https://fastapi.tiangolo.com/
       \endverb
     \endentry
+    \entry{geeksforgeeks_snowflake_2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e39b9c178b2c9be4e99b141d956c6ff6}{%
+           family={{GeeksForGeeks}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{fullhash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{fullhashraw}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{bibnamehash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{authorbibnamehash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{authornamehash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{authorfullhash}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \strng{authorfullhashraw}{e39b9c178b2c9be4e99b141d956c6ff6}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and programming articles, quizzes and practice/competitive programming/company interview Questions.}
+      \field{day}{10}
+      \field{langid}{american}
+      \field{month}{6}
+      \field{title}{Snowflake Schema in Data Warehouse Model}
+      \field{titleaddon}{{GeeksforGeeks}}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\I2GPFN4S\\snowflake-schema-in-data-warehouse-model.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.geeksforgeeks.org/snowflake-schema-in-data-warehouse-model/
+      \endverb
+      \verb{url}
+      \verb https://www.geeksforgeeks.org/snowflake-schema-in-data-warehouse-model/
+      \endverb
+    \endentry
+    \entry{gupta_loanification_2021}{misc}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=3e6cd861f18f55ff564d77ced58e2a98}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Kanishk},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0bbf7bc22aab6a1d30ecdf6f89e4ab96}{%
+           family={Chakrabarti},
+           familyi={C\bibinitperiod},
+           given={Binayak},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=039787af0d3c73e5b420191c8b366220}{%
+           family={Ansari},
+           familyi={A\bibinitperiod},
+           given={Aseer\bibnamedelima Ahmad},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=02ade2c1f257048ee172c42315dbf72e}{%
+           family={Rautaray},
+           familyi={R\bibinitperiod},
+           given={Siddharth\bibnamedelima Swarup},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c22c77f34b3829214c95bbd45e51cc3e}{%
+           family={Pandey},
+           familyi={P\bibinitperiod},
+           given={Manjusha},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Rochester, {NY}}%
+      }
+      \list{publisher}{1}{%
+        {Social Science Research Network}%
+      }
+      \strng{namehash}{5c1c5a613c93d21d67a187d4945f9ae8}
+      \strng{fullhash}{42f720ff0b644047a4ed192b111d1f39}
+      \strng{fullhashraw}{42f720ff0b644047a4ed192b111d1f39}
+      \strng{bibnamehash}{42f720ff0b644047a4ed192b111d1f39}
+      \strng{authorbibnamehash}{42f720ff0b644047a4ed192b111d1f39}
+      \strng{authornamehash}{5c1c5a613c93d21d67a187d4945f9ae8}
+      \strng{authorfullhash}{42f720ff0b644047a4ed192b111d1f39}
+      \strng{authorfullhashraw}{42f720ff0b644047a4ed192b111d1f39}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Banks and other financial corporations have been in the business of lending since the past century. An essential requirement to sustain oneself in such a business is meticulous background checking of a customer before approval of loan failing which the institution lending money carries the risk of non payment of dues by the customer. Such dues which are not repaid back are called bad loans which after 90 days of default become Non Performing Assets ({NPA}) . According to the Reserve Bank of India ,total {NPAs} in India are set to reach a twenty year high this year . Thus , the need for developing better models for deciding whether to approve a loan has never been greater . The research work in this paper aims to address this issue and help lending institutions avoid bad loans. A complete background check of each customer has been ensured by feeding entire customer details to our Machine Learning model unlike previous works which relied mostly on specific items like the salary of the client . Ensemble learning models have been the primary focus of this work as Random Forest , Gradient Boosting , {XGBoost} etc have been used . Out of all the models , the best results were from Gradient Boosting classifier. Finally a Voting classifier has been built by ensembling the aforementioned algorithms . That helped improve the metrics like F1-score and roc- auc-score marginally.}
+      \field{day}{24}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{3833303}
+      \field{title}{Loanification - Loan Approval Classification using Machine Learning Algorithms}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.2139/ssrn.3833303
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\Lewis\\Zotero\\storage\\6HRKVZ4H\\Gupta et al. - 2021 - Loanification - Loan Approval Classification using Machine Learning Algorithms.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://papers.ssrn.com/abstract=3833303
+      \endverb
+      \verb{url}
+      \verb https://papers.ssrn.com/abstract=3833303
+      \endverb
+      \keyw{Aseer Ahmad Ansari,Binayak Chakrabarti,Kanishk Gupta,Loanification - Loan Approval Classification using Machine Learning Algorithms,Manjusha Pandey,Siddharth Swarup Rautaray,{SSRN}}
+    \endentry
     \entry{gx_gx_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0a5b65725f6a3ba95821cec61dbb46d3}{%
@@ -682,6 +800,46 @@
       \endverb
       \verb{url}
       \verb https://www.incyclesoftware.com/azure-machine-learning-enterprise-accelerator
+      \endverb
+    \endentry
+    \entry{kaminsky_star_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4ce7390da57289e9d86884c3d923b036}{%
+           family={Kaminsky},
+           familyi={K\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{fullhash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{fullhashraw}{4ce7390da57289e9d86884c3d923b036}
+      \strng{bibnamehash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{authorbibnamehash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{authornamehash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{authorfullhash}{4ce7390da57289e9d86884c3d923b036}
+      \strng{authorfullhashraw}{4ce7390da57289e9d86884c3d923b036}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Which data warehouse schema offers better performance? Let’s find out.}
+      \field{langid}{english}
+      \field{title}{Star Schema vs. {OBT} for Data Warehouse Performance {|} Blog {|} Fivetran}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\MMYMZKFU\\star-schema-vs-obt.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.fivetran.com/blog/star-schema-vs-obt
+      \endverb
+      \verb{url}
+      \verb https://www.fivetran.com/blog/star-schema-vs-obt
       \endverb
     \endentry
     \entry{kundu_f1_nodate}{online}{}{}
@@ -833,6 +991,47 @@
       \verb https://www.mayoclinic.org/tests-procedures/bilirubin/about/pac-20393041
       \endverb
     \endentry
+    \entry{microsoft_database_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3a5bc5966cccf67a231119515d95fc57}{%
+           family={{MIcrosoft}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{fullhash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{fullhashraw}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{bibnamehash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{authorbibnamehash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{authornamehash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{authorfullhash}{3a5bc5966cccf67a231119515d95fc57}
+      \strng{authorfullhashraw}{3a5bc5966cccf67a231119515d95fc57}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Describe the method to normalize the database and gives several alternatives to normalize forms. You need to master the database principles to understand them or you can follow the steps listed in the article.}
+      \field{day}{6}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{title}{Database normalization description - Microsoft 365 Apps}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NVXEGHMC\\database-normalization-description.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
+      \endverb
+    \endentry
     \entry{mlflow_mlflow_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=85f436684e60fe13d1c06f055604e0c8}{%
@@ -853,21 +1052,20 @@
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Description will go into a meta tag in {<}head /{>}}
-      \field{langid}{english}
-      \field{title}{{MLflow} {|} {MLflow}}
+      \field{abstract}{Description will go into a meta tag in {\textbackslash}textlesshead /{\textbackslash}textgreater}
+      \field{title}{{MLFlow}}
       \field{urlday}{18}
       \field{urlmonth}{11}
       \field{urlyear}{2024}
       \field{urldateera}{ce}
       \verb{file}
-      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NK3X5DTU\\mlflow.org.html:text/html
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\5DHH36VU\\mlflow.org.html:text/html
       \endverb
       \verb{urlraw}
-      \verb https://your-docusaurus-site.example.com/
+      \verb mlflow.org
       \endverb
       \verb{url}
-      \verb https://your-docusaurus-site.example.com/
+      \verb mlflow.org
       \endverb
     \endentry
     \entry{pandas_pandas_nodate}{online}{}{}
@@ -903,6 +1101,44 @@
       \endverb
       \verb{url}
       \verb https://pandas.pydata.org/about/
+      \endverb
+    \endentry
+    \entry{python_pickle_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a7f5f35426b927411fc9231b56382173}{%
+           family={{Python}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{a7f5f35426b927411fc9231b56382173}
+      \strng{fullhash}{a7f5f35426b927411fc9231b56382173}
+      \strng{fullhashraw}{a7f5f35426b927411fc9231b56382173}
+      \strng{bibnamehash}{a7f5f35426b927411fc9231b56382173}
+      \strng{authorbibnamehash}{a7f5f35426b927411fc9231b56382173}
+      \strng{authornamehash}{a7f5f35426b927411fc9231b56382173}
+      \strng{authorfullhash}{a7f5f35426b927411fc9231b56382173}
+      \strng{authorfullhashraw}{a7f5f35426b927411fc9231b56382173}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Source code: Lib/pickle.py The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is...}
+      \field{langid}{english}
+      \field{title}{pickle — Python object serialization}
+      \field{titleaddon}{Python documentation}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\NP5RM4IF\\pickle.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/pickle.html
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/pickle.html
       \endverb
     \endentry
     \entry{redhat_what_nodate}{online}{}{}
@@ -1299,6 +1535,89 @@
       \endverb
       \verb{url}
       \verb https://www.uvicorn.org/
+      \endverb
+    \endentry
+    \entry{brice-vergnou_brice-vergnouspotify_recommendation_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=39f205df4b60f10ff412b43d9b3133c0}{%
+           family={Vergnou},
+           familyi={V\bibinitperiod},
+           given={Brice},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{fullhash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{fullhashraw}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{bibnamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorbibnamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authornamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorfullhash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorfullhashraw}{39f205df4b60f10ff412b43d9b3133c0}
+      \field{extraname}{1}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Finding which songs I like or not based on songs statistics}
+      \field{day}{27}
+      \field{month}{7}
+      \field{title}{Brice-Vergnou/spotify\_recommendation}
+      \field{urlday}{16}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/Brice-Vergnou/spotify_recommendation
+      \endverb
+      \verb{url}
+      \verb https://github.com/Brice-Vergnou/spotify_recommendation
+      \endverb
+      \keyw{ai,api,artificial-intelligence,eda,exploratory-data-analysis,python3,random-forest,random-forest-classifier,scikit-learn,scikitlearn-machine-learning,sklearn,spotify,spotify-api,spotify-playlist}
+    \endentry
+    \entry{vergnou_spotify_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=39f205df4b60f10ff412b43d9b3133c0}{%
+           family={Vergnou},
+           familyi={V\bibinitperiod},
+           given={Brice},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{fullhash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{fullhashraw}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{bibnamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorbibnamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authornamehash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorfullhash}{39f205df4b60f10ff412b43d9b3133c0}
+      \strng{authorfullhashraw}{39f205df4b60f10ff412b43d9b3133c0}
+      \field{extraname}{2}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{200 songs and their statistics}
+      \field{langid}{english}
+      \field{title}{Spotify Recommendation}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\CBSYKDY7\\data.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation
       \endverb
     \endentry
   \enddatalist

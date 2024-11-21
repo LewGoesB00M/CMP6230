@@ -100,7 +100,7 @@
 \usepackage{tcolorbox}
 % -------------------------------------------------------------------------------
 
-\title{CMP6230 Draft Pipeline}
+\title{Design and planning of an MLOps Pipeline}
 \author{Lewis Higgins - Student ID 22133848}
 \date{November 2024}
 
@@ -113,8 +113,11 @@
 \begin{titlepage}
     \begin{center}
         \includegraphics[width=0.7\linewidth]{BCU}\\[4ex]
-        {\huge \bfseries  \@title }\\[50ex]
-        {\@author}\\[30ex]
+        {\huge \bfseries CMP6230 - Assignment 1}\\[2ex]
+        {\large \bfseries  \@title}\\[50ex]
+        {\@author}\\[2ex]
+        {CMP6230 - Data Management and Machine Learning Operations}\\[2ex]
+        {Module Coordinator: Dr. Sima Iranmanesh}\\[10ex]
     \end{center}
 \end{titlepage}
 \makeatother
@@ -124,6 +127,7 @@
 
 % Page counter trick so that the contents page doesn't increment it.
 \setcounter{page}{0}
+
 
 \tableofcontents
 \thispagestyle{empty}
@@ -135,7 +139,7 @@ the one that would be most optimal for the production and deployment of a machin
 a supervised learning task.
 
 \section{Candidate 1 - Indian Liver Patient Dataset}
-\href{https://archive.ics.uci.edu/dataset/225}{This dataset} \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
+This dataset \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
 UCI Machine Learning Repository, and has been previously used by \textcite{straw_investigating_2022} in their analysis of sex-related bias in supervised learning models. The UCI ML Repository is a popular host of datasets used by students, 
 educators and researchers worldwide for machine learning \autocite{uci_machine_learning_repository_about_nodate}, and hosts these datasets 
 on the cloud for public download and usage, as long as credit is given.
@@ -223,7 +227,8 @@ Data Preprocessing stage of a pipeline.
             \hline
             \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
             \hline
-            Age & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published.} 
+            Age & The patient's age. \textbf{Ages of 90 or over were listed as 90 before this dataset was published,
+            which could introduce a bias in the machine learning model.} 
             & Ratio\\
             \hline
             Gender & The patient's gender, either "Male" or "Female". & Nominal\\
@@ -309,10 +314,166 @@ diagnosis that could leverage the power of machine learning can greatly enhance 
 %     \caption{The data types of each column in the Cardiovascular Disease Dataset.}\label{tab:Heart-Types}
 % \end{table}
 \pagebreak
-\section{Candidate 2 - Loan Approval Classification Dataset}\label{sec:Dataset}
-\href{https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data}{This dataset} \autocite{lo_loan_nodate} was sourced from Kaggle's cloud servers under 
+
+\pagebreak
+
+\section{Candidate 2 - Spotify Likes Dataset}
+This dataset \autocite{vergnou_spotify_nodate} was sourced from \href{https://www.kaggle.com/datasets}{Kaggle}, a platform similar to the UCI ML repository in its 
+purpose for students and researchers that acts as a search engine for datasets, but also allows its users to host competitions, upload their machine learning models, and also upload 
+their own Python notebooks. This dataset is stored on their servers on the cloud, and is free to download and use under a 
+Creative Commons Public Domain license \autocite{creative_commons_deed_nodate}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Spotify-Kaggle.png}
+    \caption{A snapshot of the Spotify dataset's Kaggle page.}
+    \label{fig:Spotify-Kaggle}
+\end{figure}
+
+The data itself is split over 
+two JavaScript Object Notation (JSON) files, but also fully present in an included CSV file, with all three utilising a One Big Table schema. The 
+download also includes two Python files, which have the JSON data stored in Python dictionaries for ease of access, though these will not be used in 
+this brief analysis. JSON files store data in \textbf{key-value pairs}, such as in the example snippet of this dataset depicted in Figure \ref{fig:spotifySnippet}.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{spotifySnippet.png}
+    \caption{A snippet of the JSON data, viewed in Visual Studio Code.}
+    \label{fig:spotifySnippet}
+\end{figure}
+
+Every row in the JSON files is part of the single "audio\_features" key, and each new row is seperated by curly braces \{\}. Each column is then given as a 
+key-value pair, such as the first row in Figure \ref{fig:spotifySnippet}, where "danceability" is the key, and 0.352 is the associated value.
+
+\noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
+\href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
+Liked and disliked songs are seperated into two JSON files, named "dislike" and "good". The two JSON files have 18 features, as depicted in Figure 
+\ref{fig:JSON-ERD}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{SpotifyJSON-ERD.png}
+    \caption{An entity relationship diagram of the two JSON files. Data does not overlap between them, so they have no relation.}
+    \label{fig:JSON-ERD}
+\end{figure}
+
+This dataset has been used to create machine learning models before, most notably by its own author, who has a public Github repository 
+showcasing their work \autocite{brice-vergnou_brice-vergnouspotify_recommendation_2024}. 
+Before publicising this data, however, the author had done some preprocessing of their own, having included the additional CSV file,
+produced as a result of merging the two JSON files into one CSV and removing unnecessary columns, as depicted in Figure \ref{fig:Spotify-ERD}.
+Therefore, my preliminary Pandas analysis of the data types and missing values will only be performed on this CSV, seen in Figures \ref{fig:Spotify-DTypes}
+and \ref{fig:Spotify-NA}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\linewidth]{Spotify-ERD.png}
+    \caption{An entity relationship diagram of the preprocessed CSV file.}
+    \label{fig:Spotify-ERD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.4\linewidth]{pandas/Spotify-DTypes.png}
+    \caption{The data types of the Spotify Likes Dataset.}
+    \label{fig:Spotify-DTypes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pandas/Spotify-Head.png}
+    \caption{The head of the dataset.}
+    \label{fig:Spotify-Head}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.4\linewidth]{pandas/Spotify-NA.png}
+    \caption{No missing values in the dataset.}
+    \label{fig:Spotify-NA}
+\end{figure}
+
+While a machine learning model to solve a binary classification problem could be trained on this dataset to identify if the author would like a song, 
+it has significantly less of a positive impact than Candidates 1 and 3, as this dataset is the author's subjective belief rather than objective
+fact that can be applied to other people. Nevertheless, the descriptions of each column can be found in Table \ref{tab:Spotify-Types}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ |p{0.2\textwidth}| p{0.45\textwidth}| p{0.2\textwidth}|}
+        \hline
+        \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
+            \hline
+            Danceability & How suitable a song is for dancing, calculated from the tempo, rhythm stability, beat strength and overall regularity. 1.0 means it is very danceable.
+            & Ratio \\
+            \hline
+            Energy & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.
+            & Ratio\\
+            \hline
+            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} 
+            & Ratio\\
+            \hline
+            Loudness & The averaged decibel volume of a song, typically between -60 and 0 dB.
+            & Interval\\
+            \hline
+            Mode & Whether a song is in major or minor scale. 1 is major and 0 is minor.
+            & Nominal\\
+            \hline
+            Speechiness & The calculated presence of spoken words in a song.
+            & Ratio\\
+            \hline
+            Acousticness & A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
+            & Ratio\\
+            \hline
+            Instrumentalness & A confidence measure from 0.0 to 1.0 of whether a song has no vocals.
+            & Ratio\\
+            \hline
+            Liveness & A confidence measure from 0.0 to 1.0 of whether a live audience can be heard as part of a song.
+            & Ratio\\
+            \hline
+            Valence & A confidence measure from 0.0 to 1.0 of the musical positiveness of a song.
+            & Ratio\\
+            \hline
+            Tempo & The beats per minute of a song.
+            & Ratio\\
+            \hline
+            Duration\_MS & The duration of a song in milliseconds.
+            & Ratio\\
+            \hline
+            Time signature & The estimated time signature of the song.
+            & Ratio\\
+            \hline
+            \cellcolor{red!15}Liked & The target variable, indicative of whether the author liked the song or not.
+            & Ratio\\
+            \hline
+            \cellcolor{green!15}Type & Always "audio\_features". Not a relevant predictor.
+            & Nominal\\
+            \hline
+            \cellcolor{green!15}ID & Spotify's own unique ID for a song. Not a relevant predictor.
+            & Nominal\\
+            \hline
+            \cellcolor{green!15}URI & Spotify's URI for the song. Not a relevant predictor.
+            & Nominal\\
+            \hline
+            \cellcolor{green!15}Track HREF & A link to the song on Spotify's API. Not a relevant predictor.
+            & Nominal\\  
+            \hline
+            \cellcolor{green!15}Analysis URL & A link to the song's audio analysis data. Not a relevant predictor. 
+            & Nominal\\
+            \hline
+    \end{tabular}
+    \caption{The descriptions of each column in the Spotify songs dataset \autocite{spotify_web_nodate}. Red columns are only present in the CSV, whereas green columns are only present in the JSONs.}\label{tab:Spotify-Types}
+\end{table}
+
+These measurements and their descriptions are \href{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}{sourced from Spotify's API},
+and are automatically calculated when songs are uploaded to the service. The ground truth of the dataset is present in the CSV file as the "liked" classifier 
+column, and a train/test split can be implemented for predictions, which is aided by the fact that this dataset is well balanced (100 liked to 95 disliked).
+However, its small size and the fact that the model would only be able to predict one person's specific music taste make 
+this dataset a poor candidate.
+
+
+\section{Candidate 3 - Loan Approval Classification Dataset}\label{sec:Dataset}
+This dataset \autocite{lo_loan_nodate}, similarly to Candidate 2, was sourced from Kaggle's cloud servers under 
 an Apache 2.0 license, which states that the dataset can be used as long as credit is given to the original author,
-and takes the form of a flat-file CSV using a One Big Table schema. 
+and takes the physical form of a flat-file CSV, with the logical structure being the One Big Table data schema. 
 
 \begin{figure}[H]
     \centering
@@ -321,13 +482,17 @@ and takes the form of a flat-file CSV using a One Big Table schema.
     \label{fig:Loan-Kaggle}
 \end{figure}
 
-Unlike Candidate 1, this dataset does not consist of real data, and 
+Unlike Candidates 1 and 2, this dataset does not consist of real data, and 
 instead consists of synthetic data. This is likely due to the fact that this dataset, if it used real data, would contain extremely personal 
 information that could not be shared online due to legislation such as GDPR. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
-which also did not provide an original source and is also presumably synthetic data. The dataset consists of 45,000 records and 14 features, with 
+which also did not provide an original source and is also presumably synthetic data. It can therefore be established that this dataset 
+was created solely for research and analysis purposes, including for the creation of supervised learning models. 
+The dataset consists of 45,000 records and 14 features, with 
 one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. 
 31 notebooks on Kaggle created by the site's users utilise this dataset, with many of these choosing to solve the binary classification 
-problem that it presents. The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
+problem that it presents, including works published by authors such as \autocite{gupta_loanification_2021}. 
+The dataset is physically stored as a flat-file CSV, under a One Big Table (OBT) logical data schema.
+The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
 descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{figure}[H]
@@ -399,174 +564,52 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
     \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
 \end{table}
 
-This dataset is also frequently updated, with its most recent update occurring on the 29th October. 
-
-\pagebreak
-
-\section{Candidate 3 - Spotify Likes Dataset}
-\href{https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation/data}{This dataset} was sourced from \href{https://www.kaggle.com/datasets}{Kaggle}, a platform similar to the UCI ML repository in its purpose for students and researchers
-that acts as a search engine for datasets, but also allows its users to host competitions, upload their machine learning models, and also upload 
-their own Python notebooks. This dataset is stored on their servers on the cloud, and is free to download and use.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Spotify-Kaggle.png}
-    \caption{A snapshot of the Spotify dataset's Kaggle page.}
-    \label{fig:Spotify-Kaggle}
-\end{figure}
-
-The data itself is split over 
-two JavaScript Object Notation (JSON) files, but also fully present in an included CSV file, with all three utilising a One Big Table schema. The 
-download also includes two Python files, which have the JSON data stored in Python dictionaries for ease of access, though these will not be used in 
-this brief analysis. JSON files store data in \textbf{key-value pairs}, such as in the example snippet of this dataset depicted in Figure \ref{fig:spotifySnippet}.  
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{spotifySnippet.png}
-    \caption{A snippet of the JSON data, viewed in Visual Studio Code.}
-    \label{fig:spotifySnippet}
-\end{figure}
-
-Every row in the JSON files is part of the single "audio\_features" key, and each new row is seperated by curly braces \{\}. Each column is then given as a 
-key-value pair, such as the first row in Figure \ref{fig:spotifySnippet}, where "danceability" is the key, and 0.352 is the associated value.
-
-\noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
-\href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
-Liked and disliked songs are seperated into two JSON files, named "dislike" and "good". The two JSON files have 18 features, as depicted in Figure 
-\ref{fig:JSON-ERD}. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{SpotifyJSON-ERD.png}
-    \caption{An entity relationship diagram of the two JSON files. Data does not overlap between them, so they have no relation.}
-    \label{fig:JSON-ERD}
-\end{figure}
-
-This dataset has been used to create machine learning models before, most notably by its own author, who has a public Github repository 
-showcasing their work \autocite{brice-vergnou_brice-vergnouspotify_recommendation_2024}. 
-Before publicising this data, however, the author had done some preprocessing of their own, having included the additional CSV file,
-produced as a result of merging the two JSON files into one CSV and removing unnecessary columns, as depicted in Figure \ref{fig:Spotify-ERD}.
-Therefore, my preliminary Pandas analysis of the data types and missing values will only be performed on this CSV, seen in Figures \ref{fig:Spotify-DTypes}
-and \ref{fig:Spotify-NA}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.5\linewidth]{Spotify-ERD.png}
-    \caption{An entity relationship diagram of the preprocessed CSV file.}
-    \label{fig:Spotify-ERD}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.4\linewidth]{pandas/Spotify-DTypes.png}
-    \caption{The data types of the Spotify Likes Dataset.}
-    \label{fig:Spotify-DTypes}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{pandas/Spotify-Head.png}
-    \caption{The head of the dataset.}
-    \label{fig:Spotify-Head}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.4\linewidth]{pandas/Spotify-NA.png}
-    \caption{No missing values in the dataset.}
-    \label{fig:Spotify-NA}
-\end{figure}
-
-While a machine learning classification problem can definitely be performed on this dataset to identify if the author would like a song, 
-it has significantly less of a positive impact than Candidates 1 and 2, as this dataset is the author's subjective belief rather than objective
-fact that can be applied to other people. Nevertheless, the descriptions of each column can be found in Table \ref{tab:Spotify-Types}.
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{ |p{0.2\textwidth}| p{0.45\textwidth}| p{0.2\textwidth}|}
-        \hline
-        \cellcolor{blue!25}Column & \cellcolor{blue!25}Description & \cellcolor{blue!25}Measurement level\\
-            \hline
-            Danceability & How suitable a song is for dancing, calculated from the tempo, rhythm stability, beat strength and overall regularity. 1.0 means it is very danceable.
-            & Ratio \\
-            \hline
-            Energy & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.
-            & Ratio\\
-            \hline
-            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} 
-            & Ratio\\
-            \hline
-            Loudness & The averaged decibel volume of a song, typically between -60 and 0 dB.
-            & Interval\\
-            \hline
-            Mode & Whether a song is in major or minor scale. 1 is major and 0 is minor.
-            & Nominal\\
-            \hline
-            Speechiness & The calculated presence of spoken words in a song.
-            & Ratio\\
-            \hline
-            Acousticness & A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.
-            & Ratio\\
-            \hline
-            Instrumentalness & Whether a song has no vocals.
-            & Ratio\\
-            \hline
-            Liveness & Whether a live audience can be heard as part of a song.
-            & Ratio\\
-            \hline
-            Valence & The musical positiveness of a song.
-            & Ratio\\
-            \hline
-            Tempo & The beats per minute of a song.
-            & Ratio\\
-            \hline
-            Duration\_MS & The duration of a song in milliseconds.
-            & Ratio\\
-            \hline
-            Time signature & The estimated time signature of the song.
-            & Ratio\\
-            \hline
-            \cellcolor{red!15}Liked & The target variable, indicative of whether the author liked the song or not.
-            & Ratio\\
-            \hline
-            \cellcolor{green!15}Type & Always "audio\_features". Not a relevant predictor.
-            & Nominal\\
-            \hline
-            \cellcolor{green!15}ID & Spotify's own unique ID for a song. Not a relevant predictor.
-            & Nominal\\
-            \hline
-            \cellcolor{green!15}URI & Spotify's URI for the song. Not a relevant predictor.
-            & Nominal\\
-            \hline
-            \cellcolor{green!15}Track HREF & A link to the song on Spotify's API. Not a relevant predictor.
-            & Nominal\\  
-            \hline
-            \cellcolor{green!15}Analysis URL & A link to the song's audio analysis data. Not a relevant predictor. 
-            & Nominal\\
-            \hline
-    \end{tabular}
-    \caption{The descriptions of each column in the Spotify songs dataset \autocite{spotify_web_nodate}. Red columns are only present in the CSV, whereas green columns are only present in the JSONs.}\label{tab:Spotify-Types}
-\end{table}
-
-These measurements and the descriptions are \href{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}{part of Spotify's API},
-and are automatically calculated when songs are uploaded to the service. The ground truth of the dataset is present in the CSV file as the "liked" classifier 
-column, and a train/test split can be implemented for predictions, which is aided by the fact that this dataset is well balanced (100 liked to 95 disliked).
-However, its small size and the fact that the model would only be able to predict one person's specific music taste make 
-it a poor candidate.
+This dataset is also frequently updated, with its most recent update occurring on the 29th October.
 
 \section{Chosen dataset}
-Of the three candidates presented, the most suitable for a machine learning operations pipeline would be Candidate 2, the loan approval dataset. As mentioned 
+Of the three candidates presented, the most suitable for a machine learning operations pipeline would be Candidate 3, the loan approval dataset. As mentioned 
 in Section \ref{sec:Dataset}, this dataset possesses many predictor variables and an adequate amount of data to train a supervised learning classification model 
 to classify whether an individual should be allowed a loan or not. While the data in this dataset is synthetic due to its real equivalent being highly protected 
 under data protection legislation, the model trained from said synthetic data could be applied to real data using what it has learned, and could greatly expedite 
 the process of loan approvals.
 
-As previously mentioned, the dataset is hosted on Kaggle's cloud database in a CSV file. Libraries such as Pandas
-natively work with these types of files which will allow for quick ingestion. However, when the dataset has been ingested,
+As previously mentioned, the dataset is hosted on Kaggle's cloud database, in the physical structure of a  
+CSV file, using a One Big Table (OBT) data schema for its logical structure.  
+Libraries such as Pandas natively work with these types of files which will allow for quick ingestion. 
+When the dataset is ingested, it will be stored in a MariaDB Columnstore instance, which is further 
+described in Section \ref{ch:PlanMLOps}. For this pipeline, the data will be kept in the OBT schema
+due to the simplicity and efficiency of queries performed on it, and also to ensure maximum data integrity
+that could be lost if the logical structure were modified. There were other options that could have been used
+instead of OBT, represented in Table \ref{tab:Schemas}
 
 
+\begin{longtable}{ |p{0.15\textwidth}| p{0.22\textwidth}| p{0.2\textwidth} | p{0.25\textwidth} | }
+    \hline
+    \cellcolor{blue!25}Schema & \cellcolor{blue!25}Description & \cellcolor{blue!25}Positives & \cellcolor{blue!25}Negatives \\
+    \hline
+    Star
+    \autocite{kaminsky_star_nodate} & Stores data across a main fact table for measured or transactional data, and dimension tables 
+    for data related to the fact data, which can be visualised like a star. & Simple to understand, few joins needed,
+    very scalable. & Data updates would require updates of multiple rows in multiple tables. Adding new columns
+    (dimensions) after initial creation can be difficult because the schema is denormalised.\\
+    \hline
+    Snowflake
+    \autocite{geeksforgeeks_snowflake_2023} & An extended form of the Star schema that further branches its dimension tables
+    into a hierarchy, appearing more like a snowflake than a star due to the multiple branches formed. &
+    Unlike a star schema, data is normalised, allowing data to be added easier than a star schema. & More 
+    complex to query due to the increased amount of tables, therefore requiring more processing power. \\
+    \hline
+    Normalised Relational Model 
+    \autocite{microsoft_database_2024} & Heavily organises data, and emphasises the relationships between tables. &
+    Keeps minimal or no redundant data whatsoever, reducing storage requirements. In doing so, this also heightens 
+    data integrity. & As with other schemas that use many tables, queries can be slowed by the need for multiple 
+    joins. \\
+    \hline 
+    \caption{An analysis of the alternative data schemas.}\label{tab:Schemas}
+\end{longtable}
 
-\chapter{Planning the MLOps Pipeline}\label{ch:MLOps}
+
+\chapter{Planning the MLOps Pipeline}\label{ch:PlanMLOps}
 All machine learning operations (MLOps) follow a five-step repeatable pipeline, outlined in Figure \ref{fig:MLPipeline}, where the output of one stage
 becomes the input of the next. 
 \begin{figure}[H]
@@ -580,9 +623,9 @@ repeated at certain intervals, which could be as simple as once a day, or it cou
 This repetition is performed automatically, so that the final model can become progressively more accurate. Because the process 
 must be repeatable and automated, it is essential that data is validated to ensure that one run of the pipeline where the data may have 
 been corrupted somehow would not cause issues, which would quickly spiral out of control as the pipeline is repeated again and again.
-These validation procedures and the software utilised for them are documented in Section \ref{sec:Software}.
 Overall, MLOps pipelines standardise the development and deployment process of machine learning models, ensuring continuous integration
 (CI) and continuous delivery (CD) and enhancing collaboration between data scientists and development teams.
+
 \pagebreak
 
 \section{Software to be used in the pipeline}
@@ -690,8 +733,8 @@ section.
     so they must first be serialized, converting them to a bytes format that Redis can store in memory.\\
     \hline
     Pickle &
-    A base package in Python that functions similarly to Arrow in the serialization of data. Pickle
-    specifically is used to serialize machine learning models.\\
+    A base package in Python that functions similarly to Arrow in the serialization of data \autocite{python_pickle_nodate}.
+    Pickle specifically will be used to serialize machine learning models.\\
     \hline
     Great Expectations &
     A Python library used for data validation, where "expectations" can be set for a dataset, such as 
@@ -714,10 +757,10 @@ section.
 The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data from its original source
 and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. This stage 
 is undertaken by data scientists.
-It is of vital importance that data is not lost or corrupted when it is ingested, as this stage is the baseline for all future stages in the pipeline, and any issues
-here will directly impact all future stages, as previously discussed. Though, when ingesting data, it is important to understand what type of system this data 
+It is of vital importance that data is not lost or corrupted during ingestion, as this stage is the baseline for all future stages in the pipeline, and any issues
+here will directly impact all future stages, as previously discussed. Furthermore, when ingesting data, it is important to understand what type of system this data 
 will be used in, of which there are two options: Online Analytics Processing Systems (OLAP), and Online Transactional Processing Systems (OLTP), as well 
-as how it will be loaded into this system, either using an ELT (Extract, Load, Transform) or ETL (Extract, Transform, Load) methodology.
+as how it will be loaded into the chosen system, either using an ELT (Extract, Load, Transform) or ETL (Extract, Transform, Load) methodology.
 
 \subsubsection{OLAP and OLTP}
 
@@ -757,8 +800,8 @@ happening before or after the data is loaded into a storage medium like a data w
 The extract phase refers to the intiial gathering of the data from its original source, such as Kaggle for 
 the selected dataset in this report. The transform phase refers to early modifications made to the data, such 
 as formatting or cleaning, and the load phase refers to the transportation of the data from its original storage
-medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and efficient system to be used 
-in the execution of the pipeline. More details on said systems can be found in Section \ref{sec:Software}.
+medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and efficient data warehouse to be used 
+in the execution of the pipeline.
 
 Regardless of whether ETL or ELT is used, the data is still extracted, loaded and transformed. However,
 the decision of which order to use can be determined from the data itself, with smaller datasets that may need 
@@ -800,9 +843,11 @@ fully ingested, whereas ELT has a clear split between the ingestion and preproce
 The candidate dataset utilises the One Big Table schema, and it was previously established in Section \ref{sec:Dataset}
 that it contains no missing values. The size of the dataset is the largest of the three candidates but is still
 small in comparison to those used in industry, being only 3.5MB in comparison to gigabytes and petabytes as previously 
-mentioned in Table \ref{tab:OLAP-OLTP}. The data will be ingested using ELT into a MariaDB Columnstore 
-OLTP database for quick and efficient loading and querying. To do so, some of the software originally mentioned in 
-Table \ref{tab:softwareDescriptions} will be used, seen in Table \ref{tab:IngestionSoftware}.
+mentioned in Table \ref{tab:OLAP-OLTP}. Because of this small size, processing operations performed on the dataset 
+will be very fast, even with limited processing power, so the ETL methodology will be used to ingest the data 
+into a MariaDB Columnstore OLTP database for quick and efficient loading and querying, where the end user will be 
+able to quickly supply predictor variables and receive a fast response. To do so, 
+some of the software originally mentioned in Table \ref{tab:softwareDescriptions} will be used, seen in Table \ref{tab:IngestionSoftware}.
 
 \pagebreak % REMOVE IF NEEDED
 
@@ -1015,7 +1060,7 @@ yield a higher accuracy model, which can be monitored again.
     \hline
     Mean Absolute Error (MAE) & The average of the differences between predicted and actual values. & Regression\\
     \hline
-    $R^2$ & Also known as the coefficient of determination, shows how well the predicted data fits the 
+    $R^2$ (R-Squared) & Also known as the coefficient of determination, shows how well the predicted data fits the 
     actual data \autocite{cfi_r-squared_nodate}. & Regression \\
     \hline
 \caption{Descriptions of various metrics to grade ML models.}\label{tab:metrics}
@@ -1023,16 +1068,49 @@ yield a higher accuracy model, which can be monitored again.
 
 
 \subsection{In this project}
-This pipeline aims to produce a binary classification model, so metrics such as F1-score will be useful in the analysis
+This pipeline aims to produce a binary classification model, so metrics such as F1-score will be useful in the evaluation
 of each iteration of the model. To do so, MLFlow will be used to store each iteration's parameters and performance
-metrics.
+metrics. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{MLFlowSample.png}
+    \caption{An example of the MLFlow monitoring dashboard \autocite{mlflow_mlflow_nodate}.}
+    \label{fig:MLFlowSample}
+\end{figure}
+
+\chapter{Reflection and Further Plans}
+The constructed plan should provide a clear set of instructions as well as the division of tasks 
+to successfully implement the ML pipeline. It facilitates all stages of the pipeline, as well as 
+covering all of the software intended to be used, and how it will be used, at each of the stages.
+However, this plan will see continuous and repeated iteration, much like the pipeline itself, to ensure 
+that the development of the pipeline can be a smooth process without any major issues.
+In future, each stage of the perfected plan will be executed to produce an optimal MLOps pipeline, with the final 
+product being an accurate binary classification model for identifying if a person should be permitted a 
+loan from thirteen predictor variables. 
+
+
+Through the development of this plan, considerable research into machine learning operations and the literature 
+surrounding them has resulted in several skills being obtained through the discovery and use of 
+a variety of software and libraries used across data engineering industries, such as but not limited to:
+
+\begin{itemize}
+    \item Pandas for data analysis.
+    \item Airflow for workflow design and execution.
+    \item Docker for software containerisation.
+    \item Database management systems (MariaDB in this project) for the efficient storage of data.
+    \item Machine learning libraries (Scikit-learn in this project) 
+    \item Data validation libraries (Great Expectations)
+    \item Webserver and API libraries (Uvicorn, FastAPI) to host frontend REST APIs.
+\end{itemize}
 
 
 
 
 % \chapter{Appendix}
-% \section{Data schemas}
-% \subsection{One Big Table (OBT)}
+% \section{Data structures}
+% \subsection{Logical structures}
+% \subsubsection{One Big Table (OBT)}
 
 % \subsection{Star}
 % Dimension tables etc
