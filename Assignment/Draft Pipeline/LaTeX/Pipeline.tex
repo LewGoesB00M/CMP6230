@@ -605,7 +605,7 @@ instead of OBT, represented in Table \ref{tab:Schemas}
     data integrity. & As with other schemas that use many tables, queries can be slowed by the need for multiple 
     joins. \\
     \hline 
-    \caption{An analysis of the alternative data schemas.}\label{tab:Schemas}
+    \caption{An analysis of alternative data schemas.}\label{tab:Schemas}
 \end{longtable}
 
 
@@ -753,10 +753,11 @@ section.
 \pagebreak
 
 \section{Data Ingestion}
+% \subsubsection{Input: Raw Data from Original Source (Loan CSV from Kaggle)\\Output: Ingested Data (Data in MariaDB Columnstore)}
 \subsection{Description}
-The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining data from its original source
+The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining the input data from its original source
 and transferring it to a relevant storage medium, such as a database or data warehouse, to be used in later stages. This stage 
-is undertaken by data scientists.
+is undertaken by data scientists. 
 It is of vital importance that data is not lost or corrupted during ingestion, as this stage is the baseline for all future stages in the pipeline, and any issues
 here will directly impact all future stages, as previously discussed. Furthermore, when ingesting data, it is important to understand what type of system this data 
 will be used in, of which there are two options: Online Analytics Processing Systems (OLAP), and Online Transactional Processing Systems (OLTP), as well 
@@ -840,8 +841,9 @@ preprocessing stages, as the data is transformed before it is actually loaded in
 fully ingested, whereas ELT has a clear split between the ingestion and preprocessing of the data. 
 
 \subsection{In this project}
-The candidate dataset utilises the One Big Table schema, and it was previously established in Section \ref{sec:Dataset}
-that it contains no missing values. The size of the dataset is the largest of the three candidates but is still
+The candidate dataset's CSV file, raw from Kaggle, will act as the input for this stage. It utilises the One Big Table schema, 
+and it was previously established in Section \ref{sec:Dataset} that it contains no missing values. 
+The size of the dataset is the largest of the three candidates but is still
 small in comparison to those used in industry, being only 3.5MB in comparison to gigabytes and petabytes as previously 
 mentioned in Table \ref{tab:OLAP-OLTP}. Because of this small size, processing operations performed on the dataset 
 will be very fast, even with limited processing power, so the ETL methodology will be used to ingest the data 
@@ -906,9 +908,10 @@ between data can mislead the classification algorithm \autocite{ibm_what_2021}.
 Once these tasks have all been completed, the dataset will be ready to be used for model development.
 
 \subsection{In this project}
-The preprocessing in this project will analyse the ingested data and transform columns such as "person\_gender"
-to categorically labelled numerical equivalents. To do so, some of the software and libraries originally mentioned 
-in Table \ref{tab:softwareDescriptions} will be used, shown below in Table \ref{tab:PreprocessingSoftware}
+The preprocessing in this project will take the ingested data as input, from which point it will be transformed,
+with columns such as "person\_gender" encoded to categorically labelled numerical equivalents. To do so, some of the software
+and libraries originally mentioned in Table \ref{tab:softwareDescriptions} will be used, shown below in Table \ref{tab:PreprocessingSoftware}.
+After this, the processed dataset will be the output of this stage, to be used for model development.
 
 
 \begin{longtable}{ |p{0.2\textwidth}| p{0.5\textwidth}|}
@@ -951,7 +954,7 @@ in Table \ref{tab:softwareDescriptions} will be used, shown below in Table \ref{
 
 \section{Model Development}\label{sec:Development}
 \subsection{Description}
-The model development stage uses the processed dataset from the preprocessing stage and leverages 
+The model development stage accepts the processed dataset from the preprocessing stage as input and leverages 
 machine learning algorithms to solve the problem in question, either a classification problem where 
 data will be identified as being of a certain category (class), or a regression problem where unknown 
 data can be predicted. Both of these problems require the model to be "fitted" and "trained".
