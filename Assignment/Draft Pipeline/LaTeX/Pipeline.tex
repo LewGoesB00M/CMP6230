@@ -117,7 +117,7 @@
         {\large \bfseries  \@title}\\[50ex]
         {\@author}\\[2ex]
         {CMP6230 - Data Management and Machine Learning Operations}\\[2ex]
-        {Module Coordinator: Dr. Sima Iranmanesh}\\[10ex]
+        {Module Coordinator: Sima Iranmanesh}\\[10ex]
     \end{center}
 \end{titlepage}
 \makeatother
@@ -132,13 +132,15 @@
 \tableofcontents
 \thispagestyle{empty}
 
-% \chapter*{Introduction}
-% \addcontentsline{toc}{chapter}{Introduction}
-% This report aims to design and document a five-stage Machine Learning Operations pipeline, beginning 
-% with the identification of three candidate datasets for the pipeline to be conducted with, and continuing 
-% into descriptions of each stage of the pipeline and how it will be implemented with the one chosen dataset.
-
-% I literally wrote that myself but it just reads like AI so I can't really include it. Such bullshit
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+This report aims to design and document a five-stage Machine Learning Operations pipeline, from the initial 
+data ingestion to the monitoring of the produced model, beginning 
+with the identification of three candidate datasets for the pipeline to be conducted with, and continuing 
+into descriptions of what each stage of the pipeline consists of, and how it will be implemented with the
+one chosen dataset using a wide variety of software that is also used within industry. When this plan 
+is implemented at a later stage, it will provide a clear framework to create an automated MLOps pipeline
+with continuous integration and deployment.
 
 
 \chapter{Candidate Data Sources}
@@ -161,9 +163,9 @@ on the cloud for public download and usage, as long as credit is given.
 
 This dataset in particular aims to assist in the diagnosis of liver
 disease due to increasing mortality rates from conditions like liver cirrhosis, and contains 584 records with 10 features
-as well as the "Selector" classification column, where those wihout liver disease are classed as 1, and those with liver disease 
+as well as the "Selector" classification column, where those without liver disease are classed as 1, and those with liver disease 
 are classed as 2. For the purposes of the ML model, these can be changed to 0 and 1 respectively. 
-The dataset is a single flat-file Comma-Seperated Values (CSV) file, which stores data by seperating each column with commas
+The dataset is a single flat-file Comma-Separated Values (CSV) file, which stores data by separating each column with commas
 and each row with line breaks. This CSV file uses a One Big Table (OBT) schema, as seen in the entity relationship diagram 
 in Figure \ref{fig:ILPD-ERD}, wherein all of the data within this dataset is stored in a single table. 
 The OBT schema is a denormalised schema that is useful for simple querying due to there being no need for table joins. 
@@ -350,22 +352,22 @@ this brief analysis. JSON files store data in \textbf{key-value pairs}, such as 
     \label{fig:spotifySnippet}
 \end{figure}
 
-Every row in the JSON files is part of the single "audio\_features" key, and each new row is seperated by curly braces \{\}. Each column is then given as a 
+Every row in the JSON files is part of the single "audio\_features" key, and each new row is separated by curly braces \{\}. Each column is then given as a 
 key-value pair, such as the first row in Figure \ref{fig:spotifySnippet}, where "danceability" is the key, and 0.352 is the associated value.
 
 \noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
 \href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
-Liked and disliked songs are seperated into two JSON files, named "dislike" and "good". The two JSON files have 18 features, as depicted in Figure 
+Liked and disliked songs are separated into two JSON files, named "dislike" and "good". The two JSON files have 18 features, as depicted in Figure 
 \ref{fig:JSON-ERD}. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.75\linewidth]{SpotifyJSON-ERD.png}
-    \caption{An entity relationship diagram of the two JSON files. Data does not overlap between them, so they have no relation.}
+    \caption{An entity relationship diagram of the two JSON files.}
     \label{fig:JSON-ERD}
 \end{figure}
 
-This dataset has been used to create machine learning models before, most notably by its own author, who has a public Github repository 
+This dataset has been used to create machine learning models before, most notably by its own author, who has a public GitHub repository 
 showcasing their work \autocite{brice-vergnou_brice-vergnouspotify_recommendation_2024}. 
 Before publicising this data, however, the author had done some preprocessing of their own, having included the additional CSV file,
 produced as a result of merging the two JSON files into one CSV and removing unnecessary columns, as depicted in Figure \ref{fig:Spotify-ERD}.
@@ -375,7 +377,7 @@ and \ref{fig:Spotify-NA}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=.5\linewidth]{Spotify-ERD.png}
-    \caption{An entity relationship diagram of the preprocessed CSV file.}
+    \caption{An entity relationship diagram of the author's preprocessed CSV file.}
     \label{fig:Spotify-ERD}
 \end{figure}
 
@@ -496,7 +498,7 @@ instead consists of synthetic data. This is likely due to the fact that this dat
 information that could not be shared online due to legislation such as GDPR. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
 which also did not provide an original source and is also presumably synthetic data. The enhancements added were three additional 
 columns, for the hypothetical person's gender, education level and credit score. Additionally, the author balanced the dataset using 
-Synhetic Minority Oversampling Technique (SMOTE), an oversampling algorithm designed to balance datasets to produce higher
+Synthetic Minority Oversampling Technique (SMOTE), an oversampling algorithm designed to balance datasets to produce higher
 quality machine learning models \autocite{microsoft_smote_2024}.
 It can therefore be established that this dataset was created solely for research and analysis purposes, including 
 for the creation of supervised learning models. The dataset consists of 45,000 records and 14 features, with 
@@ -576,7 +578,9 @@ descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
     \caption{The descriptions of each column in the dataset.}\label{tab:Loan-Types}
 \end{table}
 
-This dataset is also frequently updated, with its most recent update occurring on the 29th October.
+This dataset is also frequently updated, with its most recent update occurring on the 29th of October.
+This would mean it may be more suited to an OLTP database system, which will be further discussed in Section 
+\ref{sec:Ingestion}.
 
 \section{Chosen dataset}
 Of the three candidates presented, the most suitable for a machine learning operations pipeline would be Candidate 3, the loan approval dataset. As mentioned 
@@ -651,8 +655,8 @@ section.
     \hline
     Conda 
     & A package and environment management system which allows 
-    for software developers and data scientists to easily control the libraries used in their code. Allows 
-    for the creation of \textbf{virtual environments}, which are contained structures where packages can be installed.
+    for software developers and data scientists to easily control the libraries used in their code \autocite{anaconda_about_nodate}. 
+    Allows for the creation of \textbf{virtual environments}, which are contained structures where packages can be installed.
     The use of virtual environments allows for specific versions of packages to be kept, for instance with one environment 
     storing an older version of a library for compatibility purposes, with another storing a newer version to be used in a different project. 
     Were it not for these virtual environments, developers would constantly have to uninstall and reinstall specific package versions, wasting 
@@ -730,7 +734,7 @@ section.
     Facilitates an API for clients to access the backend ML model later in the pipeline. \\
     \hline
     Uvicorn &
-    A low-level webserver implentation in Python with high performance \autocite{uvicorn_uvicorn_nodate}.\\
+    A low-level webserver implementation in Python with high performance \autocite{uvicorn_uvicorn_nodate}.\\
     \hline
     MLFlow &
     An open-source platform for the tracking and monitoring of machine learning models, 
@@ -764,7 +768,7 @@ section.
 
 \pagebreak
 
-\section{Data Ingestion}
+\section{Data Ingestion}\label{sec:Ingestion}
 % \subsubsection{Input: Raw Data from Original Source (Loan CSV from Kaggle)\\Output: Ingested Data (Data in MariaDB Columnstore)}
 \subsection{Description}
 The first step of any machine learning pipeline is data ingestion. This refers to the process of obtaining the input data from its original source
@@ -810,7 +814,7 @@ which is necessary in situations like processing payments and orders.
 \subsubsection{ELT and ETL}
 ELT and ETL are both acronyms for the order of processes taken when ingesting data, with "Transform" either 
 happening before or after the data is loaded into a storage medium like a data warehouse or data lake. 
-The extract phase refers to the intiial gathering of the data from its original source, such as Kaggle for 
+The extract phase refers to the initial gathering of the data from its original source, such as Kaggle for 
 the selected dataset in this report. The transform phase refers to early modifications made to the data, such 
 as formatting or cleaning, and the load phase refers to the transportation of the data from its original storage
 medium (a CSV on Kaggle's cloud servers in this case) to a more optimised and efficient data warehouse to be used 
@@ -894,7 +898,7 @@ some of the software originally mentioned in Table \ref{tab:softwareDescriptions
     \label{fig:IngestionDiagram}
 \end{figure}
 
-\pagebreak % Seperating Fig 2.3 from preprocessing section.
+\pagebreak % separating Fig 2.3 from preprocessing section.
 
 \section{Data Preprocessing}\label{sec:Preprocessing}
 \subsection{Description}
@@ -1022,8 +1026,8 @@ time depending on how many decision trees it is told to create.
 \subsection{Description}
 The developed model from the previous stage of the pipeline can then be integrated into an actual environment,
 and can be utilised as a tool to make decisions. This stage is where software engineers will make the model 
-available for use, and will therefore begin to be provided with unseen data, which refers to data outside of
-the original training dataset. Models are typically deployed using Representational State Transfer APIs, 
+available for use, and where the model will therefore begin to be provided with unseen data, which refers to data 
+outside of the original training dataset. Models are typically deployed using Representational State Transfer APIs, 
 better known as REST APIs \autocite{redhat_what_nodate}. REST APIs make use of typical frontend web 
 HTTP requests (GET, POST, PUT, DELETE) from the client to give instructions to the backend machine learning
 model \autocite{restfulapi_what_2023}. A significant benefit of using REST APIs is the 
@@ -1097,7 +1101,8 @@ metrics.
     \label{fig:MLFlowSample}
 \end{figure}
 
-\chapter{Conclusion}
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
 The constructed plan should provide a clear set of instructions as well as the division of tasks 
 to successfully implement the ML pipeline. It facilitates all stages of the pipeline, as well as 
 covering all of the software intended to be used, and how it will be used, at each of the stages.
