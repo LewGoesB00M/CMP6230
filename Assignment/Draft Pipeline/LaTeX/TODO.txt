@@ -1,32 +1,3 @@
-FINAL TODOs BEFORE SUBMISSION:
-    Perhaps most importantly, remember that this 
-    is only worth 20%. It's not catastrophic 
-    if small areas are missing.
-
-    Section 1 still may benefit from being rewritten.
-    It's loads of pages but maybe one page of actual writing.
-        Sima seemed to like it, though she mentioned she didn't
-        have the task sheet in front of her to make sure it was 
-        definitely as it should be.
-
-    Specify inputs and outputs of ML pipeline stages.
-
-    [[[
-        Assistant lecturer recommended an overall flow diagram 
-        of the entire process at the beginning of the planning chapter
-        because there's a lot of reading necessary for it.
-
-        Alternatively, do not do any diagrams at all.
-        They noticed how similar they were to EX4.
-        However, what else can I do? EX4 literally is 
-        exactly what a diagram of my process would also 
-        be. This is what I settled on doing.
-    ]]]
-
-    "No worries about that" relating to the word count?
-    Focus mainly on the data part, section 1 is KEY.
-
-    Assessment brief mentions an abstract. Easy enough,
-    also adds to the academic feel.
-
-    LAST MINUTE - CORRELATION MATRIX OF LOAN DATASET
+Time is up.
+It looks mostly submittable right now,
+but give it the final proofread.

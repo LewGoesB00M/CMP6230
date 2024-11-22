@@ -802,6 +802,41 @@
       \verb https://www.incyclesoftware.com/azure-machine-learning-enterprise-accelerator
       \endverb
     \endentry
+    \entry{kaggle_kaggle_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8fec9765921cfa63cb331e42a924c27c}{%
+           family={{Kaggle}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{fullhash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{fullhashraw}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{bibnamehash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{authorbibnamehash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{authornamehash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{authorfullhash}{8fec9765921cfa63cb331e42a924c27c}
+      \strng{authorfullhashraw}{8fec9765921cfa63cb331e42a924c27c}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kaggle: Your Home for Data Science}
+      \field{urlday}{15}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Kaggle\: Your Home for Data Science:C\:\\Users\\Lewis\\Zotero\\storage\\ELXEZNDG\\www.kaggle.com.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.kaggle.com/
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/
+      \endverb
+    \endentry
     \entry{kaminsky_star_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=4ce7390da57289e9d86884c3d923b036}{%
@@ -1030,6 +1065,47 @@
       \endverb
       \verb{url}
       \verb https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
+      \endverb
+    \endentry
+    \entry{microsoft_smote_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=140864078aeca1c7c35b4beb33c53c34}{%
+           family={{Microsoft}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{fullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{bibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorbibnamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authornamehash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhash}{140864078aeca1c7c35b4beb33c53c34}
+      \strng{authorfullhashraw}{140864078aeca1c7c35b4beb33c53c34}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Learn how to use the {SMOTE} component in Azure Machine Learning to increase the number of low-incidence examples in a dataset by using oversampling.}
+      \field{day}{28}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{{SMOTE} - Azure Machine Learning}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\DT62KK5T\\smote.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/azure/machine-learning/component-reference/smote?view=azureml-api-2
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/azure/machine-learning/component-reference/smote?view=azureml-api-2
       \endverb
     \endentry
     \entry{mlflow_mlflow_nodate}{online}{}{}
