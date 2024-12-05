@@ -1,5 +1,0 @@
-The lab work for this module almost entirely takes place on the Ubuntu VM on my laptop. 
-It isn't particularly feasible for me to transfer this work onto Github due to the 
-technicalities posed by that.
-
-However, assignment work can and will be carried across devices.
