@@ -1,0 +1,2 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qblue!25Software/Library blue!25Overview Conda A package and environment management system which allows for software developers and data scientists to easily control the libraries used in their code \\E(?:Dummy|Ina|Jimmy-|Dummy-)[0-9]+\\Q.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QModel Evaluation.\\E$"}

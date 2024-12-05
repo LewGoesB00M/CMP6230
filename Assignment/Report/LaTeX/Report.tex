@@ -39,8 +39,11 @@
     \printfield{eid}}
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 
-% Declare it as the bibliography source, to be called later via \printbibliography
-\addbibresource{report.bib}
+% Declaring both bib sources.
+% Pipeline is the original one copied from draft pipeline, Report is new for this.
+% This is because pipeline.bib is over a thousand lines long.
+\addbibresource{Pipeline.bib}
+\addbibresource{Report.bib}
 
 % -------------------------------------------------------------------------------
 % To prevent "Chapter N" display for each chapter
@@ -78,9 +81,29 @@
 \lhead{Lewis Higgins - ID 22133848~~~~~~~~~~~~~~~\includegraphics[width=1.75cm]{BCU}}
 \fancyhead[R]{\leftmark}
 
+% ------------------------------------------------------------------------------
+% Used to add PDF hyperlinks for figures and the contents page.
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=black,
+}
+
+% ------------------------------------------------------------------------------
+\usepackage{xcolor} 
+\usepackage{colortbl}
+\usepackage{longtable}
+\usepackage{amssymb}
+% ------------------------------------------------------------------------------
+\usepackage{tcolorbox}
 % -------------------------------------------------------------------------------
 
-\title{CMP6230 Report}
+\title{Data Management and MLOps Activities Log Report}
 \author{Lewis Higgins - Student ID 22133848}
 \date{December 2024}
 
@@ -93,10 +116,11 @@
 \begin{titlepage}
     \begin{center}
         \includegraphics[width=0.7\linewidth]{BCU}\\[4ex]
-        {\large \bfseries  \@title }\\[2ex]
-        {\large \bfseries  DRAFT VERSION }\\[2ex]
-        {\@author}\\[30ex]
-        {Word count: XXXX}\\[20ex]
+        {\huge \bfseries CMP6230 - Assignment 2}\\[2ex]
+        {\large \bfseries  \@title}\\[50ex]
+        {\@author}\\[2ex]
+        {CMP6230 - Data Management and Machine Learning Operations}\\[2ex]
+        {Module Coordinator: Sima Iranmanesh}\\[10ex]
     \end{center}
 \end{titlepage}
 \makeatother
@@ -110,14 +134,43 @@
 \tableofcontents
 \thispagestyle{empty}
 
-% Declaring un-numbered chapter because I prefer how it looks.
 \chapter*{Introduction}
-% Add it to the contents, because un-numbered chapters aren't by default.
 \addcontentsline{toc}{chapter}{Introduction}
-% Put the chapter name in the header.
-\markboth{Introduction}{}
+This report aims to design and document a five-stage Machine Learning Operations pipeline, from the initial 
+data ingestion to the monitoring of the produced model, beginning 
+with the identification of three candidate datasets for the pipeline to be conducted with, and continuing 
+into descriptions of what each stage of the pipeline consists of, and how it will be implemented with the
+one chosen dataset using a wide variety of software that is also used within industry. When this plan 
+is implemented at a later stage, it will provide a clear framework to create an automated MLOps pipeline
+with continuous integration and deployment.
 
-Text text text
+% Importing the sections from the original report here.
+\include{Datasets.tex}
+\include{PipelineStages.tex}
 
+% Apparently this can only go 500 words over the word count. You are already past that with the inclusion 
+% of those two TeX files.
+% 2012 + 3208 + This word count.
+
+\chapter{Implementation of the MLOps Pipeline}
+
+\section{Ethical and Legal Considerations}
+
+% REVIEW TASK SHEETS 2, 3 AND 4.
+% NOT SURE OF THE SEQUENCE OF 3 AND 4, CHECK EXAMPLE WORK.
+
+\section{Data Ingestion}
+
+\section{Data Preprocessing}
+
+\section{Model Development}
+
+\section{Model Deployment}
+
+\section{Model Evaluation}
+
+
+\printbibliography
 
 \end{document}
+
