@@ -147,10 +147,13 @@ with continuous integration and deployment.
 % Importing the sections from the original report here.
 \include{Datasets.tex}
 \include{PipelineStages.tex}
+% Side-note: I think this actually builds immensely faster because it's not recompiling those two every time,
+% it just stores the processed version in the .aux files to be instantly reused.
+
 
 % Apparently this can only go 500 words over the word count. You are already past that with the inclusion 
-% of those two TeX files.
-% 2012 + 3208 + This word count.
+% of those two TeX files. She doesn't seem massively strict over it though, stating "it's just a module".
+% 2012 + 3208 + This word count, unless you change either Datasets.tex or PipelineStages.tex.
 
 \chapter{Implementation of the MLOps Pipeline}
 
@@ -158,6 +161,25 @@ with continuous integration and deployment.
 
 % REVIEW TASK SHEETS 2, 3 AND 4.
 % NOT SURE OF THE SEQUENCE OF 3 AND 4, CHECK EXAMPLE WORK.
+% Example 2 (SimonRoadknight) is 21,334 words, or 18,809 without its appendices and references.
+% Example 3 (MihaiValentin) is 12,802 words.
+
+% Answer one of these two questions:
+% ---
+% What are the origins of the General Data Protection Regulations (GDPR), what did regulators
+% hope to achieve when implementing it, and what has been its impact on organisations?
+% ---
+% If you answer that one, it goes in this section. 
+
+% OR:
+% What is Synthetic Data and what are the common methods that are currently leveraged to attempt
+% to perform Synthetic Data Generation?
+
+% If you answer that, I don't know what section it goes in.
+% Maybe either one of these would simply be an Appendix?
+
+% Install LTeX Plus for VSCode live grammar & spellchecks.
+
 
 \section{Data Ingestion}
 
