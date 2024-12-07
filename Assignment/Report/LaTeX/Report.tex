@@ -101,6 +101,7 @@
 \usepackage{amssymb}
 % ------------------------------------------------------------------------------
 \usepackage{tcolorbox}
+\newcommand{\para}{\vspace{7pt}\noindent}
 % -------------------------------------------------------------------------------
 
 \title{Data Management and MLOps Activities Log Report}
@@ -156,43 +157,99 @@ with continuous integration and deployment.
 % of those two TeX files. She doesn't seem massively strict over it though, stating "it's just a module".
 % 2012 + 3208 + This word count, unless you change either Datasets.tex or PipelineStages.tex.
 
-\chapter{Implementation of the MLOps Pipeline}
+\section{Data terminology}\label{sec:dataTerms} % Poor section title, consider something else.
+This project must take into account four key elements of data handling these being data privacy, security, 
+ethics and data protection laws. 
 
+\begin{longtable}{ | p{0.2\textwidth} | p{0.7\textwidth} |}
+    \hline
+    \cellcolor{blue!25}Term & \cellcolor{blue!25}Description\\
+    \hline
+    Data privacy & An individual's ability to govern what happens to their personal data \autocite{cloudflare_what_nodate}. Personal data 
+    refers to data that could be used to singularly identify someone \autocite{yang_big_2021}.\\
+    \hline
+    Data security & The protection of personal/sensitive information from unauthorized access, use or manipulation \autocite{ibm_security_2021}.
+    This can be the physical protection of material such as hard drives, and software protections like encryption. \\
+    \hline
+    Data ethics & A blanket term encompassing the moral obligations of data collection, use and protection \autocite{harvard_business_school_5_2021}.
+    Ethical data storage would mean that the data subjects willingly gave their data and can ask for its deletion at any point. 
+    Mandated by data protection legislation. \\
+    \hline 
+    Big data ethics & The application of data ethics to massive datasets, concerning the implications of their collection and use on society as a whole
+    \autocite{richards_big_2014}. \\ % Poor definition I think, maybe rewrite this one.
+    \hline 
+    General Data \newline Protection \newline Regulations (GDPR) & Legislation introduced in the EU in 2016, giving individuals significantly more 
+    rights over their personal data. Data subjects most notably may request a copy of their data, the removal of their data, and to object to their data's 
+    collection \autocite{ico_guide_2024}. Additionally, data must be kept secure using all available means. Companies who fail to adhere to these policies
+    face significant sanctions of \euro10,000,000 or 2\% of the company's annual turnover for minor violations, or double this (\euro20,000,000, 4\% turnover)
+    for major violations, whichever figure is higher. \\
+    \hline
+    Data Protection Act 2018 & When the UK left the EU, the GDPR no longer applied. Therefore, the UK adopted the GDPR as an amendment to its own
+    Data Protection Act. There are minimal differences between the two, only that the UK's fines are in GBP rather than Euros, meaning fines go up 
+    to \pounds17,500,000 or 4\% turnover \autocite{ico_enforcement_2024}. \\
+    \hline
+\caption{A brief overview of relevant data terminology.}\label{tab:dataTerms}
+% Maybe it shouldn't be "brief". I think GDPR especially needs its own paragraph moreso than a table column.
+\end{longtable}
+
+
+\chapter{Implementation of the MLOps Pipeline}
 \section{Ethical and Legal Considerations}
-Given that the chosen dataset consists of synthetic data, there are fewer necessary considerations for its use.
 The dataset was shared under an Apache 2.0 open-source licence, permitting access and modification with no restrictions
-other than crediting the original author \autocite{apache_apache_nodate}. 
+except crediting the original author \autocite{apache_apache_nodate}, meaning that there are not any ethical or legal 
+considerations of note with this dataset's usage. Given that the chosen dataset also consists of synthetic data,
+there are fewer necessary considerations for its use.
+
+\subsection{Synthetic data}
+% What is Synthetic Data and what are the common methods that are currently leveraged to attempt
+% to perform Synthetic Data Generation?
+This term has been frequently used throughout the report to describe the Loan Approval Classification Dataset, and refers to 
+data that has been generated algorithmically rather than collected from a real source. However, the generation of the 
+synthetic data does often depend on real data to identify patterns and trends, meaning that legislation such as GDPR is still relevant
+in those scenarios because the generated data must be impossible to link back to the original subject \autocite{Lopez2022OnTL}.
+An example of synthetic data generation is SMOTE, which was used in the generation of the loan dataset \autocite{zoppelleto_financial_nodate}, 
+which creates synthetic data in a dataset based on the other rows as previously mentioned in Section \ref{sec:Dataset}. SMOTE will also be used in Section 
+\ref{sec:ImpPreprocessing} to balance the dataset.
+
 
 % REVIEW TASK SHEETS 2, 3 AND 4.
 % NOT SURE OF THE SEQUENCE OF 3 AND 4, CHECK EXAMPLE WORK.
 % Example 2 (SimonRoadknight) is 21,334 words, or 18,809 without its appendices and references.
 % Example 3 (MihaiValentin) is 12,802 words.
 
-% Answer one of these two questions:
-% ---
-% What are the origins of the General Data Protection Regulations (GDPR), what did regulators
-% hope to achieve when implementing it, and what has been its impact on organisations?
-% ---
-% If you answer that one, it goes in this section. 
 
-% OR:
-% What is Synthetic Data and what are the common methods that are currently leveraged to attempt
-% to perform Synthetic Data Generation?
 
-% If you answer that, I don't know what section it goes in.
-% Maybe either one of these would simply be an Appendix?
+\section{Initial Software Setup}
+ % Intro to section here
 
-% Install LTeX Plus for VSCode live grammar & spellchecks.
+\subsection{VirtualBox \& Ubuntu}
+The majority of data scientists utilise Linux distributions for their projects due to its open-source nature and the 
+availability of many tools and packages. Therefore, VirtualBox, software to create a virtual machine which runs inside the host 
+machine \autocite{oracle_oracle_nodate}, will be used to virtualise an Ubuntu 22.04 LTS system on the Windows host machine. This 
+particular OS was chosen because of its relative recency and frequent software \& security updates. Virtual machines
+also allow for "snapshots", which store the current state of the machine and its files at that time to be restored at any point in the 
+event of unforeseen errors. Should a catastrophic error that would damage the system occur, the host machine would be unaffected as the 
+virtual machine is isolated.
 
-\section{Data Ingestion}
+% Screenshots of VBox here. Settings.
+% !! SIGNIFICANT OBSERVATION !! MIHAI'S ENTIRE IMPLEMENTATION SECTION [[CONTAINS NO TEXT!]] 
 
-\section{Data Preprocessing}
+\subsection{Conda environments}
 
-\section{Model Development}
+\subsection{Airflow} % Maybe not. Probably talk about the DAGs within their respective section - ingestion, preprocessing etc.
 
-\section{Model Deployment}
+\section{Data Ingestion}\label{sec:ImpIngestion}
 
-\section{Model Evaluation}
+\section{Data Preprocessing}\label{sec:ImpPreprocessing}
+
+\section{Model Development}\label{sec:ImpDevelopment}
+
+\section{Model Deployment}\label{sec:ImpDeployment}
+
+\section{Model Evaluation}\label{sec:ImpEvaluation}
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
 
 
 \printbibliography

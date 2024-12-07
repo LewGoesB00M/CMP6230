@@ -57,7 +57,7 @@
       \verb https://www.anaconda.com/about-us
       \endverb
     \endentry
-    \entry{apache_streaming_nodate}{online}{}{}
+    \entry{apache_apache_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
            family={{Apache}},
@@ -75,6 +75,43 @@
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Apache License, Version 2.0}
+      \field{urlday}{5}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Apache License, Version 2.0:C\:\\Users\\Lewis\\Zotero\\storage\\3BB655FD\\LICENSE-2.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.apache.org/licenses/LICENSE-2.0
+      \endverb
+      \verb{url}
+      \verb https://www.apache.org/licenses/LICENSE-2.0
+      \endverb
+    \endentry
+    \entry{apache_streaming_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
+           family={{Apache}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
@@ -105,10 +142,10 @@
       \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
       \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
       \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradate}{2}
+      \field{extradate}{3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
@@ -454,6 +491,44 @@
       \verb https://my.clevelandclinic.org/health/diagnostics/22029-alkaline-phosphatase-alp
       \endverb
     \endentry
+    \entry{cloudflare_what_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3f07179a07b2a7661e37a3fd0e652a07}{%
+           family={{Cloudflare}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{fullhash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{fullhashraw}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{bibnamehash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{authorbibnamehash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{authornamehash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{authorfullhash}{3f07179a07b2a7661e37a3fd0e652a07}
+      \strng{authorfullhashraw}{3f07179a07b2a7661e37a3fd0e652a07}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Data privacy is the ability of individuals to control their personal information. Read about challenges users face to protect their online privacy.}
+      \field{langid}{english}
+      \field{shorttitle}{What is data privacy?}
+      \field{title}{What is data privacy? {|} Privacy definition}
+      \field{urlday}{6}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\BQXUR5JB\\what-is-data-privacy.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cloudflare.com/learning/privacy/what-is-data-privacy/
+      \endverb
+      \verb{url}
+      \verb https://www.cloudflare.com/learning/privacy/what-is-data-privacy/
+      \endverb
+    \endentry
     \entry{creative_commons_deed_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=42cef1da263e6f8e017a4942c4a82bbb}{%
@@ -764,6 +839,89 @@
       \verb https://www.greatexpectations.io/gx-core
       \endverb
     \endentry
+    \entry{harvard_business_school_5_2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=55adb76be19b662d6656e10607d12866}{%
+           family={{Harvard Business School}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{55adb76be19b662d6656e10607d12866}
+      \strng{fullhash}{55adb76be19b662d6656e10607d12866}
+      \strng{fullhashraw}{55adb76be19b662d6656e10607d12866}
+      \strng{bibnamehash}{55adb76be19b662d6656e10607d12866}
+      \strng{authorbibnamehash}{55adb76be19b662d6656e10607d12866}
+      \strng{authornamehash}{55adb76be19b662d6656e10607d12866}
+      \strng{authorfullhash}{55adb76be19b662d6656e10607d12866}
+      \strng{authorfullhashraw}{55adb76be19b662d6656e10607d12866}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Data ethics encompasses the moral obligations of gathering, protecting, and using personally identifiable information and how it affects individuals.}
+      \field{day}{16}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{5 Principles of Data Ethics for Business}
+      \field{titleaddon}{Business Insights Blog}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\W83KA9A8\\data-ethics.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://online.hbs.edu/blog/post/data-ethics
+      \endverb
+      \verb{url}
+      \verb https://online.hbs.edu/blog/post/data-ethics
+      \endverb
+    \endentry
+    \entry{ibm_security_2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=cbf44511d041dc6d1dd73cc0c033122c}{%
+           family={{IBM}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{bibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Data security is the practice of protecting digital information from unauthorized access, corruption or theft throughout its entire lifecycle.}
+      \field{day}{11}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{shorttitle}{What Is Data Security?}
+      \field{title}{What Is Data Security? {|} {IBM}}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ibm.com/topics/data-security
+      \endverb
+      \verb{url}
+      \verb https://www.ibm.com/topics/data-security
+      \endverb
+    \endentry
     \entry{ibm_what_2021}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=cbf44511d041dc6d1dd73cc0c033122c}{%
@@ -778,8 +936,10 @@
       \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
       \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
       \strng{authorfullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \field{extraname}{2}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -801,6 +961,92 @@
       \endverb
       \verb{url}
       \verb https://www.ibm.com/topics/knn
+      \endverb
+    \endentry
+    \entry{ico_guide_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=11281e86c14f08f002b75fc7b0a1ab08}{%
+           family={{ICO}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{fullhash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{fullhashraw}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{bibnamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorbibnamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authornamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorfullhash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorfullhashraw}{11281e86c14f08f002b75fc7b0a1ab08}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{13}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{note}{Publisher: {ICO}}
+      \field{title}{A guide to individual rights}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\UGF9U4VV\\individual-rights.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/
+      \endverb
+      \verb{url}
+      \verb https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/
+      \endverb
+    \endentry
+    \entry{ico_enforcement_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=11281e86c14f08f002b75fc7b0a1ab08}{%
+           family={{ICO}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{fullhash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{fullhashraw}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{bibnamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorbibnamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authornamehash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorfullhash}{11281e86c14f08f002b75fc7b0a1ab08}
+      \strng{authorfullhashraw}{11281e86c14f08f002b75fc7b0a1ab08}
+      \field{extraname}{2}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{note}{Publisher: {ICO}}
+      \field{title}{Enforcement of this code}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\K8E8LH6T\\enforcement-of-this-code.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/data-sharing-a-code-of-practice/enforcement-of-this-code/
+      \endverb
+      \verb{url}
+      \verb https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/data-sharing-a-code-of-practice/enforcement-of-this-code/
       \endverb
     \endentry
     \entry{incycle_software_mlops_nodate}{online}{}{}
@@ -993,6 +1239,44 @@
       \verb https://www.kaggle.com/datasets/taweilo/loan-approval-classification-data
       \endverb
     \endentry
+    \entry{Lopez2022OnTL}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d2853280bc5370fadf38e24df39131ff}{%
+           family={Lopez},
+           familyi={L\bibinitperiod},
+           given={Cesar},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0868b216d3268f217dada9fe83bfad0e}{%
+           family={Elbi},
+           familyi={E\bibinitperiod},
+           given={Abdullah},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{fullhash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{fullhashraw}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{bibnamehash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{authorbibnamehash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{authornamehash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{authorfullhash}{ad8c2888864053f4f55e9cf870cd89a9}
+      \strng{authorfullhashraw}{ad8c2888864053f4f55e9cf870cd89a9}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{On the legal nature of synthetic data}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:253079794
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:253079794
+      \endverb
+    \endentry
     \entry{mariadb_mariadb_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=7f9733e208088b1ce6df3d4be1765396}{%
@@ -1182,6 +1466,41 @@
       \verb mlflow.org
       \endverb
     \endentry
+    \entry{oracle_oracle_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=30162ed78b6c10f731411f2fc440c24f}{%
+           family={{Oracle}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{fullhash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{fullhashraw}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{bibnamehash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{authorbibnamehash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{authornamehash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{authorfullhash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{authorfullhashraw}{30162ed78b6c10f731411f2fc440c24f}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Oracle {VirtualBox}}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Oracle VirtualBox:C\:\\Users\\Lewis\\Zotero\\storage\\HUKC9SJ3\\www.virtualbox.org.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.virtualbox.org/
+      \endverb
+      \verb{url}
+      \verb https://www.virtualbox.org/
+      \endverb
+    \endentry
     \entry{pandas_pandas_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=3a43b4f88325d94022c0efa9c2fa2f5a}{%
@@ -1333,6 +1652,64 @@
       \verb{url}
       \verb https://restfulapi.net/
       \endverb
+    \endentry
+    \entry{richards_big_2014}{misc}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0044baa2924b2f1ac6252fad4f4ed129}{%
+           family={Richards},
+           familyi={R\bibinitperiod},
+           given={Neil\bibnamedelima M.},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cf2b17e323fbb2757ffd2299f1dd0c07}{%
+           family={King},
+           familyi={K\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Rochester, {NY}}%
+      }
+      \list{publisher}{1}{%
+        {Social Science Research Network}%
+      }
+      \strng{namehash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{fullhash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{fullhashraw}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{bibnamehash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{authorbibnamehash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{authornamehash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{authorfullhash}{f9a90eeaaf244303fd484c3193a11167}
+      \strng{authorfullhashraw}{f9a90eeaaf244303fd484c3193a11167}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We are on the cusp of a “Big Data” Revolution, in which increasingly large datasets are mined for important predictions and often surprising insights. The predictions and decisions this revolution will enable will transform our society in ways comparable to the Industrial Revolution. We are now at a critical moment; big data uses today will be sticky and will settle both default norms and public notions of what is “no big deal” regarding big data predictions for years to come.}
+      \field{day}{19}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{2384174}
+      \field{title}{Big Data Ethics}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\Lewis\\Zotero\\storage\\ILZPHWND\\Richards and King - 2014 - Big Data Ethics.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://papers.ssrn.com/abstract=2384174
+      \endverb
+      \verb{url}
+      \verb https://papers.ssrn.com/abstract=2384174
+      \endverb
+      \keyw{Big Data Ethics,Jonathan King,Neil M. Richards,{SSRN}}
     \endentry
     \entry{scikit-learn_scikit-learn_nodate}{online}{}{}
       \name{author}{1}{}{%
@@ -1732,6 +2109,100 @@
       \endverb
       \verb{url}
       \verb https://www.kaggle.com/datasets/bricevergnou/spotify-recommendation
+      \endverb
+    \endentry
+    \entry{yang_big_2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=590e4e39e560d4f5c33781113cd98b41}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{fullhash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{fullhashraw}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{bibnamehash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{authorbibnamehash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{authornamehash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{authorfullhash}{590e4e39e560d4f5c33781113cd98b41}
+      \strng{authorfullhashraw}{590e4e39e560d4f5c33781113cd98b41}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the development of Internet technology, we have ushered in the “big data era”. The arrival of big data has made data calculation, acquisition, and statistics more convenient, and has had a significant impact on people’s lives, social management, and national governance. However, because the information unearthed by big data analysis technology may exceed people’s imagination, its privacy issues have also attracted much attention. This paper first briefly introduces the definition and current status of big data and its privacy issues, describes the privacy protection link model, and then starts from the privacy protection technology of big data, introduces the K-anonymization traditional big data privacy protection technology, advantages and disadvantages, Specific algorithms, etc.}
+      \field{issn}{1742-6596}
+      \field{journaltitle}{Journal of Physics: Conference Series}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{note}{Publisher: {IOP} Publishing}
+      \field{number}{1}
+      \field{shortjournal}{J. Phys.: Conf. Ser.}
+      \field{title}{Big Data Privacy Protection Technology}
+      \field{urlday}{6}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{volume}{2037}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{012136}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1742-6596/2037/1/012136
+      \endverb
+      \verb{file}
+      \verb IOP Full Text PDF:C\:\\Users\\Lewis\\Zotero\\storage\\73ZKNXBN\\Yang - 2021 - Big Data Privacy Protection Technology.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/1742-6596/2037/1/012136
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/1742-6596/2037/1/012136
+      \endverb
+    \endentry
+    \entry{zoppelleto_financial_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e889d6812e285ac27d66d3bd3ed454b8}{%
+           family={Zoppelleto},
+           familyi={Z\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{fullhash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{fullhashraw}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{bibnamehash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{authorbibnamehash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{authornamehash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{authorfullhash}{e889d6812e285ac27d66d3bd3ed454b8}
+      \strng{authorfullhashraw}{e889d6812e285ac27d66d3bd3ed454b8}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Datasets for both regression on {RiskScore} and binary classification on {LoanAppr}}
+      \field{langid}{english}
+      \field{title}{Financial Risk for Loan Approval}
+      \field{urlday}{7}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\KCKZTU5U\\data.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval
       \endverb
     \endentry
   \enddatalist
