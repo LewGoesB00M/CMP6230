@@ -231,12 +231,49 @@ also allow for "snapshots", which store the current state of the machine and its
 event of unforeseen errors. Should a catastrophic error that would damage the system occur, the host machine would be unaffected as the 
 virtual machine is isolated.
 
-% Screenshots of VBox here. Settings.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\linewidth]{Implementation/VBoxConfig.png}
+    \caption{The configuration for the pipeline's VM.}
+    \label{fig:VBoxConfig}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Neofetch.png}
+    \caption{The VM's Neofetch display.}
+    \label{fig:Neofetch}
+\end{figure}
+
 % !! SIGNIFICANT OBSERVATION !! MIHAI'S ENTIRE IMPLEMENTATION SECTION [[CONTAINS NO TEXT!]] 
 
-\subsection{Conda environments}
+\subsection{Conda environment and packages}
+% Short description to go here, just putting screenshots for now.
 
-\subsection{Airflow} % Maybe not. Probably talk about the DAGs within their respective section - ingestion, preprocessing etc.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/CondaCreationAlt.png}
+    \caption{Creating the "Pipeline" Conda environment.}
+    \label{fig:CondaCreation}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/CondaPackages.png}
+    \caption{Installing packages to the environment via Conda.}
+    \label{fig:CondaPackages}
+\end{figure}
+
+
+
+
+
+% Not sure if you'll eventually face the Flask error with FastAPI. Its fix involved uninstalling and reinstalling Flask.
+
+
+% \subsection{Airflow} % Maybe not. Probably talk about the DAGs within their respective section - ingestion, preprocessing etc.
+% Example 2 (SimonRoadknight) does include this section, detailing the initial setup with "airflow db init". In your VM's current state, I don't think you can do that 
+% because you did it weeks ago in one of the labs.
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
 
