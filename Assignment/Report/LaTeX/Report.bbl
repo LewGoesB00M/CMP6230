@@ -1746,6 +1746,41 @@
       \verb https://scikit-learn.org/stable/
       \endverb
     \endentry
+    \entry{sky_news_worlds_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bf4571b94429c5b18e0a219c197a56a4}{%
+           family={{Sky News}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{fullhash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{fullhashraw}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{bibnamehash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{authorbibnamehash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{authornamehash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{authorfullhash}{bf4571b94429c5b18e0a219c197a56a4}
+      \strng{authorfullhashraw}{bf4571b94429c5b18e0a219c197a56a4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{John Tinniswood was born in Liverpool on 26 August 1912 and became the world's oldest living man in April 2024.}
+      \field{langid}{english}
+      \field{title}{World's oldest man dies aged 112, Guinness World Records announces}
+      \field{titleaddon}{Sky News}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://news.sky.com/video/worlds-oldest-man-dies-aged-112-guinness-world-records-announces-13260926
+      \endverb
+      \verb{url}
+      \verb https://news.sky.com/video/worlds-oldest-man-dies-aged-112-guinness-world-records-announces-13260926
+      \endverb
+    \endentry
     \entry{smallcombe_etl_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=5f501bbf252a3a76247223ab51a330ed}{%

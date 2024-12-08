@@ -323,6 +323,187 @@ After this, the processed dataset will be output to Redis, to be used as the inp
 \end{figure}
 
 
+\pagebreak
+
+\subsection{Data analysis} % Missed this from the original submission.
+To build a machine learning model for a dataset, it greatly helps to understand the data itself.
+
+\subsubsection{Distributions and outliers}
+Understanding the data means to know how the data is typically distributed, and what constitutes an outlier. This can be 
+done through visualisations such as box plots for numerical data and bar charts for categorical data.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Gender.png}
+        \caption{Genders}
+        \label{fig:Bar1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Education.png}
+        \caption{Education levels}
+        \label{fig:Bar2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/HomeOwnership.png}
+        \caption{Home ownership}
+        \label{fig:Bar3}
+    \end{subfigure}
+    
+    \vspace{1em}
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/LoanIntent.png}
+        \caption{Loan intents}
+        \label{fig:Bar4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/DefaultsOnFile.png}
+        \caption{Previously defaulted}
+        \label{fig:Bar5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/LoanStatus.png}
+        \caption{Loan status}
+        \label{fig:Bar6}
+    \end{subfigure}
+    \caption{Bar charts of the six categorical rows.}
+    \label{fig:BarCharts}
+\end{figure}
+
+A notable observation is that the dataset is imbalanced, containing fewer records of granted 
+loans than denied loans.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Age.png}
+        \caption{Age}
+        \label{fig:Boxplot1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Income.png}
+        \caption{Yearly income}
+        \label{fig:Boxplot2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Employment.png}
+        \caption{Previous jobs}
+        \label{fig:Boxplot3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/LoanAmount.png}
+        \caption{Loan amount}
+        \label{fig:Boxplot4}
+    \end{subfigure}
+    
+    \vspace{1em}
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/InterestRate.png}
+        \caption{Interest rate}
+        \label{fig:Boxplot5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/PercentIncome.png}
+        \caption{Percentage of income}
+        \label{fig:Boxplot6}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/CreditHistory.png}
+        \caption{Credit history length}
+        \label{fig:Boxplot7}
+    \end{subfigure}
+    
+    \caption{Box plots of all numerical columns.}
+    \label{fig:Boxplots}
+\end{figure}
+
+There are many outliers in this dataset, most notably in the income column, where very few are earning millions.
+Also, the age column has some outliers of extremely old people, including one aged 140, who cannot exist as the oldest 
+person known was 112 before they died \autocite{sky_news_worlds_nodate}. This can therefore likely be attributed 
+to erroneous generation due to this dataset being synthetic, and records with considerable outliers like this can 
+be safely removed in the implementation's preprocessing phase.
+
+\subsubsection{Encoding}
+Machine learning models cannot directly interpret string data. Therefore, strings must be encoded to numerical representations
+through either label encoding or one-hot encoding. Label encoding is best suited to ordinal data as it will maintain the ordering 
+of said data, such as levels of education. One-hot encoding is better suited to nominal data without an inherent order, such as 
+the intent of a loan. Therefore, this dataset requires the use of both types of encoding, shown in Figures \ref{fig:LabelEncoding}
+and \ref{fig:OneHotEncoding}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pandas/LabelEncoding.png}
+    \caption{Using label encoding for the person\_education column.}
+    \label{fig:LabelEncoding}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pandas/OneHotEncoding.png}
+    \caption{Using one-hot encoding for the person\_education column.}
+    \label{fig:OneHotEncoding}
+\end{figure}
+
+\subsubsection{Correlations}
+The easiest way to view the correlations between variables is through a correlation matrix, seen below in Figure \ref{fig:BigMatrix}, which 
+cannot be created unless data is first encoded. However, an immediate observation is the sheer size of the matrix due to an unfortunate side 
+effect from one-hot encoding creating entirely new columns, increasing the dimensionality of the dataset. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Plots/BigMatrix.png}
+    \caption{The full correlation matrix for the encoded dataset.}
+    \label{fig:BigMatrix}
+\end{figure}
+
+% To remedy this, the matrix can be produced after first filtering the dataset's correlations to only include rows with over 0.5 correlation 
+% to each other. This is not a necessary process, but was done for easier viewing.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\linewidth]{Plots/MiniMatrix.png}
+%     \caption{The filtered correlation matrix for the encoded dataset.}
+%     \label{fig:MiniMatrix}
+% \end{figure}
+
+Despite this, key insights can still be made about the likelihood of a loan being granted, such as:
+
+\begin{itemize}
+    \item Loans are most likely to be approved if the person has never defaulted on a loan before.
+    \begin{itemize}
+        \item They are least likely to be approved if the person has defaulted before.
+    \end{itemize}
+    \item The interest rate positively correlates with the loan's approval.
+    \item If the person rents their home, they are more likely to be approved.
+    \begin{itemize}
+        \item They are less likely to be approved if they have a mortgage.
+    \end{itemize}
+    \item Loans are more likely to be approved if they are a large percentage of the person's yearly income.
+\end{itemize}
 
 \section{Model Development}\label{sec:Development}
 \subsection{Description}
