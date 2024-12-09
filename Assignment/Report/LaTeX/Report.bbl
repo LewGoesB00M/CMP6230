@@ -564,6 +564,43 @@
       \verb https://creativecommons.org/publicdomain/zero/1.0/
       \endverb
     \endentry
+    \entry{digitalocean_how_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=73a76fbbbd72a5aebae27785fa05c794}{%
+           family={{DigitalOcean}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{fullhash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{fullhashraw}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{bibnamehash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{authorbibnamehash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{authornamehash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{authorfullhash}{73a76fbbbd72a5aebae27785fa05c794}
+      \strng{authorfullhashraw}{73a76fbbbd72a5aebae27785fa05c794}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Master containerized applications with Docker on Ubuntu 20.04. Work effectively with images, containers, and Docker repositories.}
+      \field{langid}{english}
+      \field{title}{How To Install and Use Docker on Ubuntu 20.04 {|} {DigitalOcean}}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\9WDY4SE5\\how-to-install-and-use-docker-on-ubuntu-20-04.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+      \endverb
+      \verb{url}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+      \endverb
+    \endentry
     \entry{docker_docker_2022}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=c5fd214cdd0d2b3b4272e73b022ba5c2}{%

@@ -156,6 +156,7 @@ with continuous integration and deployment.
 % Apparently this can only go 500 words over the word count. You are already past that with the inclusion 
 % of those two TeX files. She doesn't seem massively strict over it though, stating "it's just a module".
 % 2012 + 3597 + This word count, unless you change either Datasets.tex or PipelineStages.tex.
+% 5609 + This
 
 \section{Data terminology}\label{sec:dataTerms} % Poor section title, consider something else.
 This project must take into account four key elements of data handling these being data privacy, security, 
@@ -193,7 +194,7 @@ ethics and data protection laws.
 \end{longtable}
 
 
-\chapter{Implementation of the MLOps Pipeline}
+\chapter{Implementing the MLOps Pipeline}
 \section{Ethical and Legal Considerations}
 The dataset was shared under an Apache 2.0 open-source licence, permitting access and modification with no restrictions
 except crediting the original author \autocite{apache_apache_nodate}, meaning that there are not any ethical or legal 
@@ -220,7 +221,7 @@ which creates synthetic data in a dataset based on the other rows as previously 
 
 
 \section{Initial Software Setup}
- % Intro to section here
+This section details the configuration and installation of the key software and packages within the pipeline.
 
 \subsection{VirtualBox \& Ubuntu}
 The majority of data scientists utilise Linux distributions for their projects due to its open-source nature and the 
@@ -248,24 +249,104 @@ virtual machine is isolated.
 % !! SIGNIFICANT OBSERVATION !! MIHAI'S ENTIRE IMPLEMENTATION SECTION [[CONTAINS NO TEXT!]] 
 
 \subsection{Conda environment and packages}
-% Short description to go here, just putting screenshots for now.
+This section details the installation of the Miniconda distribution as well as the creation of 
+the Pipeline environment and installation of packages to it.
+
+\subsubsection{Installing Miniconda}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.75\linewidth]{Implementation/CondaCreationAlt.png}
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/1.png}
+    \caption{Getting the latest Miniconda installation script.}
+    \label{fig:CondaInstall1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/2.png}
+    \caption{Executing the Miniconda installation script.}
+    \label{fig:CondaInstall2}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/3.png}
+%     \caption{Agreeing to Miniconda's license terms.}
+%     \label{fig:CondaInstall3}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/4.png}
+    \caption{Making Conda run automatically in all shells.}
+    \label{fig:CondaInstall4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/6.png}
+    \caption{Adding conda-forge as a channel for package retrieval.}
+    \label{fig:CondaInstall6}
+\end{figure}
+
+\subsubsection{Creating environments and installing packages}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/CondaCreation.png}
     \caption{Creating the "Pipeline" Conda environment.}
     \label{fig:CondaCreation}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{Implementation/CondaPackages.png}
+    \includegraphics[width=\linewidth]{Implementation/Conda/CondaPackages.png}
     \caption{Installing packages to the environment via Conda.}
     \label{fig:CondaPackages}
 \end{figure}
 
 
+\pagebreak
 
+\subsection{Docker and Docker images}
+The installation process of Docker is lengthy, and can therefore be found in Appendix A. % The appendix is something you'll need to think about.
+This section covers the downloading of the two necessary Docker images, MariaDB Columnstore and Redis. 
+Their usage is further elaborated upon later in this chapter. The images for the containers will first need to be
+downloaded from Docker's repository, shown in Figure \ref{fig:DockerPull}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Pull.png}
+    \caption{Pulling the Docker images.}
+    \label{fig:DockerPull}
+\end{figure}
+
+\subsubsection{MariaDB Columnstore}
+MariaDB Columnstore runs on port 3306, but is accessed through port 3307.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/1.png}
+    \caption{Creating the MariaDB Columnstore container.}
+    \label{fig:CreateMCS}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/2.png}
+    \caption{Creating the user account for MariaDB.}
+    \label{fig:CreateMCSUser}
+\end{figure}
+
+\subsubsection{Redis}
+Redis runs on port 6379.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Redis/1.png}
+    \caption{Creating the Redis container.}
+    \label{fig:CreateRedis}
+\end{figure}
 
 
 % Not sure if you'll eventually face the Flask error with FastAPI. Its fix involved uninstalling and reinstalling Flask.
@@ -273,7 +354,9 @@ virtual machine is isolated.
 
 % \subsection{Airflow} % Maybe not. Probably talk about the DAGs within their respective section - ingestion, preprocessing etc.
 % Example 2 (SimonRoadknight) does include this section, detailing the initial setup with "airflow db init". In your VM's current state, I don't think you can do that 
-% because you did it weeks ago in one of the labs.
+% because you did it weeks ago in one of the labs. This is a major issue, and you'll likely need to make a new VM to compensate for it.
+% Alternatively, revert the existing VM to a snapshot taken before each installation, and screenshot the installation processes.
+% This way should be shorter.
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
 
@@ -287,6 +370,62 @@ virtual machine is isolated.
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
+
+
+\chapter*{Appendix A - Docker installation}
+\addcontentsline{toc}{chapter}{Appendix A - Docker installation}
+Docker's install process on a fresh Ubuntu system is quite lengthy due to a lot of 
+system configuration being required. This installation process follows 
+\textcite{digitalocean_how_nodate}'s guide.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/1.png}
+    \caption{Installing HTTPS certificates.}
+    \label{fig:DockerInstall1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/2.png}
+    \caption{Adding Docker's public GPG key for checksum validation.}
+    \label{fig:DockerInstall2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/3.png}
+    \caption{Adding Docker's download page to Ubuntu's list of package repositories.}
+    \label{fig:DockerInstall3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/4.png}
+    \caption{Checking if Docker is installed, which it is not.}
+    \label{fig:DockerInstall4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/5.png}
+    \caption{Installing Docker.}
+    \label{fig:DockerInstall5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/6.png}
+    \caption{Confirming that the Docker service is running.}
+    \label{fig:DockerInstall6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/7.png}
+    \caption{Adding the VM user to the Docker group so they can execute commands.}
+    \label{fig:DockerInstall7}
+\end{figure}
 
 
 \printbibliography
