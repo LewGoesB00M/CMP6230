@@ -876,6 +876,45 @@
       \endverb
       \keyw{Aseer Ahmad Ansari,Binayak Chakrabarti,Kanishk Gupta,Loanification - Loan Approval Classification using Machine Learning Algorithms,Manjusha Pandey,Siddharth Swarup Rautaray,{SSRN}}
     \endentry
+    \entry{gx_expectation_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0a5b65725f6a3ba95821cec61dbb46d3}{%
+           family={{GX}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{fullhash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{fullhashraw}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{bibnamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorbibnamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authornamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorfullhash}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \strng{authorfullhashraw}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{An Expectation Suite is a collection of verifiable assertions about data.}
+      \field{langid}{english}
+      \field{title}{Expectation Suite {|} Great Expectations}
+      \field{urlday}{10}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\RS69XGWS\\expectation_suite.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://docs.greatexpectations.io/docs/0.18/reference/learn/terms/expectation_suite/
+      \endverb
+      \verb{url}
+      \verb https://docs.greatexpectations.io/docs/0.18/reference/learn/terms/expectation_suite/
+      \endverb
+    \endentry
     \entry{gx_gx_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0a5b65725f6a3ba95821cec61dbb46d3}{%
@@ -890,8 +929,10 @@
       \strng{authornamehash}{0a5b65725f6a3ba95821cec61dbb46d3}
       \strng{authorfullhash}{0a5b65725f6a3ba95821cec61dbb46d3}
       \strng{authorfullhashraw}{0a5b65725f6a3ba95821cec61dbb46d3}
+      \field{extraname}{2}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{2}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}

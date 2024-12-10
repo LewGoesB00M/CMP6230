@@ -35,7 +35,7 @@ This section details the installation of packages to the Pipeline environment.
     \label{fig:CondaCreation}
 \end{figure}
 
-\para Python 3.8 is used due to package compatibility issues with later versions of Python.
+\para Python 3.9.7 is used due to package compatibility issues with later versions of Python.
 
 \begin{figure}[H]
     \centering
@@ -58,7 +58,7 @@ downloaded from Docker's repository, shown in Figure \ref{fig:DockerPull}.
 
 \pagebreak 
 \subsubsection{MariaDB Columnstore}
-MariaDB Columnstore runs on port 3306, but is accessed through port 3307.
+MariaDB Columnstore runs on port 3306, but is mapped to port 3307 to avoid a possible Docker error.
 
 \begin{figure}[H]
     \centering
@@ -154,3 +154,108 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
     \caption{MLFlow's web UI.}
     \label{fig:MLFlowEmptyUI}
 \end{figure}
+
+\subsection{Great Expectations}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/1.png}
+    \caption{Checking the installed GX version and initialising it.}
+    \label{fig:GXVersion}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/2.png}
+    \caption{Confirmation of the successful initialisation.}
+    \label{fig:GXInitConfirm}
+\end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/3.png}
+%     \caption{Viewing the contents of the created directory.}
+%     \label{fig:GXDir}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/4.png}
+    \caption{Creating a new data source (1/3)}
+    \label{fig:GXDatasource1}
+\end{figure}
+
+\para This pipeline uses GX version 0.18.15 as seen previously in Figure \ref{fig:GXVersion},
+meaning it supports their new fluent configuration. However, this will not be necessary,
+and the data source can be created from the CLI.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/5.png}
+    \caption{Creating a new data source (2/3)}
+    \label{fig:GXDatasource2}
+\end{figure}
+
+\para This data source must be named, so "LoanApproval\_DataSource" was used.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/6.png}
+    \caption{Creating a new data source (3/3)}
+    \label{fig:GXDatasource3}
+\end{figure}
+
+\para Upon running the final block of code in the Jupyter notebook prompted by 
+GX, the data source is finalised. Next, a suite must be created to allow for the easy creation of expectations \autocite{gx_expectation_nodate}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/7.png}
+    \caption{Creating a new suite (1/2)}
+    \label{fig:GXSuite1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/8.png}
+    \caption{Creating a new suite (2/2). The full list of expectations is in Table \ref{tab:Expectations}.}
+    \label{fig:GXSuite2}
+\end{figure}
+
+\begin{longtable}{ | p{0.4\textwidth} | p{0.5\textwidth} |}
+    \hline
+    \cellcolor{blue!25}Item & \cellcolor{blue!25}Expectation\\
+    \hline
+    Dataset & Must be exactly 14 columns. \\
+    \hline
+    loan\_status & Must not be null. \newline Must be 0 or 1. \\
+    \hline 
+    person\_gender & Must be 'female' or 'male'. \\
+    \hline 
+    person\_education & Must be 'Bachelor', 'Associate', 'High School', 'Master', or 'Doctorate'. \\
+    \hline
+    person\_home\_ownership & Must be 'RENT', 'MORTGAGE', 'OWN', or 'OTHER'.\\
+    \hline 
+    loan\_intent & Must be 'EDUCATION', 'MEDICAL', 'VENTURE', 'PERSONAL', 'DEBTCONSOLIDATION', or 'HOMEIMPROVEMENT'.\\
+    \hline 
+    previous\_loan\_defaults\_on\_file & Must be 'Yes' or 'No'. \\
+    \hline
+    credit\_score & Must be between 350 and 900. \\
+    \hline
+    cb\_person\_cred\_hist\_length & Must be between 0 and 30. \\
+    \hline
+    loan\_percent\_income & Must be between 0 and 0.8. \\
+    \hline
+    loan\_int\_rate & Must be between 5.0 and 30.0. \\
+    \hline
+    loan\_amnt & Must be between 0 and 50,000. \\
+    \hline 
+    person\_emp\_exp & Must be between 0 and 125. \\
+    \hline 
+    person\_income & Must be greater than 5000. \\
+    \hline 
+    person\_age & Must be greater than 0. \\
+    \hline
+\caption{Expectations set for the dataset and its columns.}\label{tab:Expectations}
+\end{longtable}
+
