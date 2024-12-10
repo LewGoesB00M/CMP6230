@@ -338,6 +338,13 @@ MariaDB Columnstore runs on port 3306, but is accessed through port 3307.
     \label{fig:CreateMCSUser}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/3.png}
+    \caption{Creating the database for later use.}
+    \label{fig:CreateDB}
+\end{figure}
+
 \subsubsection{Redis}
 Redis runs on port 6379.
 
@@ -357,6 +364,13 @@ Redis runs on port 6379.
 % because you did it weeks ago in one of the labs. This is a major issue, and you'll likely need to make a new VM to compensate for it.
 % Alternatively, revert the existing VM to a snapshot taken before each installation, and screenshot the installation processes.
 % This way should be shorter.
+
+% \subsection{MLFlow}
+% Running MLFlow server is only necessary once. 
+% When that command is run, it also runs mlflow ui by itself.
+% In future use, MLFlow's UI is accessed via mlflow ui and then localhost:5000.
+
+% Consider moving the entire 'Initial Software Setup' section into an appendix.
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
 
