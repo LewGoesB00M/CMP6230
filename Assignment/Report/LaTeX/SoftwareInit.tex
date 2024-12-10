@@ -1,0 +1,156 @@
+\section{Initial Software Setup}
+This section details the configuration of the key software and packages within the pipeline. The installation 
+processes of Miniconda and Docker are very lengthy and can therefore be found in Appendix A.
+
+\subsection{VirtualBox \& Ubuntu}
+The majority of data scientists utilise Linux distributions for their projects due to its open-source nature and the 
+availability of many tools and packages. Therefore, VirtualBox, software to create a virtual machine which runs inside the host 
+machine \autocite{oracle_oracle_nodate}, will be used to virtualise an Ubuntu 22.04 LTS system on the Windows host machine. This 
+particular OS was chosen because of its relative recency and frequent software \& security updates. Virtual machines
+also allow for "snapshots", which store the current state of the machine and its files at that time to be restored at any point in the 
+event of unforeseen errors. Should a catastrophic error that would damage the system occur, the host machine would be unaffected as the 
+virtual machine is isolated.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\linewidth]{Implementation/VBoxConfig.png}
+    \caption{The configuration for the pipeline's VM.}
+    \label{fig:VBoxConfig}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Neofetch.png}
+    \caption{The VM's Neofetch display.}
+    \label{fig:Neofetch}
+\end{figure}
+
+\subsection{Conda environment and packages}
+This section details the installation of packages to the Pipeline environment.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/Conda/CondaCreation.png}
+    \caption{Creating the "Pipeline" Conda environment.}
+    \label{fig:CondaCreation}
+\end{figure}
+
+\para Python 3.8 is used due to package compatibility issues with later versions of Python.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Conda/CondaPackages.png}
+    \caption{Installing packages to the environment via Conda.}
+    \label{fig:CondaPackages}
+\end{figure}
+
+\subsection{Docker and Docker images}
+This section covers the downloading of the two necessary Docker images, MariaDB Columnstore and Redis. 
+Their usage is further elaborated upon later in this chapter. The images for the containers will first need to be
+downloaded from Docker's repository, shown in Figure \ref{fig:DockerPull}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Pull.png}
+    \caption{Pulling the Docker images.}
+    \label{fig:DockerPull}
+\end{figure}
+
+\pagebreak 
+\subsubsection{MariaDB Columnstore}
+MariaDB Columnstore runs on port 3306, but is accessed through port 3307.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/1.png}
+    \caption{Creating the MariaDB Columnstore container.}
+    \label{fig:CreateMCS}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/2.png}
+    \caption{Creating the user account for MariaDB.}
+    \label{fig:CreateMCSUser}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/3.png}
+    \caption{Creating the database for later use.}
+    \label{fig:CreateDB}
+\end{figure}
+
+\pagebreak 
+\subsubsection{Redis}
+Redis runs on port 6379.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Redis/1.png}
+    \caption{Creating the Redis container.}
+    \label{fig:CreateRedis}
+\end{figure}
+
+
+\subsection{Airflow and MLFlow initialisation}
+Airflow and MLFlow do not immediately work upon install, and must first be initialised.
+
+\subsubsection{Airflow}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/1.png}
+    \caption{Initialising Airflow's database.}
+    \label{fig:AirflowInit}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/2.png}
+    \caption{Creating an administrative Airflow user.}
+    \label{fig:AirflowUser1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/3.png}
+    \caption{Verifying that the user was created.}
+    \label{fig:AirflowUser2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/4.png}
+    \caption{Successfully starting Airflow's web server.}
+    \label{fig:AirflowWebserver}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/5.png}
+    \caption{Successfully starting Airflow's task scheduler.}
+    \label{fig:AirflowScheduler}
+\end{figure}
+
+\subsubsection{MLFlow}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/MLFlow/Initialisation/1.png}
+    \caption{Creating a directory for MLFlow and initialising its database.}
+    \label{fig:MLFlowInit}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/MLFlow/Initialisation/3.png}
+    \caption{Running MLFlow's frontend web UI.}
+    \label{fig:MLFlowUICmd}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/MLFlow/Initialisation/2.png}
+    \caption{MLFlow's web UI.}
+    \label{fig:MLFlowEmptyUI}
+\end{figure}

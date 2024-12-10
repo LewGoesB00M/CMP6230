@@ -212,6 +212,31 @@ An example of synthetic data generation is SMOTE, which was used in the generati
 which creates synthetic data in a dataset based on the other rows as previously mentioned in Section \ref{sec:Dataset}. SMOTE will also be used in Section 
 \ref{sec:ImpPreprocessing} to balance the dataset.
 
+\subsection{Model drift}
+Model drift is a phenomenon that affects deployed production machine learning models where changes in 
+their environment over time affects their performance \autocite{nigenda_amazon_2022}. Model drift is not an 
+immediate occurrence, and can take a long time to occur, emphasising the importance of continuous integration and deployment. 
+Table \ref{tab:Drift} details the different kinds of model drift.
+
+\begin{longtable}{ | p{0.2\textwidth} | p{0.4\textwidth} | p{0.3\textwidth} |}
+    \hline
+    \cellcolor{blue!25}Drift type & \cellcolor{blue!25}Description & \cellcolor{blue!25}Dataset example\\
+    \hline
+    Data drift & Changes in the distributions of the ingested data over time that eventually significantly differ from the model's training data \autocite{datacamp_understanding_nodate}.
+    & In this dataset, interest rates and people's yearly income may change as time passes or economic inflation occurs.\\
+    \hline
+    Concept drift & Changes in the relationship between the input and target variables \autocite{nigenda_amazon_2022}. 
+    & In this dataset, this is somewhat unlikely. However, it could occur if there is a significant housing or job market crash 
+    that would cause more people to need loans, which would change the original relationships.\\
+    \hline
+\caption{The common types of model drift.}\label{tab:Drift}
+\end{longtable}
+
+\pagebreak % It's just barely on the same page as the table but I don't want it to be.
+\para Model drift can be a significant issue that greatly impacts the performance of ML models if it is not quickly noticed, and can 
+also be an ethical concern if the model is being used to influence decisions such as granting loans in this project. 
+Therefore, combatting model drift through methods such as continuous monitoring is necessary to ensure that the model remains accurate 
+and usable. This can be accomplished in this project through MLFlow's monitoring dashboard.
 
 % REVIEW TASK SHEETS 2, 3 AND 4.
 % NOT SURE OF THE SEQUENCE OF 3 AND 4, CHECK EXAMPLE WORK.
@@ -220,157 +245,10 @@ which creates synthetic data in a dataset based on the other rows as previously 
 
 
 
-\section{Initial Software Setup}
-This section details the configuration and installation of the key software and packages within the pipeline.
-
-\subsection{VirtualBox \& Ubuntu}
-The majority of data scientists utilise Linux distributions for their projects due to its open-source nature and the 
-availability of many tools and packages. Therefore, VirtualBox, software to create a virtual machine which runs inside the host 
-machine \autocite{oracle_oracle_nodate}, will be used to virtualise an Ubuntu 22.04 LTS system on the Windows host machine. This 
-particular OS was chosen because of its relative recency and frequent software \& security updates. Virtual machines
-also allow for "snapshots", which store the current state of the machine and its files at that time to be restored at any point in the 
-event of unforeseen errors. Should a catastrophic error that would damage the system occur, the host machine would be unaffected as the 
-virtual machine is isolated.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.5\linewidth]{Implementation/VBoxConfig.png}
-    \caption{The configuration for the pipeline's VM.}
-    \label{fig:VBoxConfig}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Neofetch.png}
-    \caption{The VM's Neofetch display.}
-    \label{fig:Neofetch}
-\end{figure}
-
-% !! SIGNIFICANT OBSERVATION !! MIHAI'S ENTIRE IMPLEMENTATION SECTION [[CONTAINS NO TEXT!]] 
-
-\subsection{Conda environment and packages}
-This section details the installation of the Miniconda distribution as well as the creation of 
-the Pipeline environment and installation of packages to it.
-
-\subsubsection{Installing Miniconda}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/1.png}
-    \caption{Getting the latest Miniconda installation script.}
-    \label{fig:CondaInstall1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/2.png}
-    \caption{Executing the Miniconda installation script.}
-    \label{fig:CondaInstall2}
-\end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/3.png}
-%     \caption{Agreeing to Miniconda's license terms.}
-%     \label{fig:CondaInstall3}
-% \end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/4.png}
-    \caption{Making Conda run automatically in all shells.}
-    \label{fig:CondaInstall4}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Conda/Installation/6.png}
-    \caption{Adding conda-forge as a channel for package retrieval.}
-    \label{fig:CondaInstall6}
-\end{figure}
-
-\subsubsection{Creating environments and installing packages}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/Conda/CondaCreation.png}
-    \caption{Creating the "Pipeline" Conda environment.}
-    \label{fig:CondaCreation}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Conda/CondaPackages.png}
-    \caption{Installing packages to the environment via Conda.}
-    \label{fig:CondaPackages}
-\end{figure}
-
-
-\pagebreak
-
-\subsection{Docker and Docker images}
-The installation process of Docker is lengthy, and can therefore be found in Appendix A. % The appendix is something you'll need to think about.
-This section covers the downloading of the two necessary Docker images, MariaDB Columnstore and Redis. 
-Their usage is further elaborated upon later in this chapter. The images for the containers will first need to be
-downloaded from Docker's repository, shown in Figure \ref{fig:DockerPull}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Pull.png}
-    \caption{Pulling the Docker images.}
-    \label{fig:DockerPull}
-\end{figure}
-
-\subsubsection{MariaDB Columnstore}
-MariaDB Columnstore runs on port 3306, but is accessed through port 3307.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/1.png}
-    \caption{Creating the MariaDB Columnstore container.}
-    \label{fig:CreateMCS}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/2.png}
-    \caption{Creating the user account for MariaDB.}
-    \label{fig:CreateMCSUser}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/MariaDB/3.png}
-    \caption{Creating the database for later use.}
-    \label{fig:CreateDB}
-\end{figure}
-
-\subsubsection{Redis}
-Redis runs on port 6379.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Redis/1.png}
-    \caption{Creating the Redis container.}
-    \label{fig:CreateRedis}
-\end{figure}
-
+\include{SoftwareInit}
 
 % Not sure if you'll eventually face the Flask error with FastAPI. Its fix involved uninstalling and reinstalling Flask.
 
-
-% \subsection{Airflow} % Maybe not. Probably talk about the DAGs within their respective section - ingestion, preprocessing etc.
-% Example 2 (SimonRoadknight) does include this section, detailing the initial setup with "airflow db init". In your VM's current state, I don't think you can do that 
-% because you did it weeks ago in one of the labs. This is a major issue, and you'll likely need to make a new VM to compensate for it.
-% Alternatively, revert the existing VM to a snapshot taken before each installation, and screenshot the installation processes.
-% This way should be shorter.
-
-% \subsection{MLFlow}
-% Running MLFlow server is only necessary once. 
-% When that command is run, it also runs mlflow ui by itself.
-% In future use, MLFlow's UI is accessed via mlflow ui and then localhost:5000.
-
-% Consider moving the entire 'Initial Software Setup' section into an appendix.
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
 
@@ -385,61 +263,7 @@ Redis runs on port 6379.
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-
-\chapter*{Appendix A - Docker installation}
-\addcontentsline{toc}{chapter}{Appendix A - Docker installation}
-Docker's install process on a fresh Ubuntu system is quite lengthy due to a lot of 
-system configuration being required. This installation process follows 
-\textcite{digitalocean_how_nodate}'s guide.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/1.png}
-    \caption{Installing HTTPS certificates.}
-    \label{fig:DockerInstall1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/2.png}
-    \caption{Adding Docker's public GPG key for checksum validation.}
-    \label{fig:DockerInstall2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/3.png}
-    \caption{Adding Docker's download page to Ubuntu's list of package repositories.}
-    \label{fig:DockerInstall3}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/4.png}
-    \caption{Checking if Docker is installed, which it is not.}
-    \label{fig:DockerInstall4}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/5.png}
-    \caption{Installing Docker.}
-    \label{fig:DockerInstall5}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/6.png}
-    \caption{Confirming that the Docker service is running.}
-    \label{fig:DockerInstall6}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/Docker/Installation/7.png}
-    \caption{Adding the VM user to the Docker group so they can execute commands.}
-    \label{fig:DockerInstall7}
-\end{figure}
+\include{SoftwareInstall}
 
 
 \printbibliography
