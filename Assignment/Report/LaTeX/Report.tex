@@ -259,7 +259,8 @@ and usable. This can be accomplished in this project through MLFlow's monitoring
 % Your prototypes in the .ipynb do not get put here. Instead, ensure that they all work in there but then convert them 
 % to Airflow DAGs. This means that all five of these sections simply can't be written until you do DAG conversion.
 
-
+% It's up to you how you do the DAGs. I think all of your functions go into respective files and are imported to Pipeline.py.
+% From there, create individual tasks for each function. Look into Task Groups to then group said individual tasks into Ingestion, Preprocessing, etc.
 
 
 \section{Data Preprocessing}\label{sec:ImpPreprocessing}
@@ -271,6 +272,12 @@ and usable. This can be accomplished in this project through MLFlow's monitoring
 \section{Model Evaluation}\label{sec:ImpEvaluation}
 
 \section{Potential security enhancements}\label{sec:SecurityEnhancements}
+
+\section{Development challenges}
+During the implementation of the pipeline, it was discovered that many of PyArrow's useful functions are now 
+deprecated. This made serializing data much harder, and for this reason an alternative package was identified:
+Direct-Redis. Direct-Redis builds on top of the Redis package, but will instantly serialize and deserialize data 
+when set() or get() is called.
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
