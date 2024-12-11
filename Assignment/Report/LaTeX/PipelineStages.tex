@@ -97,15 +97,16 @@ section.
     which is especially useful while performing hyperparameter tuning on the model, which is where 
     small details of the model are changed such as the number of decision trees in a Random Forest.
     Also facilitates REST APIs, discussed in Section \ref{sec:Deployment}.\\
-    \hline
-    Apache Arrow \newline PyArrow &
-    Software with a Python library interface that allows for the serialization of objects \autocite{apache_streaming_nodate}. 
-    This is important in synergy with Redis and Pandas, as Redis is unable to directly store Pandas dataframes, 
-    so they must first be serialized, converting them to a bytes format that Redis can store in memory.\\
+    % \hline
+    % Apache Arrow \newline PyArrow &
+    % Software with a Python library interface that allows for the serialization of objects \autocite{apache_streaming_nodate}. 
+    % This is important in synergy with Redis and Pandas, as Redis is unable to directly store Pandas dataframes, 
+    % so they must first be serialized, converting them to a bytes format that Redis can store in memory.\\
     \hline
     Pickle &
-    A base package in Python that functions similarly to Arrow in the serialization of data \autocite{python_pickle_nodate}.
-    Pickle specifically will be used to serialize machine learning models.\\
+    A base package in Python that is used to serialize data \autocite{python_pickle_nodate}.
+    In this specific case, Pickle will be used to serialize machine learning models and save them 
+    to a file that can be loaded for later predictions.\\
     \hline
     Great Expectations &
     A Python library used for data validation, where "expectations" can be set for a dataset, such as 
@@ -242,6 +243,8 @@ some of the software originally mentioned in Table \ref{tab:softwareDescriptions
     \hline
     SQLAlchemy &
     Alongside Pandas, SQLAlchemy will export the DataFrame to the MariaDB Columnstore instance.\\
+    \hline 
+    Great Expectations & When ingesting the data, Great Expectations will be used to validate that it is as expected.\\
     \hline
 \caption{Software to be used in ingestion.}\label{tab:IngestionSoftware}
 \end{longtable}
@@ -307,10 +310,10 @@ After this, the processed dataset will be output to Redis, to be used as the inp
     \hline
     Redis &
     Will store the processed dataframe in memory. Cannot directly store the dataframe as mentioned in 
-    Table \ref{tab:softwareDescriptions}, so it must be serialised first using Arrow.\\
+    Table \ref{tab:softwareDescriptions}, so Direct-Redis acts as a wrapper that will also serialise it.\\
     \hline
-    Arrow & 
-    Will serialise the processed dataframe so that it can then be stored by Redis.\\
+    Direct-Redis & 
+    Will serialise the processed dataframe before passing it to Redis.\\
     \hline
 \caption{Descriptions of software to be used for preprocessing.}\label{tab:PreprocessingSoftware}
 \end{longtable}
@@ -525,7 +528,7 @@ model, which can then be deployed.
 \pagebreak
 
 \subsection{In this project}
-The dataset will first be loaded from Redis and deserialised by Arrow. The dataset poses a classification 
+The dataset will first be loaded and deserialized via Direct-Redis. The dataset poses a classification 
 problem, and as such, the Scikit-Learn Python library 
 will be particularly key in this stage for its implementation of a Random Forest algorithm, which is 
 reputed as one of the most accurate models in many scenarios. However, it can have a steep processing
@@ -535,9 +538,12 @@ time depending on how many decision trees it is told to create.
     \hline
     \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for development\\
     \hline
-    Arrow & 
-    Will deserialize the stored dataframe from Redis after the preprocessing stage.\\
+    Direct-Redis &
+    Will retrieve the dataframe from Redis and deserialize it.
     \hline
+    % Arrow & 
+    % Will deserialize the stored dataframe from Redis after the preprocessing stage.\\
+    % \hline
     Pandas & 
     Will store the dataframe deserialized by Arrow.\\
     \hline
