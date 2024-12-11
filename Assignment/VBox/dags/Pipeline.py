@@ -1,8 +1,16 @@
 from datetime import datetime, timedelta
 import logging
-import numpy as np
 
-from airflow.decorators import dag, task, task_group
+import sys
+import numpy as np
+import pandas as pd
+from sqlalchemy import create_engine 
+import sklearn as skl
+import pyarrow as pa
+import pyarrow.parquet as pq
+import redis
+from direct_redis import DirectRedis
+from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python_operator import PythonOperator
 
@@ -12,6 +20,7 @@ from great_expectations.data_context.types.base import DataContextConfig, Checkp
 
 # MLFlow import
 import mlflow
+import mlflow.sklearn
 
 
 from PipelineFunctions import * 
@@ -34,51 +43,46 @@ default_args = {
     "start_date": datetime(2024, 12, 11) # Year, Month, Day format.
 }
 
-GX_DIR = "/home/lewis/PipelineGX/gx" # I think this is the directory? 
+GX_DIR = "/home/lewis/PipelineGX/gx"
 RANDOM_STATE = 42
-DEFAULT_CONN_STRING = "mysql+pymysql://lewis:MLOps6230@172.17.0.3:3306/LoanApproval"
+DEFAULT_CONN_STRING = "mysql+pymysql://lewis:MLOps6230@172.17.0.2:3306/LoanApproval"
 REDIS_CONN_INFO = {"host": "localhost", "port": 6379, "db": 0, "table": "LoanApproval"}
 DEFAULT_PATH = "~/CMP6230/loan_data.csv"
 # DEFAULT_COLUMNS = ["person_age","person_gender","person_education","person_income","person_emp_exp","person_home_ownership","loan_amnt","loan_intent","loan_int_rate","loan_percent_income","cb_person_cred_hist_length","credit_score","previous_loan_defaults_on_file","loan_status"]
 DEFAULT_TABLE_NAME = "LoanApproval"
 
-@dag(dag_id = "MLOpsPipeline", default_args=default_args, schedule_interval=timedelta(days=1), catchup=False, tags=["Pipeline"])
+with DAG(
+    "MLOpsPipeline", 
+    description = "The complete DAG for the MLOps pipeline implementation.",
+    default_args=default_args, 
+    schedule_interval=timedelta(days=1),
+    catchup=False,
+    tags=["Pipeline"]
+) as dag:    
+	IngestTask = PythonOperator(
+    	task_id = "etl", 
+     	python_callable = extract_transform_load()
+    )
 
-@task_group(group_id = "DockerSetup")
-def Docker():
-	Columnstore = BashOperator(
-		task_id = "start_columnstore",
-		bash_command = "docker start Columnstore"
+	ValidateTask = GreatExpectationsOperator(
+		task_id = "GX_Validation",
+		data_context_root_dir = GX_DIR,
+		checkpoint_name= "LoanApproval_Original_checkpoint",
+		return_json_dict=True
 	)
-	
-	Redis = BashOperator(
-		task_id="start_redis",
-		bash_command = "docker start Redis"
-	)
+
+	PreprocessingTask = PythonOperator(
+     		task_id = "preprocessing", 
+     		python_callable = preprocess(DEFAULT_CONN_STRING)
+    )
+
+	TrainingTask = PythonOperator(
+		task_id = "training", 
+		python_callable = train(params = {"n_estimators": 200}))
  
-	Columnstore >> Redis
+	EvaluationTask = PythonOperator(task_id = "evaluation", python_callable = evaluate())
+        
 
-@task_group(group_id = "Ingestion")
-def Ingestion():
-    validate = GreatExpectationsOperator(
-			task_id = "GX_Validation",
-			data_context_root_dir = GX_DIR,
-			checkpoint_name= "LoanApproval_Original_checkpoint",
-			return_json_dict=True
-		)
-    
-    etl = PythonOperator(task_id = "create_db_context", python_callable = extract_transform_load)
-    
-    validate >> etl
-
-@task_group(group_id = "Preprocessing")
-def Preprocessing():
-    preprocess = PythonOperator(task_id = "preprocessing", python_callable = preprocessing(DEFAULT_CONN_STRING))
-    
-    preprocess
-
-def ModelDevelopment():
-
-Docker() >> Ingestion() >> Preprocessing() >> ModelDevelopment() >> ModelDeployment() >> ModelEvaluation() 
+IngestTask >> ValidateTask >> PreprocessingTask >> TrainingTask >> EvaluationTask
 
 
