@@ -317,8 +317,76 @@ a DirectRedis connection rather than a standard Redis connection removes the nee
 as it is automatically performed when "r.set()" is called. 
 
 \section{Model Development}\label{sec:ImpDevelopment}
+Internally, this section was referred to as "Training", seen in the function name and associated 
+DAG task.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Training.png}
+    \caption{The code for the Training function.}
+    \label{fig:TrainingCode}
+\end{figure}
+
+The Training function deserializes and reads the preprocessed DataFrame from Redis via a Direct-Redis 
+connection, and then scales the data using a StandardScaler from Scikit-Learn. MLFlow is started 
+to begin its tracking of the model, and then the model is instantiated and trained on the preprocessed data 
+using the parameters provided to the Training function. These parameters would be provided within the DAG code.
+The model is then serialized using Pickle and stored into Redis, alongside the parameters for logging purposes 
+and the MLFlow run ID so that the run can be resumed in the Evaluation phase.
+
 
 \section{Model Evaluation}\label{sec:ImpEvaluation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Evaluation1.png}
+    \caption{eval\_metrics, which returns the evaluation metrics of a model.}
+    \label{fig:Evaluation1}
+\end{figure}
+
+\para The eval\_metrics function calculates the accuracy, precision and F1 scores of the trained model 
+using predefined functions that are part of Scikit-Learn. This is later used in the main Evaluation function 
+to log these scores in MLFlow.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Evaluation2.png}
+    \caption{The main Evaluation function.}
+    \label{fig:Evaluation2}
+\end{figure}
+
+\para The Evaluation function retrieves the serialized model, parameters and run ID from Redis 
+via a Direct-Redis connection, deserializing the model with Pickle. The testing dataset is 
+retrieved and the MLFlow run is resumed to then make predictions using the model. Using the 
+eval\_metrics function, the metrics obtained are output to the console (viewable via the DAG's logs page)
+and also logged in the MLFlow run. The model is then saved and the MLFlow is ended, completing the pipeline.
+
+\section{Completed Airflow DAGs}
+Two DAGs were created as part of the pipeline. "DockerContainers" consists of two BashOperators 
+to start the two Docker containers for MariaDB Columnstore and Redis, whereas "MLOpsPipeline" 
+consists of the five tasks of the pipeline. Figure \ref{fig:DAGsList} shows the list of DAGs, 
+containing only these two\footnote{Normally, Airflow includes a large list of examples, though these were 
+removed by changing the configuration file located at \texttildelow/airflow/airflow.cfg.} DAGs.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/DAGs/1.png}
+    \caption{The list of DAGs in Airflow.}
+    \label{fig:DAGsList}
+\end{figure}
+
+
+Figure \ref{fig:PipelineGraphDAG} shows the completed Airflow DAG's graph view, which is a graphical 
+representation of the sequence of tasks. The five tasks of the pipeline are shown, 
+though deployment is not one of them, which is further explained in Section \ref{sec:ImpDeployment}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Airflow/DAGs/PipelineGraph.png}
+    \caption{The graph view of the completed MLOpsPipeline DAG.}
+    \label{fig:PipelineGraphDAG}
+\end{figure}
+
 
 \section{Model Deployment}\label{sec:ImpDeployment}
 Deployment is performed separately from the rest of the stages in this pipeline, 
@@ -375,7 +443,7 @@ be removed or rewritten for that version of the report.
 %   Conda/DirectRedis and Conda/ImbalancedLearn.  
 %   Entire FastAPI+Uvi folder
 %   MLFlow/Other folder.
-%
+% Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
 % Screenshot of GX Operator install needed.
 
 % Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip through the Kaggle package and a ZIP extractor package.
@@ -391,7 +459,14 @@ be removed or rewritten for that version of the report.
 
 % Remember that some of these can be implemented for Jan 10 rather than now.
 % Deadline extended to Dec 19. Coincides too heavily with CMP6202 so not feasible.
-% While you could submit and proofread on that day, do not plan around leaving it until then.
+% I still THOROUGHLY AND HEAVILY recommend you do it for DEC 13!
+% While you could submit and proofread on 19, do not plan around leaving it until then.
+
+% You've said the docs page is a security threat. That's true, but give a source to say that.
+
+% Word count is likely to be approx 11,000, though there's not a massive amount you can do
+% about that without slashing entire sections.
+
 % =========================================================================
 \include{AppendixA}
 
