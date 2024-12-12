@@ -375,7 +375,7 @@ removed by changing the configuration file located at \texttildelow/airflow/airf
     \label{fig:DAGsList}
 \end{figure}
 
-
+\section{Pipeline}
 Figure \ref{fig:PipelineGraphDAG} shows the completed Airflow DAG's graph view, which is a graphical 
 representation of the sequence of tasks. The five tasks of the pipeline are shown, 
 though deployment is not one of them, which is further explained in Section \ref{sec:ImpDeployment}.
@@ -387,22 +387,67 @@ though deployment is not one of them, which is further explained in Section \ref
     \label{fig:PipelineGraphDAG}
 \end{figure}
 
+The code for the completed DAG consists of four PythonOperators, each to call the respective main 
+function of each stage as detailed in their respective section, as well as a GreatExpectationsOperator 
+to run data validation between ingestion and preprocessing. It also declares some variables that are passed 
+to each function, which can be easily modified.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAG.png}
+    \caption{The complete code of the MLOpsPipeline DAG.}
+    \label{fig:PipelineDAGCode}
+\end{figure}
+
 
 \section{Model Deployment}\label{sec:ImpDeployment}
 Deployment is performed separately from the rest of the stages in this pipeline, 
 as it involves the hosting of a Uvicorn server on port 8000 to run the code written 
-in the Model API script using FastAPI. Through running the server as detailed in Figure 
+in the Model API script using FastAPI. Through running the server using the command 
+"uvicorn modelAPI:main --reload" as detailed in Figure 
 \ref{fig:UviStartup}, the "docs" page of FastAPI can be accessed to manually perform POST 
-requests to get predictions from the model. 
+requests to get predictions from the model. The "--reload" argument means that whenever the 
+modelAPI Python file is updated, the server will automatically update it with the changes.
 
-\para It is important to note that the use of the "docs" page is not suitable for an actual production 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/Startup.png}
+    \caption{Starting the Uvicorn server on port 8000.}
+    \label{fig:UviStartup}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/LoadModel.png}
+    \caption{Loading the pickled model to make predictions with.}
+    \label{fig:UviLoadModel}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\linewidth]{Implementation/FastAPI+Uvi/InputAndPrediction.png}
+    \caption{The FastAPI classes used for input and predictions.}
+    \label{fig:UviClasses}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/Code.png}
+    \caption{The FastAPI endpoints for getting model predictions.}
+    \label{fig:UviCode}
+\end{figure}
+
+
+
+
+\section{Potential security enhancements}\label{sec:SecurityEnhancements}
+In relation to Model Deployment, it is important to note that the use of the "docs" page is not suitable for an actual production 
 environment, as it can be manipulated by threat actors to possibly give them direct access to the 
 server's backend, meaning it is normally disabled. An actual production environment would link their 
 model to their actual web page with forms and text entry fields to input data, though this would not 
 have been feasible for this particular project due to time constraints as well as not owning a domain 
 to host the site on, meaning it is restricted to only localhost.
 
-\section{Potential security enhancements}\label{sec:SecurityEnhancements}
 
 \section{Development challenges and future improvements}
 During the implementation of the pipeline, the initial package used for serializing data was PyArrow.
@@ -411,10 +456,13 @@ deprecated, and have been since 2021. This made serializing data and passing it 
 and for this reason an alternative package was identified: Direct-Redis. Direct-Redis builds on top of the Redis 
 package, but will instantly serialize and deserialize data when set() or get() is called, greatly expediting 
 the process of storing data in and retrieving data from Redis stores. \autocite{direct-redis_direct-redis_nodate}.
+This resolved the serialization issue, meaning the pipeline worked smoothly without any errors, and also 
+resulted in much cleaner and easily-readable code. An alternative which would have also worked would have been to 
+use Pickle for all serialization rather than just that of the model, which would have been functionally identical.
 
-\para Additionally, during the preprocessing stage, a minor improvement could have been made by also using a 
-label encoder on the "previous\_loan\_defaults\_on\_file" column, as this column can only be "No" or "Yes", 
-indicating an ordinal type that was originally misidentified.
+\para Additionally, during the preprocessing stage, a minor improvement could have been made with the One-Hot 
+encoding of the "previous\_loan\_defaults\_on\_file" column by removing the "Yes" column it produces, because 
+if one is 0, the other must be 1, meaning that two columns are not needed.
 
 \para Furthermore, the DAG that starts the Docker containers could also be extended to add a BashOperator to run 
 "mlflow ui" to initialise the MLFlow server. Currently, just running the DockerContainers DAG followed by the pipeline DAG will 
@@ -424,7 +472,9 @@ if it is not running.
 \para Finally, it could theoretically be possible to incorporate deployment within the DAG through the use of a 
 BashOperator to run "uvicorn modelAPI:app --reload". However, this may lead to issues with directories which will be 
 looked into, as well as the DAG never actually ending, and running perpetually because the Uvicorn server will not stop 
-by itself.
+by itself. On the topic of deployment, the user needing to enter 24 columns of data as a result of One-Hot encoding 
+increasing the dimensionality is poor, and encoding the data \textbf{after it has been input} by the user is being considered so 
+that the user only needs to enter the original 13 columns which will be silently encoded in the background for the model's use.
 
 \para These issues will be resolved in the final version of the pipeline for January 10, and this section will either 
 be removed or rewritten for that version of the report.
@@ -439,15 +489,19 @@ be removed or rewritten for that version of the report.
 % You need to put figures of all these screenshots in that were taken last night.
 % That's screenshots from the following folders:
 %   Entire .Code folder   
-%   Airflow/DAGs folder
-%   Conda/DirectRedis and Conda/ImbalancedLearn.  
+%   Airflow/DAGs folder 
 %   Entire FastAPI+Uvi folder
 %   MLFlow/Other folder.
 % Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
 % Screenshot of GX Operator install needed.
 
 % Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip through the Kaggle package and a ZIP extractor package.
-% Section on future improvements. Notably you didn't recognise Previous Loan Defaults as ordinal, where LabelEncoding would've been better.
+% Misunderstanding of Label and Ordinal encoding. Pinned a bookmark to Firefox explaining the two.
+% Alternatively, with one-hot encoding, just remove the Previous_loan_defaults_no column, as if that's 0, the other must be 1.
+% You may have been able to label encode the whole dataset, as random forest can apparently work well with it anyway.]
+
+% Maybe transform the data within the modelAPI script so you don't need to enter 24 columns for a prediction.
+
 % Detailed description on why Arrow didn't work and why Direct-Redis did. Why is Direct-Redis a pip install?
 % Add a BashOperator for mlflow ui.
 % Data analysis is worth 20%. Consider investing more into that section and/or moving it into the implementation chapter.
