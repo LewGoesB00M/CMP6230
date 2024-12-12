@@ -284,10 +284,9 @@ to ensure the optimal data types are used for each column. Finally, the transfor
 Pandas DataFrame is written to the MariaDB Columnstore instance hosted within the Docker 
 container at port 3306.
 
-\subsection{Validation with Great Expectations}
-% !!! You can't do this section until you have a screenshot of the Great Expectations Operator installation.
-\para Conda was used to install a helper package for Airflow that adds the Great Expectations Operator.
-This operator connects to the checkpoint produced in \ref{fig:GXCheckpoint3} to run the saved validation 
+\para For data validation,
+Conda was used to install a helper package for Airflow that adds the Great Expectations Operator.
+This operator connects to the checkpoint produced in Figure \ref{fig:GXCheckpoint3} to run the saved validation 
 methods on the ingested dataset without the need to declare it as a specialised Python function within 
 the code. 
 
@@ -425,7 +424,7 @@ modelAPI Python file is updated, the server will automatically update it with th
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.8\linewidth]{Implementation/FastAPI+Uvi/InputAndPrediction.png}
+    \includegraphics[width=.5\linewidth]{Implementation/FastAPI+Uvi/InputAndPrediction.png}
     \caption{The FastAPI classes used for input and predictions.}
     \label{fig:UviClasses}
 \end{figure}
@@ -437,6 +436,39 @@ modelAPI Python file is updated, the server will automatically update it with th
     \label{fig:UviCode}
 \end{figure}
 
+\para The docs page generated from these endpoints is shown below in Figure \ref{fig:UviDocs}.
+Using this page, inputs can be given to the model by making a POST request to its endpoint, 
+which will return a prediction.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/DocsPage.png}
+    \caption{The docs page for the model-API script.}
+    \label{fig:UviDocs}
+\end{figure}
+
+\para POST requests can be made by clicking on the endpoint "/loan/predict/single",
+followed by "Try it out" and then entering data for each row. The model will then 
+interpret the data for each column and make a prediction based upon it. To test this, 
+two predictions were given to the model, where one is a loan that would be granted (Figure \ref{fig:UviTruePositive})
+and the other is a loan that would not be granted (Figure \ref{fig:UviTrueNegative}). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TruePositive.png}
+    \caption{The response for a loan that would be granted (loan\_status of 1).}
+    \label{fig:UviTruePositive}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TrueNegative.png}
+    \caption{The response for a loan that would be rejected (loan\_status of 0).}
+    \label{fig:UviTrueNegative}
+\end{figure}
+
+\para Both of these inputs were correctly predicted, which is known because they were 
+two rows from the dataset.
 
 
 
@@ -477,7 +509,7 @@ increasing the dimensionality is poor, and encoding the data \textbf{after it ha
 that the user only needs to enter the original 13 columns which will be silently encoded in the background for the model's use.
 
 \para These issues will be resolved in the final version of the pipeline for January 10, and this section will either 
-be removed or rewritten for that version of the report.
+be removed or rewritten for that version of the report. 
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
