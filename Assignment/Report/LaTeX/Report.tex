@@ -248,42 +248,118 @@ and usable. This can be accomplished in this project through MLFlow's monitoring
 \include{SoftwareInit}
 % Elements of SoftwareInit could be placed in the appropriate pipeline section.
 
-% Not sure if you'll eventually face the Flask error with FastAPI. Its fix involved uninstalling and reinstalling Flask.
+\section{Package imports}
+Many packages need to be imported for the Airflow DAG of the pipeline to succeed. These can be found 
+below, alongside descriptions in the form of Python comments, in Figures \ref{fig:PipelineDAGImports} and 
+\ref{fig:PipelineFunctionsImports}. The use of these packages within pipeline functions is detailed 
+in this report within the appropriate pipeline stage.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAGImports.png}
+    \caption{The packages necessary to run the DAG itself.}
+    \label{fig:PipelineDAGImports}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAGImports.png}
+    \caption{The packages necessary to run the functions within each DAG.}
+    \label{fig:PipelineFunctionsImports}
+\end{figure}
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
-% Redis had to be reinstalled with Pip rather than Conda because it wasn't being recognised.
-% This may have consequences later.
 
-% Columnstore is 172.10.0.3, whereas Redis is 172.10.0.2.
-% Your prototypes in the .ipynb do not get put here. Instead, ensure that they all work in there but then convert them 
-% to Airflow DAGs. This means that all five of these sections simply can't be written until you do DAG conversion.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Ingestion.png}
+    \caption{The code for the entire Ingestion stage.}
+    \label{fig:IngestionCode}
+\end{figure}
 
-% It's up to you how you do the DAGs. I think all of your functions go into respective files and are imported to Pipeline.py.
-% From there, create individual tasks for each function. Look into Task Groups to then group said individual tasks into Ingestion, Preprocessing, etc.
+\para This code is split across four functions that are called upon within the main 
+ETL function. The ETL function will call on extract\_csv to read the dataset CSV from 
+the path set as DEFAULT\_PATH. After this, some data type transformations are performed 
+to ensure the optimal data types are used for each column. Finally, the transformed 
+Pandas DataFrame is written to the MariaDB Columnstore instance hosted within the Docker 
+container at port 3306.
 
+\subsection{Validation with Great Expectations}
+% !!! You can't do this section until you have a screenshot of the Great Expectations Operator installation.
+\para Conda was used to install a helper package for Airflow that adds the Great Expectations Operator.
+This operator connects to the checkpoint produced in \ref{fig:GXCheckpoint3} to run the saved validation 
+methods on the ingested dataset without the need to declare it as a specialised Python function within 
+the code. 
 
 \section{Data Preprocessing}\label{sec:ImpPreprocessing}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Preprocessing1.png}
+    \caption{The secondary functions used in the main Preprocessing function.}
+    \label{fig:PreprocessingCode1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctions/Preprocessing2.png}
+    \caption{The code for the main Preprocessing function.}
+    \label{fig:PreprocessingCode2}
+\end{figure}
+
+\para This code forms the Data Preprocessing stage of the pipeline. Data is retrieved from the 
+Columnstore and considerable outliers are removed, primarily from the Age and Income columns, 
+where data can be outright false or differs enough to heavily skew the dataset and affect scaling.
+After this, categorical data is encoded using label encoding and one-hot encoding where necessary.
+The data is then balanced using SMOTE to resolve the significant imbalance between granted and denied loans 
+before being split into training and testing sets, which are serialized and saved into Redis. The use of 
+a DirectRedis connection rather than a standard Redis connection removes the need for explicit serialization, 
+as it is automatically performed when "r.set()" is called. 
+
 \section{Model Development}\label{sec:ImpDevelopment}
 
-\section{Model Deployment}\label{sec:ImpDeployment}
-
 \section{Model Evaluation}\label{sec:ImpEvaluation}
+
+\section{Model Deployment}\label{sec:ImpDeployment}
+Deployment is performed separately from the rest of the stages in this pipeline, 
+as it involves the hosting of a Uvicorn server on port 8000 to run the code written 
+in the Model API script using FastAPI. Through running the server as detailed in Figure 
+\ref{fig:UviStartup}, the "docs" page of FastAPI can be accessed to manually perform POST 
+requests to get predictions from the model. 
+
+\para It is important to note that the use of the "docs" page is not suitable for an actual production 
+environment, as it can be manipulated by threat actors to possibly give them direct access to the 
+server's backend, meaning it is normally disabled. An actual production environment would link their 
+model to their actual web page with forms and text entry fields to input data, though this would not 
+have been feasible for this particular project due to time constraints as well as not owning a domain 
+to host the site on, meaning it is restricted to only localhost.
 
 \section{Potential security enhancements}\label{sec:SecurityEnhancements}
 
 \section{Development challenges and future improvements}
-During the implementation of the pipeline, it was discovered that many of PyArrow's useful functions are now 
-deprecated. This made serializing data much harder, and for this reason an alternative package was identified:
-Direct-Redis. Direct-Redis builds on top of the Redis package, but will instantly serialize and deserialize data 
-when set() or get() is called, greatly expediting the process of storing data in and retrieving data from Redis
-\autocite{direct-redis_direct-redis_nodate}.
+During the implementation of the pipeline, the initial package used for serializing data was PyArrow.
+However, as development continued, it was discovered that many of PyArrow's useful functions are now 
+deprecated, and have been since 2021. This made serializing data and passing it between DAG stages considerably more difficult, 
+and for this reason an alternative package was identified: Direct-Redis. Direct-Redis builds on top of the Redis 
+package, but will instantly serialize and deserialize data when set() or get() is called, greatly expediting 
+the process of storing data in and retrieving data from Redis stores. \autocite{direct-redis_direct-redis_nodate}.
 
 \para Additionally, during the preprocessing stage, a minor improvement could have been made by also using a 
 label encoder on the "previous\_loan\_defaults\_on\_file" column, as this column can only be "No" or "Yes", 
-indicating an ordinal type that was originally misidentified. This will be resolved in the final version 
-of the pipeline.
+indicating an ordinal type that was originally misidentified.
+
+\para Furthermore, the DAG that starts the Docker containers could also be extended to add a BashOperator to run 
+"mlflow ui" to initialise the MLFlow server. Currently, just running the DockerContainers DAG followed by the pipeline DAG will 
+time out unless MLFlow was already running because the Training and Evaluation phases are unable to connect to MLFlow 
+if it is not running.
+
+\para Finally, it could theoretically be possible to incorporate deployment within the DAG through the use of a 
+BashOperator to run "uvicorn modelAPI:app --reload". However, this may lead to issues with directories which will be 
+looked into, as well as the DAG never actually ending, and running perpetually because the Uvicorn server will not stop 
+by itself.
+
+\para These issues will be resolved in the final version of the pipeline for January 10, and this section will either 
+be removed or rewritten for that version of the report.
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
@@ -296,14 +372,26 @@ of the pipeline.
 % That's screenshots from the following folders:
 %   Entire .Code folder   
 %   Airflow/DAGs folder
-%   Conda/DirectRedis and Conda/ImbalancedLearn.   
+%   Conda/DirectRedis and Conda/ImbalancedLearn.  
 %   Entire FastAPI+Uvi folder
 %   MLFlow/Other folder.
 %
-% Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip.
+% Screenshot of GX Operator install needed.
+
+% Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip through the Kaggle package and a ZIP extractor package.
 % Section on future improvements. Notably you didn't recognise Previous Loan Defaults as ordinal, where LabelEncoding would've been better.
 % Detailed description on why Arrow didn't work and why Direct-Redis did. Why is Direct-Redis a pip install?
 % Add a BashOperator for mlflow ui.
+% Data analysis is worth 20%. Consider investing more into that section and/or moving it into the implementation chapter.
+
+% Pipeline plan = 20%
+% Implementation & Deployment = 20%
+% Application & Analysis = 20%
+% Evaluation & Communication of wider issues = 20%
+
+% Remember that some of these can be implemented for Jan 10 rather than now.
+% Deadline extended to Dec 19. Coincides too heavily with CMP6202 so not feasible.
+% While you could submit and proofread on that day, do not plan around leaving it until then.
 % =========================================================================
 \include{AppendixA}
 

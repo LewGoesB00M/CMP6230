@@ -44,6 +44,27 @@ This section details the installation of packages to the Pipeline environment.
     \label{fig:CondaPackages}
 \end{figure}
 
+\para Later in development, it was discovered that two packages that were necessary were not included 
+in the original install command in Figure \ref{fig:CondaPackages}. They were installed at a later point and 
+detailed in Figures \ref{fig:imbLearnInstall} and \ref{fig:directRedisInstall}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Conda/ImbalancedLearn.png}
+    \caption{Installing the imbalanced-learn package.}
+    \label{fig:imbLearnInstall}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/Conda/DirectRedis.png}
+    \caption{Installing the Direct-Redis package.}
+    \label{fig:directRedisInstall}
+\end{figure}
+
+\para Direct-redis was installed via Pip, as it has not been uploaded to any Conda
+channels, meaning Conda would be unable to install it.
+
 \subsection{Docker and Docker images}
 This section covers the downloading of the two necessary Docker images, MariaDB Columnstore and Redis. 
 Their usage is further elaborated upon later in this chapter. The images for the containers will first need to be
