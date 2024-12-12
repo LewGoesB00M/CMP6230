@@ -67,6 +67,11 @@ section.
     software will be used in this pipeline. Also includes a Python library of the same name that allows 
     for access to the Redis store from Python scripts.\\
     \hline
+    Direct-Redis &
+    A package that builds upon the functionality of the normal Redis Python package by performing 
+    automatic serialization and deserialization of data whenever data is sent or retrieved from the 
+    connected Redis store \autocite{direct-redis_direct-redis_nodate}.\\
+    \hline
     Pandas &
     A library used widely in industry for data analytics. It is capable of importing data of various 
     types and storing them in a "DataFrame" object, which preprocessing operations can be performed on.
@@ -457,6 +462,9 @@ of said data, such as levels of education. One-hot encoding is better suited to 
 the intent of a loan. Therefore, this dataset requires the use of both types of encoding, shown in Figures \ref{fig:LabelEncoding}
 and \ref{fig:OneHotEncoding}
 
+% REMEMBER, WHILE YOU MAY NOT NEED TO PUT IT HERE:
+% DEFAULT ON LOAN SHOULD PROBABLY USE LABEL ENCODER TOO.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Draft Pipeline/pandas/LabelEncoding.png}
@@ -467,7 +475,7 @@ and \ref{fig:OneHotEncoding}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Draft Pipeline/pandas/OneHotEncoding.png}
-    \caption{Using one-hot encoding for the person\_education column.}
+    \caption{Using one-hot encoding for the other string columns.}
     \label{fig:OneHotEncoding}
 \end{figure}
 
@@ -539,7 +547,7 @@ time depending on how many decision trees it is told to create.
     \cellcolor{blue!25}Software/Library & \cellcolor{blue!25}Usage for development\\
     \hline
     Direct-Redis &
-    Will retrieve the dataframe from Redis and deserialize it.
+    Will retrieve the dataframe from Redis and deserialize it.\\
     \hline
     % Arrow & 
     % Will deserialize the stored dataframe from Redis after the preprocessing stage.\\

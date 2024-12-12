@@ -94,7 +94,7 @@
       \verb https://www.apache.org/licenses/LICENSE-2.0
       \endverb
     \endentry
-    \entry{apache_streaming_nodate}{online}{}{}
+    \entry{apache_use_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
            family={{Apache}},
@@ -112,40 +112,6 @@
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradate}{2}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{url}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Streaming, Serialization, and {IPC} — Apache Arrow v18.0.0}
-      \field{urlday}{18}
-      \field{urlmonth}{11}
-      \field{urlyear}{2024}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://arrow.apache.org/docs/python/ipc.html
-      \endverb
-      \verb{url}
-      \verb https://arrow.apache.org/docs/python/ipc.html
-      \endverb
-    \endentry
-    \entry{apache_use_nodate}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
-           family={{Apache}},
-           familyi={A\bibinitperiod}}}%
-      }
-      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
-      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
-      \field{extraname}{3}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{extradate}{3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
@@ -637,6 +603,43 @@
       \endverb
       \verb{url}
       \verb https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+      \endverb
+    \endentry
+    \entry{direct-redis_direct-redis_nodate}{software}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=19f76aad6bfe7856d5086dd06f4572bf}{%
+           family={{direct-redis}},
+           familyi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{fullhash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{fullhashraw}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{bibnamehash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{authorbibnamehash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{authornamehash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{authorfullhash}{19f76aad6bfe7856d5086dd06f4572bf}
+      \strng{authorfullhashraw}{19f76aad6bfe7856d5086dd06f4572bf}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{shorttitle}{direct-redis}
+      \field{title}{direct-redis: Serialize any python datatypes and does redis actions using redis-py}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2024}
+      \field{version}{0.3.1}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\CWFYF333\\direct-redis.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://github.com/yonghee12/direct-redis
+      \endverb
+      \verb{url}
+      \verb https://github.com/yonghee12/direct-redis
       \endverb
     \endentry
     \entry{docker_docker_2022}{online}{}{}

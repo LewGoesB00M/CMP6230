@@ -273,11 +273,17 @@ and usable. This can be accomplished in this project through MLFlow's monitoring
 
 \section{Potential security enhancements}\label{sec:SecurityEnhancements}
 
-\section{Development challenges}
+\section{Development challenges and future improvements}
 During the implementation of the pipeline, it was discovered that many of PyArrow's useful functions are now 
 deprecated. This made serializing data much harder, and for this reason an alternative package was identified:
 Direct-Redis. Direct-Redis builds on top of the Redis package, but will instantly serialize and deserialize data 
-when set() or get() is called.
+when set() or get() is called, greatly expediting the process of storing data in and retrieving data from Redis
+\autocite{direct-redis_direct-redis_nodate}.
+
+\para Additionally, during the preprocessing stage, a minor improvement could have been made by also using a 
+label encoder on the "previous\_loan\_defaults\_on\_file" column, as this column can only be "No" or "Yes", 
+indicating an ordinal type that was originally misidentified. This will be resolved in the final version 
+of the pipeline.
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
@@ -297,7 +303,7 @@ when set() or get() is called.
 % Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip.
 % Section on future improvements. Notably you didn't recognise Previous Loan Defaults as ordinal, where LabelEncoding would've been better.
 % Detailed description on why Arrow didn't work and why Direct-Redis did. Why is Direct-Redis a pip install?
-% It's starting two runs where one of them never ends. Not catastrophic but worth looking into.
+% Add a BashOperator for mlflow ui.
 % =========================================================================
 \include{AppendixA}
 
