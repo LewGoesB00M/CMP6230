@@ -137,26 +137,18 @@
 
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
-% UPDATE INTRO BECAUSE THE REPORT ISN'T JUST A PLAN ANYMORE.
-This report aims to design and document a five-stage Machine Learning Operations pipeline, from the initial 
+This report covers the planning and implementation of a five-stage Machine Learning Operations pipeline, from the initial 
 data ingestion to the monitoring of the produced model, beginning 
 with the identification of three candidate datasets for the pipeline to be conducted with, and continuing 
 into descriptions of what each stage of the pipeline consists of, and how it will be implemented with the
-one chosen dataset using a wide variety of software that is also used within industry. When this plan 
-is implemented at a later stage, it will provide a clear framework to create an automated MLOps pipeline
-with continuous integration and deployment.
+one chosen dataset using a wide variety of software that is also used within industry. The implementation 
+based on the plan produces a fully operational Machine Learning Operations (MLOps) pipeline, with a model 
+that can be used to make predictions.
 
 % Importing the sections from the original report here.
 \include{Datasets.tex}
 \include{PipelineStages.tex}
-% Side-note: I think this actually builds immensely faster because it's not recompiling those two every time,
-% it just stores the processed version in the .aux files to be instantly reused.
 
-
-% Apparently this can only go 500 words over the word count. You are already past that with the inclusion 
-% of those two TeX files. She doesn't seem massively strict over it though, stating "it's just a module".
-% 2012 + 3597 + This word count, unless you change either Datasets.tex or PipelineStages.tex.
-% 5609 + This
 
 \section{Data terminology}\label{sec:dataTerms} % Poor section title, consider something else.
 This project must take into account four key elements of data handling these being data privacy, security, 
@@ -360,6 +352,28 @@ retrieved and the MLFlow run is resumed to then make predictions using the model
 eval\_metrics function, the metrics obtained are output to the console (viewable via the DAG's logs page)
 and also logged in the MLFlow run. The model is then saved and the MLFlow is ended, completing the pipeline.
 
+\para MLFlow runs are all saved to the MLFlow server running on port 5000. By accessing the server through 
+a web browser at localhost:5000, the dashboard can be accessed as seen in Figure \ref{fig:MLFlowDash}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/MLFlow/Other/1.png}
+    \caption{The MLFlow dashboard, showing the first produced model.}
+    \label{fig:MLFlowDash}
+\end{figure}
+
+\para The first produced model can be seen on the dashboard. By going into its page, its metrics and 
+parameters that were stored as part of the Evaluation function can be viewed as seen in Figure \ref{fig:MLFlowModel}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/MLFlow/Other/2.png}
+    \caption{The first model's metrics and parameters.}
+    \label{fig:MLFlowModel}
+\end{figure}
+
+
+
 \section{Completed Airflow DAGs}
 Two DAGs were created as part of the pipeline. "DockerContainers" consists of two BashOperators 
 to start the two Docker containers for MariaDB Columnstore and Redis, whereas "MLOpsPipeline" 
@@ -374,7 +388,6 @@ removed by changing the configuration file located at \texttildelow/airflow/airf
     \label{fig:DAGsList}
 \end{figure}
 
-\section{Pipeline}
 Figure \ref{fig:PipelineGraphDAG} shows the completed Airflow DAG's graph view, which is a graphical 
 representation of the sequence of tasks. The five tasks of the pipeline are shown, 
 though deployment is not one of them, which is further explained in Section \ref{sec:ImpDeployment}.
@@ -397,7 +410,6 @@ to each function, which can be easily modified.
     \caption{The complete code of the MLOpsPipeline DAG.}
     \label{fig:PipelineDAGCode}
 \end{figure}
-
 
 \section{Model Deployment}\label{sec:ImpDeployment}
 Deployment is performed separately from the rest of the stages in this pipeline, 
@@ -467,10 +479,15 @@ and the other is a loan that would not be granted (Figure \ref{fig:UviTrueNegati
     \label{fig:UviTrueNegative}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TruePredictionsCLI.png}
+    \caption{The command-line outputs of both POST requests.}
+    \label{fig:UviCLI}
+\end{figure}
+
 \para Both of these inputs were correctly predicted, which is known because they were 
-two rows from the dataset.
-
-
+two rows from the dataset. 
 
 \section{Potential security enhancements}\label{sec:SecurityEnhancements}
 In relation to Model Deployment, it is important to note that the use of the "docs" page is not suitable for an actual production 
@@ -513,28 +530,38 @@ be removed or rewritten for that version of the report.
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
-% REWRITE THE INTRODUCTION AFTER THIS.
+The implementation of this MLOps pipeline for loan approval classification demonstrates the successful integration of various
+data management and machine learning technologies to create an automated, reproducible workflow. By leveraging tools such as Docker,
+Airflow, MLflow, and FastAPI, the pipeline effectively handles data ingestion, preprocessing, model development, evaluation, and 
+deployment. Key achievements of this pipeline include:
+
+\begin{itemize}
+    \item Efficient data ingestion to an OLTP MariaDB Columnstore database.
+    \item Data validation using Great Expectations.
+    \item Robust preprocessing techniques, including outlier removal and data balancing with SMOTE.
+    \item Automated Random Forest classification model training and evaluation.
+    \item Continuous model tracking and versioning with MLflow.
+    \item Deployment of the model as a REST API using FastAPI and Uvicorn.
+\end{itemize}
+
+The pipeline's modular structure allows for easy maintenance and scalability, enabling future enhancements such as the addition 
+of other classification models such as Linear or Logistic Regression in order to find the most accurate model to make predictions with 
+which could then theoretically be applied in industry.
+   
 
 % =========================================================================
 % MAIN NOTES:
 % 
-% You need to put figures of all these screenshots in that were taken last night.
-% That's screenshots from the following folders:
-%   Entire .Code folder   
-%   Airflow/DAGs folder 
-%   Entire FastAPI+Uvi folder
-%   MLFlow/Other folder.
 % Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
-% Screenshot of GX Operator install needed.
 
 % Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip through the Kaggle package and a ZIP extractor package.
 % Misunderstanding of Label and Ordinal encoding. Pinned a bookmark to Firefox explaining the two.
 % Alternatively, with one-hot encoding, just remove the Previous_loan_defaults_no column, as if that's 0, the other must be 1.
-% You may have been able to label encode the whole dataset, as random forest can apparently work well with it anyway.]
+% You may have been able to label encode the whole dataset, as random forest can apparently work well with it anyway.
 
 % Maybe transform the data within the modelAPI script so you don't need to enter 24 columns for a prediction.
+% This is the primary improvement that I think is necesary.
 
-% Detailed description on why Arrow didn't work and why Direct-Redis did. Why is Direct-Redis a pip install?
 % Add a BashOperator for mlflow ui.
 % Data analysis is worth 20%. Consider investing more into that section and/or moving it into the implementation chapter.
 
