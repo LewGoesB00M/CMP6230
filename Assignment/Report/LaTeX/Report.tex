@@ -142,8 +142,8 @@ data ingestion to the monitoring of the produced model, beginning
 with the identification of three candidate datasets for the pipeline to be conducted with, and continuing 
 into descriptions of what each stage of the pipeline consists of, and how it will be implemented with the
 one chosen dataset using a wide variety of software that is also used within industry. The implementation 
-based on the plan produces a fully operational Machine Learning Operations (MLOps) pipeline, with a model 
-that can be used to make predictions.
+based on the plan produces a fully operational Machine Learning Operations (MLOps) pipeline, with a deployed model 
+that can be used to make predictions via a REST API hosted on a Uvicorn server.
 
 % Importing the sections from the original report here.
 \include{Datasets.tex}
@@ -207,8 +207,8 @@ which creates synthetic data in a dataset based on the other rows as previously 
 \subsection{Model drift}
 Model drift is a phenomenon that affects deployed production machine learning models where changes in 
 their environment over time affects their performance \autocite{nigenda_amazon_2022}. Model drift is not an 
-immediate occurrence, and can take a long time to occur, emphasising the importance of continuous integration and deployment. 
-Table \ref{tab:Drift} details the different kinds of model drift.
+immediate occurrence, and can take a long time to occur, emphasising the importance of continuous model evaluation. 
+Table \ref{tab:Drift} details the two primary kinds of model drift.
 
 \begin{longtable}{ | p{0.2\textwidth} | p{0.4\textwidth} | p{0.3\textwidth} |}
     \hline
@@ -219,7 +219,7 @@ Table \ref{tab:Drift} details the different kinds of model drift.
     \hline
     Concept drift & Changes in the relationship between the input and target variables \autocite{nigenda_amazon_2022}. 
     & In this dataset, this is somewhat unlikely. However, it could occur if there is a significant housing or job market crash 
-    that would cause more people to need loans, which would change the original relationships.\\
+    that would cause more people to need loans, which would change the original relationships between the variables.\\
     \hline
 \caption{The common types of model drift.}\label{tab:Drift}
 \end{longtable}
@@ -255,7 +255,7 @@ in this report within the appropriate pipeline stage.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAGImports.png}
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctionsImport.png}
     \caption{The packages necessary to run the functions within each DAG.}
     \label{fig:PipelineFunctionsImports}
 \end{figure}
@@ -462,8 +462,15 @@ which will return a prediction.
 \para POST requests can be made by clicking on the endpoint "/loan/predict/single",
 followed by "Try it out" and then entering data for each row. The model will then 
 interpret the data for each column and make a prediction based upon it. To test this, 
-two predictions were given to the model, where one is a loan that would be granted (Figure \ref{fig:UviTruePositive})
-and the other is a loan that would not be granted (Figure \ref{fig:UviTrueNegative}). 
+two predictions were given to the model, where one is a loan that would be rejected (Figure \ref{fig:UviTrueNegative})
+and the other is a loan that would be granted (Figure \ref{fig:UviTruePositive}). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TrueNegative.png}
+    \caption{The response for a loan that would be rejected (loan\_status of 0).}
+    \label{fig:UviTrueNegative}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -472,12 +479,7 @@ and the other is a loan that would not be granted (Figure \ref{fig:UviTrueNegati
     \label{fig:UviTruePositive}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TrueNegative.png}
-    \caption{The response for a loan that would be rejected (loan\_status of 0).}
-    \label{fig:UviTrueNegative}
-\end{figure}
+
 
 \begin{figure}[H]
     \centering
@@ -575,7 +577,10 @@ which could then theoretically be applied in industry.
 % I still THOROUGHLY AND HEAVILY recommend you do it for DEC 13!
 % While you could submit and proofread on 19, do not plan around leaving it until then.
 
-% You've said the docs page is a security threat. That's true, but give a source to say that.
+% You've said the docs page is a security threat. That's true, but give a source to say that if possible.
+
+% Following the grade of your draft plan (88%), it's established that you need to add slightly more detail to the 
+% section for each dataset, as this appeared to be the only thing that held you off of 100%.
 
 % Word count is likely to be approx 11,000, though there's not a massive amount you can do
 % about that without slashing entire sections.
