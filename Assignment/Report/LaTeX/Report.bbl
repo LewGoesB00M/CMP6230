@@ -2163,6 +2163,43 @@
       \verb https://informatics.bmj.com/content/29/1/e100457
       \endverb
     \endentry
+    \entry{stream_security_security_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ae12cf8d1192ada0947c2ec2971f09f0}{%
+           family={{Stream Security}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{fullhash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{fullhashraw}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{bibnamehash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{authorbibnamehash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{authornamehash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{authorfullhash}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \strng{authorfullhashraw}{ae12cf8d1192ada0947c2ec2971f09f0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{TCP} port 6379 is commonly used by Redis, an in-memory data structure store that is often used as a database, cache, and message broker. Redis uses this port for its default client-server communication protocol. If this port is left open without any restrictions, it can be accessed by anyone on the internet, leaving the system vulnerable to potential attacks such as data theft, unauthorized data modifications, and ransomware attacks.}
+      \field{langid}{english}
+      \field{title}{Security \& Compliance {|} Ensure there is no unrestricted inbound access to {TCP} port 6379 (Redis)}
+      \field{urlday}{7}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\RNK8V5JB\\ensure-there-is-no-unrestricted-inbound-access-to-tcp-port-6379-redis.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.stream.security/rules/ensure-there-is-no-unrestricted-inbound-access-to-tcp-port-6379-redis
+      \endverb
+      \verb{url}
+      \verb https://www.stream.security/rules/ensure-there-is-no-unrestricted-inbound-access-to-tcp-port-6379-redis
+      \endverb
+    \endentry
     \entry{towardsdatascience_getting_2021}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=bbe66c5bb8208c7e4c238b9f42109862}{%

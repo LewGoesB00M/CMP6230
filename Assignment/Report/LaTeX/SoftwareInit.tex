@@ -112,12 +112,13 @@ MariaDB Columnstore runs on port 3306, but is mapped to port 3307 to avoid a pos
 
 \pagebreak 
 \subsubsection{Redis}
-Redis runs on port 6379.
+The Docker container for Redis, the in-memory data store, is hosted on port 6379 which is the default port used by 
+the service \autocite{stream_security_security_nodate}.  
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/Docker/Containers/Redis/1.png}
-    \caption{Creating the Redis container.}
+    \caption{Creating and accessing the Redis container.}
     \label{fig:CreateRedis}
 \end{figure}
 
@@ -126,12 +127,19 @@ Redis runs on port 6379.
 Airflow and MLFlow do not immediately work upon install, and must first be initialised.
 
 \subsubsection{Airflow}
+Airflow's database of DAGs can be initialised through "airflow db init", which will create 
+the default Airflow directory and database file.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/Airflow/Initialisation/1.png}
     \caption{Initialising Airflow's database.}
     \label{fig:AirflowInit}
 \end{figure}
+
+Airflow allows for the creation of user accounts with allocated permission levels for the management of 
+DAGs. Therefore, an administrative user was created for the purposes of this pipeline as depicted in Figures 
+\ref{fig:AirflowUser1} and \ref{fig:AirflowUser2}.
 
 \begin{figure}[H]
     \centering
@@ -146,6 +154,11 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
     \caption{Verifying that the user was created.}
     \label{fig:AirflowUser2}
 \end{figure}
+
+After creating an admin user, the Airflow web server and task scheduler can be started. The web server provides 
+an interface for reviewing DAGs, whereas the scheduler is the key backend component which executes each task within a 
+DAG sequentially. Additionally, the scheduler will also automatically execute time-scheduled tasks such as those set to 
+execute daily.
 
 \begin{figure}[H]
     \centering
@@ -162,6 +175,10 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
 \end{figure}
 
 \subsubsection{MLFlow}
+MLFlow will be used for the continuous monitoring and storage of the produced models. 
+After installing it with Conda as depicted in Figure \ref{fig:CondaPackages}, it must then 
+be initialised. This is performed by creating a dedicated directory for the service and then 
+creating its server.
 
 \begin{figure}[H]
     \centering
@@ -169,6 +186,13 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
     \caption{Creating a directory for MLFlow and initialising its database.}
     \label{fig:MLFlowInit}
 \end{figure}
+
+\para To do so, the Pipeline environment must be active for MLFlow to be recognised. Then the server 
+is established, setting its backend storage database as an SQLite database titled "mlflow.db",
+its artifact (model) storage location as the "artifacts" subfolder, and setting the host IP as 0.0.0.0. By using 
+this IP rather than localhost, it allows for applications inside containers (i.e. Airflow, Redis) to communicate 
+with MLFlow when they otherwise would be unable to due to their containerisation. The database file and "artifacts"
+subfolder were also created by MLFlow upon execution of the command as they did not exist at the time. 
 
 \begin{figure}[H]
     \centering
@@ -180,9 +204,13 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/MLFlow/Initialisation/2.png}
-    \caption{MLFlow's web UI.}
+    \caption{MLFlow's web UI from a fresh installation.}
     \label{fig:MLFlowEmptyUI}
 \end{figure}
+
+\para The MLFlow web interface can be accessed by simply running "mlflow ui" as depicted in Figure \ref{fig:MLFlowUICmd}
+and then navigating to localhost:5000 in a web browser. At present, there are no experiments or models as the software 
+was freshly installed and initialised.
 
 \subsection{Great Expectations}
 
@@ -207,6 +235,10 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
 %     \label{fig:GXDir}
 % \end{figure}
 
+\para This pipeline uses GX version 0.18.15 as seen previously in Figure \ref{fig:GXVersion},
+meaning it supports their new fluent configuration. However, this will not be necessary,
+and the data source can be created from the CLI.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/GX/Initialisation/4.png}
@@ -214,9 +246,9 @@ Airflow and MLFlow do not immediately work upon install, and must first be initi
     \label{fig:GXDatasource1}
 \end{figure}
 
-\para This pipeline uses GX version 0.18.15 as seen previously in Figure \ref{fig:GXVersion},
-meaning it supports their new fluent configuration. However, this will not be necessary,
-and the data source can be created from the CLI.
+\para Upon the initial creation of the data source, GX automatically opens a Jupyter notebook for its 
+configuration, depicted below in Figure \ref{fig:GXDatasource2}. Part of the creation process 
+involves naming the data source, and therefore "LoanApproval\_DataSource" was used as the name.
 
 \begin{figure}[H]
     \centering
@@ -225,7 +257,9 @@ and the data source can be created from the CLI.
     \label{fig:GXDatasource2}
 \end{figure}
 
-\para This data source must be named, so "LoanApproval\_DataSource" was used.
+\para Towards the end of the configuration notebook, there is a block containing two functions, where the first 
+will ensure that the configuration is sanitised and valid where it is then saved, and the second is to output the created 
+data source's properties to ensure they match what was expected.
 
 \begin{figure}[H]
     \centering
@@ -234,8 +268,10 @@ and the data source can be created from the CLI.
     \label{fig:GXDatasource3}
 \end{figure}
 
-\para Upon running the final block of code in the Jupyter notebook prompted by 
-GX, the data source is finalised. Next, a suite must be created to allow for the easy creation of expectations \autocite{gx_expectation_nodate}.
+\para The output text matched what was expected of the data source, meaning that the data source is finalised
+and ready to use. Next, a "suite" must be created to allow for the easy creation of expectations \autocite{gx_expectation_nodate}.
+The creation process is similar to that of the data source, where the command is executed, and configuration details are confirmed in 
+a Jupyter notebook as depicted in Figure \ref{fig:GXSuite2}.
 
 \begin{figure}[H]
     \centering
@@ -288,8 +324,9 @@ GX, the data source is finalised. Next, a suite must be created to allow for the
 \caption{Expectations set for the dataset and its columns.}\label{tab:Expectations}
 \end{longtable}
 
-\para These expectations can be saved into a checkpoint, which allows them to be applied to any dataset, which would be especially 
-useful when the loan dataset is updated.
+\para After the suite's creation, GX then allows for the creation of checkpoints, which save the expectations and allow
+them to be applied to any dataset, which would be useful when the dataset is updated, as there would be no need 
+to create an new suite of expectations.
 
 \begin{figure}[H]
     \centering
@@ -305,10 +342,11 @@ useful when the loan dataset is updated.
     \label{fig:GXCheckpoint2}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/11.png}
-    \caption{Confirming the existence of the checkpoint YAML file.}
-    \label{fig:GXCheckpoint3}
-\end{figure}
-
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/11.png}
+%     \caption{Confirming the existence of the checkpoint YAML file.}
+%     \label{fig:GXCheckpoint3}
+% \end{figure}
+% Possibly unneeded. If used, 10.png would need to be cropped but that's hard to do without removing key info
+% as the key info is actually at the bottom of the image.

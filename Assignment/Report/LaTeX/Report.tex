@@ -479,8 +479,6 @@ and the other is a loan that would be granted (Figure \ref{fig:UviTruePositive})
     \label{fig:UviTruePositive}
 \end{figure}
 
-
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/FastAPI+Uvi/TruePredictionsCLI.png}
@@ -488,8 +486,8 @@ and the other is a loan that would be granted (Figure \ref{fig:UviTruePositive})
     \label{fig:UviCLI}
 \end{figure}
 
-\para Both of these inputs were correctly predicted, which is known because they were 
-two rows from the dataset. 
+\para Both of these inputs can be confirmed to be correctly predicted as they were actually two 
+rows from the testing split of the dataset, which the model was not trained upon.
 
 \section{Potential security enhancements}\label{sec:SecurityEnhancements}
 In relation to Model Deployment, it is important to note that the use of the "docs" page is not suitable for an actual production 
@@ -506,9 +504,9 @@ However, as development continued, it was discovered that many of PyArrow's usef
 deprecated, and have been since 2021. This made serializing data and passing it between DAG stages considerably more difficult, 
 and for this reason an alternative package was identified: Direct-Redis. Direct-Redis builds on top of the Redis 
 package, but will instantly serialize and deserialize data when set() or get() is called, greatly expediting 
-the process of storing data in and retrieving data from Redis stores. \autocite{direct-redis_direct-redis_nodate}.
+the process of storing data in and retrieving data from Redis stores \autocite{direct-redis_direct-redis_nodate}.
 This resolved the serialization issue, meaning the pipeline worked smoothly without any errors, and also 
-resulted in much cleaner and easily-readable code. An alternative which would have also worked would have been to 
+resulted in much cleaner and easily-readable code. An additional alternative would have been to 
 use Pickle for all serialization rather than just that of the model, which would have been functionally identical.
 
 \para Additionally, during the preprocessing stage, a minor improvement could have been made with the One-Hot 
@@ -555,17 +553,24 @@ which could then theoretically be applied in industry.
 % MAIN NOTES:
 % 
 % Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
+% Figure 3.29 - Great Expectations checkpoint saving needs a "brief description".
 
 % Your ingestion isn't really ingesting. Import Kaggle and download + extract the zip through the Kaggle package and a ZIP extractor package.
+%   Not mandatory but it'll be great if you do this.
 % Misunderstanding of Label and Ordinal encoding. Pinned a bookmark to Firefox explaining the two.
 % Alternatively, with one-hot encoding, just remove the Previous_loan_defaults_no column, as if that's 0, the other must be 1.
+
 % You may have been able to label encode the whole dataset, as random forest can apparently work well with it anyway.
 
 % Maybe transform the data within the modelAPI script so you don't need to enter 24 columns for a prediction.
 % This is the primary improvement that I think is necesary.
 
-% Add a BashOperator for mlflow ui.
+% Remove all mention of hosting webservers (MLFlow, Uvicorn) as part of DAGs. Research has 
+% shown that you wouldn't do that for exactly the reasons you previously identified in 3.11.
+
 % Data analysis is worth 20%. Consider investing more into that section and/or moving it into the implementation chapter.
+% Write research questions for Data Analysis, potentially rewriting the section to answer them. This was the major hole
+% identified in the work.
 
 % You've said the docs page is a security threat. That's true, but give a source to say that if possible.
 
@@ -578,7 +583,9 @@ which could then theoretically be applied in industry.
 
 % Rewrite Section 3.11, and make it Section 3.12.
 % Add a NEW Section 3.11, about how the plan differed through iterations (Dec Draft to Jan 10 final.)
-% That'd be populated with everything written in these LaTeX notes, i.e. the BashOperators, modelAPI changes, etc.
+% That'd be populated with everything written in these LaTeX notes, so don't delete these as you go.
+% If you do, fetch them back from earlier commits to ensure you've got something to write about, as it 
+% seems that the improvements are worth a decent chunk (20%) as detailed below.
 
 % Pipeline plan = 20%
 % Implementation & Deployment = 20%
