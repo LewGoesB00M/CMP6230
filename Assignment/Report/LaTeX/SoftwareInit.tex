@@ -213,6 +213,9 @@ and then navigating to localhost:5000 in a web browser. At present, there are no
 was freshly installed and initialised.
 
 \subsection{Great Expectations}
+Great Expectations (GX) is used for validating the dataset. It allows for the automatic processing of 
+the data against rules that can be set. GX cannot be used immediately after install, and has some initialisation 
+steps detailed in Figures \ref{fig:GXVersion} through \ref{fig:GXCheckpoint2}.
 
 \begin{figure}[H]
     \centering
@@ -326,7 +329,7 @@ a Jupyter notebook as depicted in Figure \ref{fig:GXSuite2}.
 
 \para After the suite's creation, GX then allows for the creation of checkpoints, which save the expectations and allow
 them to be applied to any dataset, which would be useful when the dataset is updated, as there would be no need 
-to create an new suite of expectations.
+to create a new suite of expectations.
 
 \begin{figure}[H]
     \centering
@@ -342,11 +345,11 @@ to create an new suite of expectations.
     \label{fig:GXCheckpoint2}
 \end{figure}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/11.png}
-%     \caption{Confirming the existence of the checkpoint YAML file.}
-%     \label{fig:GXCheckpoint3}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/11.png}
+    \caption{Confirming the existence of the checkpoint YAML file.}
+    \label{fig:GXCheckpoint3}
+\end{figure}
 % Possibly unneeded. If used, 10.png would need to be cropped but that's hard to do without removing key info
 % as the key info is actually at the bottom of the image.

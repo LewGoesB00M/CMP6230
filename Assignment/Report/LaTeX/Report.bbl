@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{american_express_does_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d5926562cceb8fa8a6540e470f1df930}{%
+           family={{American Express}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{fullhash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{fullhashraw}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{bibnamehash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{authorbibnamehash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{authornamehash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{authorfullhash}{d5926562cceb8fa8a6540e470f1df930}
+      \strng{authorfullhashraw}{d5926562cceb8fa8a6540e470f1df930}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Interest rates may be based on your credit score, as well as other factors. Typically, the higher your credit score, the less it may cost to borrow money.}
+      \field{langid}{american}
+      \field{title}{Does Your Credit Score Determine Your Interest Rate?}
+      \field{urlday}{8}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\VTHAXQZP\\credit-score-interest-rate.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.americanexpress.com/en-us/credit-cards/credit-intel/credit-score-interest-rate/
+      \endverb
+      \verb{url}
+      \verb https://www.americanexpress.com/en-us/credit-cards/credit-intel/credit-score-interest-rate/
+      \endverb
+    \endentry
     \entry{anaconda_about_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=853f30a23ce8b8cbd6946c91d67f5c78}{%

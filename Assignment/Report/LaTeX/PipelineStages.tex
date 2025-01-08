@@ -333,11 +333,35 @@ After this, the processed dataset will be output to Redis, to be used as the inp
 
 \pagebreak
 
-\subsection{Data analysis} % Missed this from the original submission.
-To build a machine learning model for a dataset, it greatly helps to understand the data itself.
+\subsection{Data analysis}
+To build a machine learning model for a dataset, it greatly helps to understand the data itself. To do so, 
+there are some key questions that can be answered through detailed data analysis, detailed below in Table \ref{tab:Questions}.
+
+\begin{longtable}{ | p{0.05\textwidth} | p{0.85\textwidth} | }
+    \hline
+    \cellcolor{blue!25} ID & \cellcolor{blue!25} Question \\
+    \hline
+    1 & What is the age distribution of loan applicants? \\
+    \hline
+    2 & What is the most common intent for a loan? \\
+    \hline
+    3 & Does age influence loan approval rates? \\
+    \hline 
+    4 & Are more loans granted to men or women? \\
+    \hline 
+    5 & How does credit score influence the interest rate on a loan? \\
+    \hline 
+    6 & What is the most significant factor in the loan approval decision? \\
+    \hline
+    \caption{The questions that this EDA process aims to answer.}\label{tab:Questions}
+\end{longtable}
+
+\para These questions will be answered thoroughly throughout this section and in 
+Table \ref{tab:Answers}.
+
 
 \subsubsection{Distributions and outliers}
-Understanding the data means to know how the data is typically distributed, and what constitutes an outlier. This can be 
+Understanding the data also means knowing how the data is typically distributed, and what constitutes an outlier. This can be 
 done through visualisations such as box plots for numerical data and bar charts for categorical data.
 
 \begin{figure}[H]
@@ -389,8 +413,9 @@ done through visualisations such as box plots for numerical data and bar charts 
     \label{fig:BarCharts}
 \end{figure}
 
-A notable observation is that the dataset is imbalanced, containing fewer records of granted 
-loans than denied loans.
+\para A notable observation is that the dataset is imbalanced, containing fewer records of granted 
+loans than denied loans. Additionally, the most common loan intent as inquired by Question 2 is for 
+educational purposes, such as university student loans.
 
 \begin{figure}[H]
     \centering
@@ -424,36 +449,75 @@ loans than denied loans.
     
     \vspace{1em}
     
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.22\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Plots/InterestRate.png}
         \caption{Interest rate}
         \label{fig:Boxplot5}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.22\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Plots/PercentIncome.png}
         \caption{Percentage of income}
         \label{fig:Boxplot6}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.22\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Plots/CreditHistory.png}
         \caption{Credit history length}
         \label{fig:Boxplot7}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.22\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/CreditScore.png}
+        \caption{Credit score}
+        \label{fig:Boxplot8}
     \end{subfigure}
     
     \caption{Box plots of all numerical columns.}
     \label{fig:Boxplots}
 \end{figure}
 
-There are many outliers in this dataset, most notably in the income column, where very few are earning millions.
+\para There are many outliers in this dataset, most notably in the income column, where very few are earning millions.
 Also, the age column has some outliers of extremely old people, including one aged 140, who cannot exist as the oldest 
 person known was 112 before they died \autocite{sky_news_worlds_nodate}. This can therefore likely be attributed 
 to erroneous generation due to this dataset being synthetic, and records with considerable outliers like this can 
 be safely removed in the implementation's preprocessing phase.
+
+\para These distributions also answer Question 1 by showing that the distribution of ages is heavily left-leaning,
+with considerably more younger people getting loans than older people.
+
+\subsubsection{Multivariate analysis}
+It is also important to understand the influences that each feature has on the approval rate and other features.
+Question 4 asks whether more loans are granted to men or women; it was established that there is a slight imbalance 
+favouring men in the dataset in Figure \ref{fig:Bar1}, which is mirrored in Figure \ref{fig:GenderVsApproval}, which 
+shows that there is no significant favouring of either gender in loan approvals when accounting for the imbalance, with a similar 
+ratio of approved and rejected loans for both men and women.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\linewidth]{Plots/GenderVsApproval.png}
+    \caption{The amount of loans approved for each gender. (Female: 15674 approved, 4485 denied - Male: 19326 approved, 5515 denied).}
+    \label{fig:GenderVsApproval}
+\end{figure}
+
+\noindent Question 5 asks about the influence of credit score on a loan's interest rate. Figures \ref{fig:Boxplot5} and \ref{fig:Boxplot8}
+show that these are both numerical columns, making them suitable for a scatter graph. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\linewidth]{Plots/ScoreVsRate.png}
+    \caption{A scatter plot showing the influence of credit score on interest rate.}
+    \label{fig:ScoreVsRate}
+\end{figure}
+
+\para Intriguingly, Figure \ref{fig:ScoreVsRate} indicates that in this dataset there is no correlation between credit score 
+and interest rate. This is unlike the real world, where higher credit scores typically correlate to lower interest rates \autocite{american_express_does_nodate},
+and is likely a result of this data being synthetically generated rather than gathered from a real-world environment.
+
 
 \subsubsection{Encoding}
 Machine learning models cannot directly interpret string data. Therefore, strings must be encoded to numerical representations
@@ -501,7 +565,8 @@ effect from one-hot encoding creating entirely new columns, increasing the dimen
 %     \label{fig:MiniMatrix}
 % \end{figure}
 
-Despite this, key insights can still be made about the likelihood of a loan being granted, such as:
+\pagebreak 
+\noindent Despite this, key insights can still be made about the likelihood of a loan being granted, such as:
 
 \begin{itemize}
     \item Loans are most likely to be approved if the person has never defaulted on a loan before.
@@ -515,6 +580,39 @@ Despite this, key insights can still be made about the likelihood of a loan bein
     \end{itemize}
     \item Loans are more likely to be approved if they are a large percentage of the person's yearly income.
 \end{itemize}
+
+\subsection{Research answers}
+Through this extensive EDA process, the questions posed in Table \ref{tab:Questions} can now be answered:
+
+\begin{longtable}{ | p{0.05\textwidth} | p{0.85\textwidth} | }
+    \hline
+    \cellcolor{blue!25} ID & \cellcolor{blue!25} Answer \\
+    \hline
+    1 & The age distribution of loan applicants is significantly left-leaning, with the interquartile range 
+    of the feature consisting of applicants between 20 and 40 years old as shown in Figure \ref{fig:Boxplot1}. \\
+    \hline
+    2 & The most common loan intent is for educational purposes as revealed in Figure \ref{fig:Bar4}. While this isn't directly defined in the dataset's 
+    documentation, it is a safe assumption that this refers to student loans such as those for university tuition. \\
+    \hline
+    3 & The correlation matrix in Figure \ref{fig:BigMatrix} states that there is an extremely slight negative correlation 
+    between a loan's approval and the age of the applicant. However, given the imbalance of the dataset's ages, it can instead 
+    safely be said that there is no significant correlation between applicant age and loan approval. \\
+    \hline 
+    4 & The dataset is imbalanced in favour of men, so there are technically more loans granted to men. However, 
+    the comparison in Figure \ref{fig:GenderVsApproval} indicates that the proportions of granted to denied loans 
+    is similar across both genders. This is also matched by the correlation matrix in Figure \ref{fig:BigMatrix}, 
+    which showed a negligible correlation between gender and loan status. \\
+    \hline 
+    5 & Credit score does not affect the interest rates of loans in this dataset as shown in Figure \ref{fig:ScoreVsRate}. 
+    This is unlike the real world where applicants with high credit scores can typically have lower interest rates \autocite{american_express_does_nodate}. 
+    \\
+    \hline 
+    6 & The primary finding from the correlation matrix in Figure \ref{fig:BigMatrix} is that the strongest influential factor on 
+    loan approval is whether a person has previously defaulted on a loan. If they have, they are enormously more likely to
+    be rejected, whereas if they have not, they are more likely to get a loan. \\
+    \hline
+    \caption{The answers to Table \ref{tab:Questions}'s research questions.}\label{tab:Answers}
+\end{longtable}
 
 \section{Model Development}\label{sec:Development}
 \subsection{Description}
@@ -566,9 +664,6 @@ time depending on how many decision trees it is told to create.
     \hline
 \caption{Descriptions of software to be used for model development.}\label{tab:DevelopmentSoftware}
 \end{longtable}
-
-
-% DO I USE RANDOM FOREST? IT'S CONSIDERED A GOOD ONE FOR CLASSIFICATION.
 
 \section{Model Deployment}\label{sec:Deployment}
 \subsection{Description}
@@ -648,29 +743,3 @@ metrics.
     \caption{An example of the MLFlow monitoring dashboard \autocite{mlflow_mlflow_nodate}.}
     \label{fig:MLFlowSample}
 \end{figure}
-
-% \chapter*{Conclusion}
-% \addcontentsline{toc}{chapter}{Conclusion}
-% The constructed plan should provide a clear set of instructions as well as the division of tasks 
-% to successfully implement the ML pipeline. It facilitates all stages of the pipeline, as well as 
-% covering all of the software intended to be used, and how it will be used, at each of the stages.
-% However, this plan will see continuous and repeated iteration, much like the pipeline itself, to ensure 
-% that the development of the pipeline can be a smooth process without any major issues.
-% In future, each stage of the perfected plan will be executed to produce an optimal MLOps pipeline, with the final 
-% product being an accurate binary classification model for identifying if a person should be permitted a 
-% loan from thirteen predictor variables. 
-
-
-% Through the development of this plan, considerable research into machine learning operations and the literature 
-% surrounding them has resulted in several skills being obtained through the discovery and use of 
-% a variety of software and libraries used across data engineering industries, such as but not limited to:
-
-% \begin{itemize}
-%     \item Pandas for data analysis.
-%     \item Airflow for workflow design and execution.
-%     \item Docker for software containerisation.
-%     \item Database management systems (MariaDB in this project) for the efficient storage of data.
-%     \item Machine learning libraries (Scikit-learn in this project) 
-%     \item Data validation libraries (Great Expectations)
-%     \item Webserver and API libraries (Uvicorn, FastAPI) to host frontend REST APIs.
-% \end{itemize}
