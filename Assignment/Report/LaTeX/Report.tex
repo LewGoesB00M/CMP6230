@@ -30,6 +30,8 @@
     backend=biber
 ]{biblatex}
 
+\usepackage[british]{babel}
+
 % Additional styling options to ensure Harvard referencing format.
 \renewbibmacro*{volume+number+eid}{
     \printfield{volume}
@@ -157,22 +159,30 @@ except crediting the original author \autocite{apache_apache_nodate}, meaning th
 considerations of note with this dataset's usage. Given that the chosen dataset also consists of synthetic data,
 there are fewer necessary considerations for its use.
 
-\subsection{Synthetic data}
+\subsection{Synthetic Data}
 % What is Synthetic Data and what are the common methods that are currently leveraged to attempt
 % to perform Synthetic Data Generation?
+\subsubsection{What is synthetic data?}
 This term has been frequently used throughout the report to describe the Loan Approval Classification Dataset, and refers to 
 data that has been generated algorithmically rather than collected from a real source. However, the generation of the 
 synthetic data does often depend on real data to identify patterns and trends, meaning that legislation such as GDPR is still relevant
 in those scenarios because the generated data must be impossible to link back to the original subject \autocite{Lopez2022OnTL}.
-An example of synthetic data generation is SMOTE, which was used in the generation of the loan dataset \autocite{zoppelleto_financial_nodate}, 
-which creates synthetic data in a dataset based on the other rows as previously mentioned in Section \ref{sec:Dataset}. SMOTE will also be used in Section 
-\ref{sec:ImpPreprocessing} to balance the dataset.
+
+\subsubsection{How is synthetic data generated?}
+An example of a synthetic data generation method is the Synthetic Minority Oversampling Technique, also known as SMOTE, which was used
+in the generation of the loan dataset \autocite{zoppelleto_financial_nodate}, which creates synthetic data in a dataset based on the
+other rows as previously mentioned in Section \ref{sec:Dataset}. It does this using the K-Nearest Neighbours algorithm to generate 
+data points based on the averages across other similar points. SMOTE will also be used in Section \ref{sec:ImpPreprocessing} to balance
+the dataset by oversampling the minority class (approved loans), as it was discovered in Figure \ref{fig:Bar6} that there are considerably 
+more rejected loans than approved loans in this dataset.
 
 \subsection{Model drift}
 Model drift is a phenomenon that affects deployed production machine learning models where changes in 
 their environment over time affects their performance \autocite{nigenda_amazon_2022}. Model drift is not an 
 immediate occurrence, and can take a long time to occur, emphasising the importance of continuous model evaluation. 
 Table \ref{tab:Drift} details the two primary kinds of model drift.
+
+\pagebreak
 
 \begin{longtable}{ | p{0.2\textwidth} | p{0.4\textwidth} | p{0.3\textwidth} |}
     \hline
@@ -188,13 +198,13 @@ Table \ref{tab:Drift} details the two primary kinds of model drift.
 \caption{The common types of model drift.}\label{tab:Drift}
 \end{longtable}
 
-\pagebreak % It's just barely on the same page as the table but I don't want it to be.
 \para Model drift can be a significant issue that greatly impacts the performance of ML models if it is not quickly noticed, and can 
 also be an ethical concern if the model is being used to influence decisions such as granting loans in this project. 
 Therefore, combatting model drift through methods such as continuous monitoring is necessary to ensure that the model remains accurate 
 and usable. This can be accomplished in this project through MLFlow's monitoring dashboard.
 
-\para This project must then also take into account four key elements of data handling - these being data privacy, security, 
+\subsection{Data handling}
+This project must then also take into account four key elements of data handling - these being data privacy, security, 
 ethics and data protection laws. 
 
 \begin{longtable}{ | p{0.2\textwidth} | p{0.7\textwidth} |}
@@ -212,7 +222,7 @@ ethics and data protection laws.
     Mandated by data protection legislation. \\
     \hline 
     Big data ethics & The application of data ethics to massive datasets, concerning the implications of their collection and use on society as a whole
-    \autocite{richards_big_2014}. \\ % Poor definition I think, maybe rewrite this one.
+    \autocite{richards_big_2014}. \\
     \hline 
     General Data \newline Protection \newline Regulations (GDPR) & Legislation introduced in the EU in 2016, giving individuals significantly more 
     rights over their personal data. Data subjects most notably may request a copy of their data, the removal of their data, and to object to their data's 
@@ -228,6 +238,12 @@ ethics and data protection laws.
 % Maybe it shouldn't be "brief". I think GDPR especially needs its own paragraph moreso than a table column.
 \end{longtable}
 
+\noindent Because this dataset consists of entirely synthetic data, very few of these concerns apply to this pipeline. 
+However, the ethics of synthetic data generation can be called into question as there are few details on the dataset's Kaggle 
+page describing the source used for the generation of this data, and whether the real people that this data was created based 
+on are aware of this and consented to it. Aside from this, there are no further concerns as data privacy and GDPR are not 
+relevant given that the data used to train the model is not real.
+
 
 % Example 2 (SimonRoadknight) is 21,334 words, or 18,809 without its appendices and references.
 % Example 3 (MihaiValentin) is 12,802 words.
@@ -235,7 +251,6 @@ ethics and data protection laws.
 
 
 \include{SoftwareInit}
-% Elements of SoftwareInit could be placed in the appropriate pipeline section.
 
 \section{Package imports}
 Many packages need to be imported for the Airflow DAG of the pipeline to succeed. These can be found 
@@ -270,14 +285,15 @@ in this report within the appropriate pipeline stage.
 ETL function. The ETL function will call on extract\_csv to read the dataset CSV from 
 the path set as DEFAULT\_PATH. After this, some data type transformations are performed 
 to ensure the optimal data types are used for each column. Finally, the transformed 
-Pandas DataFrame is written to the MariaDB Columnstore instance hosted within the Docker 
+DataFrame is written to the MariaDB Columnstore instance hosted in the Docker 
 container at port 3306.
 
 \para For data validation,
 Conda was used to install a helper package for Airflow that adds the Great Expectations Operator.
 This operator connects to the checkpoint produced in Figure \ref{fig:GXCheckpoint3} to run the saved validation 
 methods on the ingested dataset without the need to declare it as a specialised Python function within 
-the code. 
+the code. Through the use of Great Expectations, it can be confirmed that the ingested data does not differ 
+from the original data and maintains its integrity.
 
 \section{Data Preprocessing}\label{sec:ImpPreprocessing}
 
@@ -494,8 +510,7 @@ model to their actual web page with forms and text entry fields to input data, t
 have been feasible for this particular project due to time constraints as well as not owning a domain 
 to host the site on, meaning it is restricted to only localhost.
 
-
-\section{Development challenges and future improvements}
+\section{Changes over time}
 During the implementation of the pipeline, the initial package used for serializing data was PyArrow.
 However, as development continued, it was discovered that many of PyArrow's useful functions are now 
 deprecated, and have been since 2021. This made serializing data and passing it between DAG stages considerably more difficult, 
@@ -506,24 +521,64 @@ This resolved the serialization issue, meaning the pipeline worked smoothly with
 resulted in much cleaner and easily-readable code. An additional alternative would have been to 
 use Pickle for all serialization rather than just that of the model, which would have been functionally identical.
 
-\para Additionally, during the preprocessing stage, a minor improvement could have been made with the One-Hot 
-encoding of the "previous\_loan\_defaults\_on\_file" column by removing the "Yes" column it produces, because 
-if one is 0, the other must be 1, meaning that two columns are not needed.
+\para Additionally, after the original draft pipeline was created, some inefficiencies were noted across the preprocessing and deployment 
+stages which were later addressed.
 
-\para Furthermore, the DAG that starts the Docker containers could also be extended to add a BashOperator to run 
-"mlflow ui" to initialise the MLFlow server. Currently, just running the DockerContainers DAG followed by the pipeline DAG will 
-time out unless MLFlow was already running because the Training and Evaluation phases are unable to connect to MLFlow 
-if it is not running.
+\subsection{Preprocessing}
+The encoding of the data colossally increased the dimensionality of the dataset as a by-product of one-hot encoding.
+This could have been slightly reduced by instead using label encoding on the previous loan defaults column, as one-hot encoding 
+created unnecessary columns for "Yes" and "No", though only one of these could ever be true at a time, meaning a simple 1 or 0
+in a single column would suffice. This is shown below in Figure \ref{fig:PreprocessingCode1NEW}.
 
-\para Finally, it could theoretically be possible to incorporate deployment within the DAG through the use of a 
-BashOperator to run "uvicorn modelAPI:app --reload". However, this may lead to issues with directories which will be 
-looked into, as well as the DAG never actually ending, and running perpetually because the Uvicorn server will not stop 
-by itself. On the topic of deployment, the user needing to enter 24 columns of data as a result of One-Hot encoding 
-increasing the dimensionality is poor, and encoding the data \textbf{after it has been input} by the user is being considered so 
-that the user only needs to enter the original 13 columns which will be silently encoded in the background for the model's use.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/NewEncoding.png}
+    \caption{The updated Encode function, which uses label encoding for previous loan defaults.}
+    \label{fig:PreprocessingCode1NEW}
+\end{figure}
 
-\para These issues will be resolved in the final version of the pipeline for January 10, and this section will either 
-be removed or rewritten for that version of the report. 
+%%%% IS THAT ENCODE SCREENSHOT UP TO DATE? IT SHOULD BE /HOME/LEWIS RATHER THAN ~
+
+\subsection{Deployment}
+
+There were some inefficiencies regarding accessing predictions for the model. Figure \ref{fig:UviClasses} depicts how twenty-three
+columns must be entered prior to receiving a prediction. This was due to the one-hot encoding used on the dataset, though the encoding
+can instead be performed within the ModelAPI script itself so that the user only needs to enter the original 13 columns of the dataset.
+Furthermore, the deployment issues were not restricted to just the user's input; the data being fed to the model was not scaled,
+which could have led to wildly incorrect predictions. This was remedied by saving the StandardScaler created during the Preprocessing 
+and Development stages with Pickle to a file, and then deserialising it from this file in the ModelAPI script.
+
+\para These issues caused a total rewrite of the ModelAPI script, the details of which can be found in Appendix B. The predictions 
+made after these changes can be found in Figures \ref{fig:TruePositiveNew} and \ref{fig:TrueNegativeNew}. They can be confirmed to 
+be correct as they are rows taken from the testing set, meaning that the model had not previously seen them. Specifically, they are 
+row 1388 (Positive / Granted loan) and row 6736 (Negative / Denied loan) of the dataset.
+The row numbers differ heavily because train\_test\_split shuffles the dataset as previously discussed.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/JAN 10 UPDATES/NewTruePositiveOutput.png}
+    \caption{A true positive prediction made after the ModelAPI changes.}
+    \label{fig:TruePositiveNew}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/JAN 10 UPDATES/NewTrueNegativeOutput.png}
+    \caption{A true negative prediction made after the ModelAPI changes.}
+    \label{fig:TrueNegativeNew}
+\end{figure}
+
+\section{Evaluation of development challenges and future improvements}
+???
+% How would you improve upon the structure of the pipeline in the future, specifically in the context of 
+% data security and data privacy? 
+% How does your current pipeline effectively facilitate access to the ingested data by
+% both people (Data Scientists, Data Engineers, Data Analysts) and software systems? (e.g.
+% the pipeline)
+% How does your current pipeline compare to your initial plans?
+% How does your current pipeline compare to your final plan?
+% Are there any discrepancies, if so why?
+% How would you improve upon the structure of the pipeline in the future?
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
@@ -541,7 +596,8 @@ deployment. Key achievements of this pipeline include:
     \item Deployment of the model as a REST API using FastAPI and Uvicorn.
 \end{itemize}
 
-The pipeline's modular structure allows for easy maintenance and scalability, enabling future enhancements such as the addition 
+The pipeline's modular structure allows for easy maintenance and scalability, as demonstrated by the changes and improvements 
+made after the original draft completion of the pipeline. This therefore could enable future enhancements such as the addition 
 of other classification models such as Linear or Logistic Regression in order to find the most accurate model to make predictions with 
 which could then theoretically be applied in industry.
    

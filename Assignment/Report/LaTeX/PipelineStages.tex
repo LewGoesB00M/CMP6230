@@ -333,7 +333,7 @@ After this, the processed dataset will be output to Redis, to be used as the inp
 
 \pagebreak
 
-\subsection{Data analysis}
+\subsection{Exploratory Data Analysis \& Research Questions}
 To build a machine learning model for a dataset, it greatly helps to understand the data itself. To do so, 
 there are some key questions that can be answered through detailed data analysis, detailed below in Table \ref{tab:Questions}.
 
@@ -703,16 +703,15 @@ variables of the dataset (age, credit score, etc.) to receive the model's output
 \caption{Descriptions of software to be used for model deployment.}\label{tab:DeploymentSoftware}
 \end{longtable}
 
-
+\pagebreak
 
 \section{Model Monitoring}\label{sec:Monitoring}
 \subsection{Description}
-After the model is deployed, its performance is continuously monitored by data scientists. The monitoring 
-process consists of the analysis of the model's results via metrics such as those found in Table \ref{tab:metrics}
-By monitoring the model, any issues with it can be quickly identified and the pipeline can be restarted to 
-yield a higher accuracy model, which can be monitored again.  
+After the model is deployed, its performance is continuously monitored by data scientists. This consists of the analysis
+of the model's results via metrics such as those found in Table \ref{tab:metrics}. By monitoring the model, any issues 
+with it can be quickly identified, and the pipeline can be restarted to yield a better model, which can be monitored again.  
 
-\begin{longtable}{ |p{0.2\textwidth}| p{0.4\textwidth}| p{0.2\textwidth}|}
+\begin{longtable}{ |p{0.2\textwidth}| p{0.45\textwidth}| p{0.15\textwidth}|}
     \hline
     \cellcolor{blue!25}Metric & \cellcolor{blue!25}What is it? & \cellcolor{blue!25}Type\\
     \hline
@@ -733,13 +732,13 @@ yield a higher accuracy model, which can be monitored again.
 
 
 \subsection{In this project}
-This pipeline aims to produce a binary classification model, so metrics such as F1-score will be useful in the evaluation
-of each iteration of the model. To do so, MLFlow will be used to store each iteration's parameters and performance
-metrics. 
+This pipeline aims to produce a binary classification model, so getting the model's Accuracy, Precision, and F1-score will 
+be useful in the evaluation of each iteration of the model. To do so, MLFlow will be used to store each iteration's 
+parameters and performance metrics. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.75\linewidth]{Draft Pipeline/MLFlowSample.png}
+    \includegraphics[width=.5\linewidth]{Draft Pipeline/MLFlowSample.png}
     \caption{An example of the MLFlow monitoring dashboard \autocite{mlflow_mlflow_nodate}.}
     \label{fig:MLFlowSample}
 \end{figure}

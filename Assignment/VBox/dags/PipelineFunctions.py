@@ -93,6 +93,11 @@ def encode(df):
     # In this dataset, person_education is ordinal as a person's level of education goes in order of Bachelors, Masters, etc.
     df["person_education"] = le.fit_transform(df["person_education"])
     
+    ### UPDATED IMPROVEMENT AFTER ORIGINAL PIPELINE ###
+    # This also applies to the previous loan defaults column.
+    df["previous_loan_defaults_on_file"] = le.fit_transform(df["previous_loan_defaults_on_file"])
+    ###################################################
+    
     # One-hot encoding also converts strings to numbers, but to do so it creates new Boolean columns for each
     # of the original values in the column, removing the original column in the process.
     encodedDf = pd.get_dummies(df, columns=df.select_dtypes(include=['object']).columns)
