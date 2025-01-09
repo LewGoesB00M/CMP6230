@@ -1,6 +1,15 @@
+% Interesting trick to instead make the chapter number the letter A for this appendix.
+\begingroup
+\renewcommand\thechapter{A}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{}{20pt}{\Huge}
+\setcounter{section}{0} % Set the section counter back to 0 so the conclusion doesn't interfere.
+
 \chapter*{Appendix A - Software Installation}
 \addcontentsline{toc}{chapter}{Appendix A - Software Installation}
-\section*{Miniconda}
+\markboth{Appendix A}{}
+
+\section{Miniconda}
 
 \begin{figure}[H]
     \centering
@@ -38,7 +47,7 @@
 \end{figure}
 
 \pagebreak 
-\section*{Docker}
+\section{Docker}
 Docker's install process on a fresh Ubuntu system is quite lengthy due to a lot of 
 system configuration being required. This installation process follows 
 \textcite{digitalocean_how_nodate}'s guide.
@@ -91,3 +100,5 @@ system configuration being required. This installation process follows
     \caption{Adding the VM user to the Docker group so they can execute commands.}
     \label{fig:DockerInstall7}
 \end{figure}
+
+\endgroup

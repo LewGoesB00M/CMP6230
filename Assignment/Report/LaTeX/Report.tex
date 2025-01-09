@@ -537,21 +537,110 @@ in a single column would suffice. This is shown below in Figure \ref{fig:Preproc
     \label{fig:PreprocessingCode1NEW}
 \end{figure}
 
-%%%% IS THAT ENCODE SCREENSHOT UP TO DATE? IT SHOULD BE /HOME/LEWIS RATHER THAN ~
+\noindent Part of the encode function uses a new function titled "serialize\_to\_file". This function, depicted in Figure \ref{fig:SerializeToFile},
+was added to assist with the model's updated deployment which will be further elaborated upon in Section \ref{subsec:NewDeployment}. 
+The function will take an object (obj) and string (file\_name) as parameters, and then serialize the object with Pickle and save it to a file
+in the "home/lewis/CMP6230" directory with a name dictated by the string.
 
-\subsection{Deployment}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/SerializeToFile.png}
+    \caption{The "serialize\_to\_file" function, which serializes and saves an object to a file.}
+    \label{fig:SerializeToFile}
+\end{figure}
 
-There were some inefficiencies regarding accessing predictions for the model. Figure \ref{fig:UviClasses} depicts how twenty-three
-columns must be entered prior to receiving a prediction. This was due to the one-hot encoding used on the dataset, though the encoding
-can instead be performed within the ModelAPI script itself so that the user only needs to enter the original 13 columns of the dataset.
+\noindent This was also used to serialize the StandardScaler after fitting it to the training data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/ScalerSerialize.png}
+    \caption{Using serialize\_to\_file to serialize the fitted StandardScaler.}
+    \label{fig:SerializeScaler}
+\end{figure}
+
+\subsection{Deployment}\label{subsec:NewDeployment}
+
+There were also some major issues regarding the model's deployment and accessing predictions for the model. Figure \ref{fig:UviClasses} 
+depicts how twenty-three columns originally had to be entered prior to receiving a prediction. This was due to the one-hot encoding 
+used on the dataset, though the encoding can instead be performed within the ModelAPI script itself so that the user only needs to
+enter the original 13 columns of the dataset\footnote{This introduced some further complications which were suitably addressed in Figure \ref{fig:UviOneHot}}. 
 Furthermore, the deployment issues were not restricted to just the user's input; the data being fed to the model was not scaled,
-which could have led to wildly incorrect predictions. This was remedied by saving the StandardScaler created during the Preprocessing 
-and Development stages with Pickle to a file, and then deserialising it from this file in the ModelAPI script.
+which could have led to wildly incorrect predictions. This was remedied with the "serialize\_to\_file" function depicted previously in 
+Figure \ref{fig:SerializeToFile}, and then deserialising it from this file in the ModelAPI script.
 
-\para These issues caused a total rewrite of the ModelAPI script, the details of which can be found in Appendix B. The predictions 
-made after these changes can be found in Figures \ref{fig:TruePositiveNew} and \ref{fig:TrueNegativeNew}. They can be confirmed to 
-be correct as they are rows taken from the testing set, meaning that the model had not previously seen them. Specifically, they are 
-row 1388 (Positive / Granted loan) and row 6736 (Negative / Denied loan) of the dataset.
+\para These issues caused a total rewrite of the ModelAPI script, beginning with the LoanInput class. The new version of 
+this class uses only the rows originally found in the dataset, as the encoding is now handled internally by the script.
+This results in the user only needing to enter data for the original 13 features\footnote{They do not need to enter the loan status, as that is what the model aims to predict.}
+compared to the 23 of the original implementation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/NewLoanInput.png}
+    \caption{The updated LoanInput class that needs 10 less inputs than the original.}
+    \label{fig:NewLoanInput}
+\end{figure}
+
+\noindent As previously depicted in Figures \ref{fig:PreprocessingCode1NEW} and \ref{fig:SerializeScaler}, this rewrite influenced changes in 
+the preprocessing stage to ensure that the same encoders and scalers fitted to the dataset were saved to files for use on inputs to the model.
+After these changes were made, the ModelAPI script was updated to load the encoders and scaler from the serialized files with Pickle.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/LoadFiles.png}
+    \caption{Loading the LabelEncoders and StandardScaler from their serialized files.}
+    \label{fig:UviLoadFiles}
+\end{figure}
+
+\noindent Once these were loaded and deserialized by Pickle, they were used for encoding and scaling the data input by the user.
+The LabelEncoders were very simple to apply to the user's input, seen in Figure \ref{fig:UviLabelEncoding} as they had already 
+been fitted to the expected values for the education and previous default columns when the model was trained.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/NewUviEncoding1.png}
+    \caption{Label encoding the education and previous default columns.}
+    \label{fig:UviLabelEncoding}
+\end{figure}
+
+\pagebreak 
+\noindent However, one-hot encoding was far more challenging. Pandas' "get\_dummies" function would work differently to how 
+it did when the dataset was preprocessed, as the dataset contained a wide variety of values for dummy columns to be created from,
+but the user's input is a single row. This was remedied by creating a list of the expected dummy columns and adding them to the user's 
+input, setting their values to 0 if they didn't already exist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/NewUviEncoding2.png}
+    \caption{Manually one-hot encoding the user's input.}
+    \label{fig:UviOneHot}
+\end{figure}
+
+\noindent After this, the input row needed to be scaled, as it was not scaled in the original pipeline implementation.
+This introduced a further complication in that the columns must be in the exact order that they were when the scaler was fitted,
+which the manual one-hot encoding could not guarantee. To fix this, the features in the input row were rearranged to be how the scaler 
+expected them to be.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/DFRearrangeScale.png}
+    \caption{Rearranging the dataframe to scale the user's input.}
+    \label{fig:DFRearrangeScale}
+\end{figure}
+
+\noindent Finally, the encoded and scaled input row can be used to make a prediction by converting it to a NumPy array, which 
+Pandas has the convenient function "to\_numpy" for, and feeding it into the model. Then, the prediction is output to the 
+backend console interface and is returned in response to the overall POST request.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/JAN 10 UPDATES/NewUviPredict.png}
+    \caption{Converting the input row to a NumPy array and predicting with the model.}
+    \label{fig:NewUviPredict}
+\end{figure}
+
+\noindent The predictions made after these changes can be found in Figures \ref{fig:TruePositiveNew} and \ref{fig:TrueNegativeNew}. 
+They can be confirmed to be correct as they are rows taken from the testing set, meaning that the model had not previously seen them. 
+Specifically, they are row 1388 (Positive / Granted loan) and row 6736 (Negative / Denied loan) of the dataset.
 The row numbers differ heavily because train\_test\_split shuffles the dataset as previously discussed.
 
 \begin{figure}[H]
@@ -566,6 +655,19 @@ The row numbers differ heavily because train\_test\_split shuffles the dataset a
     \includegraphics[width=.75\linewidth]{Implementation/JAN 10 UPDATES/NewTrueNegativeOutput.png}
     \caption{A true negative prediction made after the ModelAPI changes.}
     \label{fig:TrueNegativeNew}
+\end{figure}
+
+\noindent For testing purposes, the row used in Figure \ref{fig:TrueNegativeNew} was modified to have no previous loan 
+defaults, as it is known from the thorough data analysis in Section \ref{subsec:EDA} that this is the most influential 
+factor. Originally, this applicant had defaulted on a loan before, which caused their application to be rejected. However,
+after changing this to indicate they had not defaulted before, the loan was approved by the model as depicted in Figure 
+\ref{fig:UviCustomRow}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/JAN 10 UPDATES/UviCustomRow.png}
+    \caption{The different prediction after modifying the input row in Figure \ref{fig:TrueNegativeNew}.}
+    \label{fig:UviCustomRow}
 \end{figure}
 
 \section{Evaluation of development challenges and future improvements}
@@ -596,7 +698,7 @@ deployment. Key achievements of this pipeline include:
     \item Deployment of the model as a REST API using FastAPI and Uvicorn.
 \end{itemize}
 
-The pipeline's modular structure allows for easy maintenance and scalability, as demonstrated by the changes and improvements 
+\noindent The pipeline's modular structure allows for easy maintenance and scalability, as demonstrated by the changes and improvements 
 made after the original draft completion of the pipeline. This therefore could enable future enhancements such as the addition 
 of other classification models such as Linear or Logistic Regression in order to find the most accurate model to make predictions with 
 which could then theoretically be applied in industry.
@@ -607,28 +709,11 @@ which could then theoretically be applied in industry.
 % 
 % Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
 
-% Misunderstanding of Label and Ordinal encoding. Pinned a bookmark to Firefox explaining the two.
-% Alternatively, with one-hot encoding, just remove the Previous_loan_defaults_no column, as if that's 0, the other must be 1.
-
-% You may have been able to label encode the whole dataset, as random forest can apparently work well with it anyway.
-
-% Maybe transform the data within the modelAPI script so you don't need to enter 24 columns for a prediction.
-% This is the primary improvement that I think is necesary.
-
-% Remove all mention of hosting webservers (MLFlow, Uvicorn) as part of DAGs. Research has 
-% shown that you wouldn't do that for exactly the reasons you previously identified in 3.11.
-
 % You've said the docs page is a security threat. That's true, but give a source to say that if possible.
 % WHAT SECURITY ENHANCEMENTS CAN YOU MAKE TO THE PIPELINE? - MISSED FROM SHEET 4.
 
 % Following the grade of your draft plan (88%), it's established that you need to add slightly more detail to the 
 % section for each dataset, as this appeared to be the only thing that held you off of 100%.
-
-% Rewrite Section 3.11, and make it Section 3.12.
-% Add a NEW Section 3.11, about how the plan differed through iterations (Dec Draft to Jan 10 final.)
-% That'd be populated with everything written in these LaTeX notes, so don't delete these as you go.
-% If you do, fetch them back from earlier commits to ensure you've got something to write about, as it 
-% seems that the improvements are worth a decent chunk (20%) as detailed below.
 
 % Pipeline plan = 20%
 % Implementation & Deployment = 20%
