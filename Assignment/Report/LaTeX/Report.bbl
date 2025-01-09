@@ -131,7 +131,7 @@
       \verb https://www.apache.org/licenses/LICENSE-2.0
       \endverb
     \endentry
-    \entry{apache_use_nodate}{online}{}{}
+    \entry{apache_architecture_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
            family={{Apache}},
@@ -148,7 +148,77 @@
       \field{extraname}{2}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Architecture Overview — Airflow Documentation}
+      \field{urlday}{9}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Architecture Overview — Airflow Documentation:C\:\\Users\\Lewis\\Zotero\\storage\\8K26MUI8\\overview.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html#control-flow
+      \endverb
+      \verb{url}
+      \verb https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/overview.html#control-flow
+      \endverb
+    \endentry
+    \entry{apache_streaming_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
+           family={{Apache}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \field{extraname}{3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Streaming, Serialization, and {IPC} — Apache Arrow v18.0.0}
+      \field{urlday}{18}
+      \field{urlmonth}{11}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+      \verb{url}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+    \endentry
+    \entry{apache_use_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e9713ae04a02a810d6f33dd956f42794}{%
+           family={{Apache}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{fullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{bibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorbibnamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authornamehash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhash}{e9713ae04a02a810d6f33dd956f42794}
+      \strng{authorfullhashraw}{e9713ae04a02a810d6f33dd956f42794}
+      \field{extraname}{4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradate}{3}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{url}
       \field{labelnamesource}{author}
@@ -793,6 +863,48 @@
       \endverb
       \verb{url}
       \verb https://fastapi.tiangolo.com/
+      \endverb
+    \endentry
+    \entry{freecodecamp_python_2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9009ce234fbf9769e70cb48e5816a582}{%
+           family={{freeCodeCamp}},
+           familyi={f\bibinitperiod}}}%
+      }
+      \strng{namehash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{fullhash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{fullhashraw}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{bibnamehash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{authorbibnamehash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{authornamehash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{authorfullhash}{9009ce234fbf9769e70cb48e5816a582}
+      \strng{authorfullhashraw}{9009ce234fbf9769e70cb48e5816a582}
+      \field{sortinit}{f}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{By Shittu Olumide Environment variables play a crucial role in Python programming. They provide a way to store and access configuration values, system-specific information, and sensitive data. In this article, we will explore various methods to retr...}
+      \field{day}{10}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{title}{Python Env Vars – How to Get an Environment Variable in Python}
+      \field{titleaddon}{{freeCodeCamp}.org}
+      \field{urlday}{9}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\MP3E8UGE\\python-env-vars-how-to-get-an-environment-variable-in-python.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.freecodecamp.org/news/python-env-vars-how-to-get-an-environment-variable-in-python/
+      \endverb
+      \verb{url}
+      \verb https://www.freecodecamp.org/news/python-env-vars-how-to-get-an-environment-variable-in-python/
       \endverb
     \endentry
     \entry{geeksforgeeks_snowflake_2023}{online}{}{}
@@ -1820,6 +1932,48 @@
       \endverb
       \verb{url}
       \verb https://docs.python.org/3/library/pickle.html
+      \endverb
+    \endentry
+    \entry{ray_securing_2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9406e3c325bfc9873426e5eda4ba6e18}{%
+           family={{Ray}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{fullhash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{fullhashraw}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{bibnamehash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{authorbibnamehash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{authornamehash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{authorfullhash}{9406e3c325bfc9873426e5eda4ba6e18}
+      \strng{authorfullhashraw}{9406e3c325bfc9873426e5eda4ba6e18}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In {FastAPI}, the automatic generation of {API} documentation using Swagger {UI} (available at /docs) and {ReDoc} (available at /redoc) is one of…}
+      \field{day}{18}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{title}{Securing {FastAPI}’s Swagger(doc) and redoc Endpoints with Password Protection}
+      \field{titleaddon}{Medium}
+      \field{urlday}{9}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\HZZRLUWI\\securing-fastapis-swagger-doc-and-redoc-endpoints-with-password-protection-13428ab91a7d.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://makestory.medium.com/securing-fastapis-swagger-doc-and-redoc-endpoints-with-password-protection-13428ab91a7d
+      \endverb
+      \verb{url}
+      \verb https://makestory.medium.com/securing-fastapis-swagger-doc-and-redoc-endpoints-with-password-protection-13428ab91a7d
       \endverb
     \endentry
     \entry{redhat_what_nodate}{online}{}{}

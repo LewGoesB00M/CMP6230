@@ -1,3 +1,5 @@
+\chapter{Implementing the MLOps Pipeline}
+
 \section{Initial Software Setup}
 This section details the configuration of the key software and packages within the pipeline. The installation 
 processes of Miniconda and Docker are very lengthy and can therefore be found in Appendix A.
@@ -6,16 +8,23 @@ processes of Miniconda and Docker are very lengthy and can therefore be found in
 The majority of data scientists utilise Linux distributions for their projects due to its open-source nature and the 
 availability of many tools and packages. Therefore, VirtualBox, software to create a virtual machine which runs inside the host 
 machine \autocite{oracle_oracle_nodate}, will be used to virtualise an Ubuntu 22.04 LTS system on the Windows host machine. This 
-particular OS was chosen because of its relative recency and frequent software \& security updates. Virtual machines
+particular OS was chosen because it is a modern, well-supported OS with frequent software \& security updates. Virtual machines
 also allow for "snapshots", which store the current state of the machine and its files at that time to be restored at any point in the 
 event of unforeseen errors. Should a catastrophic error that would damage the system occur, the host machine would be unaffected as the 
-virtual machine is isolated.
+virtual machine is isolated. The snapshots taken during the development of the pipeline are depicted in Figure \ref{fig:VBoxSnapshots}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.5\linewidth]{Implementation/VBoxConfig.png}
     \caption{The configuration for the pipeline's VM.}
     \label{fig:VBoxConfig}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.75\linewidth]{Implementation/JAN 10 UPDATES/VBoxSnapshots.png}
+    \caption{The snapshots of the VM taken throughout the implementation.}
+    \label{fig:VBoxSnapshots}
 \end{figure}
 
 \begin{figure}[H]
@@ -112,8 +121,11 @@ MariaDB Columnstore runs on port 3306, but is mapped to port 3307 to avoid a pos
 
 \pagebreak 
 \subsubsection{Redis}
-The Docker container for Redis, the in-memory data store, is hosted on port 6379 which is the default port used by 
-the service \autocite{stream_security_security_nodate}.  
+The Docker container for Redis, the in-memory data store, is hosted on port 6379 which is the 
+industry-standard default port used by the service \autocite{stream_security_security_nodate}. 
+As with the Columnstore container, the Redis container can be directly interfaced with by running a 
+Bash terminal inside of it. From there, the Redis command-line interface can be accessed, which confirms 
+that the container's creation was successful. 
 
 \begin{figure}[H]
     \centering
@@ -137,7 +149,7 @@ the default Airflow directory and database file.
     \label{fig:AirflowInit}
 \end{figure}
 
-Airflow allows for the creation of user accounts with allocated permission levels for the management of 
+\noindent Airflow allows for the creation of user accounts with allocated permission levels for the management of 
 DAGs. Therefore, an administrative user was created for the purposes of this pipeline as depicted in Figures 
 \ref{fig:AirflowUser1} and \ref{fig:AirflowUser2}.
 
@@ -155,7 +167,7 @@ DAGs. Therefore, an administrative user was created for the purposes of this pip
     \label{fig:AirflowUser2}
 \end{figure}
 
-After creating an admin user, the Airflow web server and task scheduler can be started. The web server provides 
+\noindent After creating an admin user, the Airflow web server and task scheduler can be started. The web server provides 
 an interface for reviewing DAGs, whereas the scheduler is the key backend component which executes each task within a 
 DAG sequentially. Additionally, the scheduler will also automatically execute time-scheduled tasks such as those set to 
 execute daily.

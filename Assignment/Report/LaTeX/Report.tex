@@ -152,23 +152,28 @@ that can be used to make predictions via a REST API hosted on a Uvicorn server.
 \include{PipelineStages.tex}
 
 
-\chapter{Implementing the MLOps Pipeline}
-\section{Ethical and Legal Considerations}
+\chapter{Evaluation and communication of wider issues}
+There are many risks and concerns regarding data handling and processing in general that must be accounted 
+for as part of the development of any MLOps pipeline. These come in the form of ethical and legal considerations
+such as the risks pertaining to the use of public datasets on sites like Kaggle, as well as significant legal 
+boundaries posed by data protection legislation. Additionally, there are issues concerning machine learning models 
+in general, namely the key issue of model drift over time. This chapter of the report will define and explain each 
+of these wider issues and how this pipeline addresses them where necessary.
+
+\section{Dataset availability}
 The dataset was shared under an Apache 2.0 open-source licence, permitting access and modification with no restrictions
 except crediting the original author \autocite{apache_apache_nodate}, meaning that there are not any ethical or legal 
 considerations of note with this dataset's usage. Given that the chosen dataset also consists of synthetic data,
 there are fewer necessary considerations for its use.
 
-\subsection{Synthetic Data}
-% What is Synthetic Data and what are the common methods that are currently leveraged to attempt
-% to perform Synthetic Data Generation?
-\subsubsection{What is synthetic data?}
+\section{Using synthetic data}
+\subsection{What is synthetic data?}
 This term has been frequently used throughout the report to describe the Loan Approval Classification Dataset, and refers to 
 data that has been generated algorithmically rather than collected from a real source. However, the generation of the 
 synthetic data does often depend on real data to identify patterns and trends, meaning that legislation such as GDPR is still relevant
 in those scenarios because the generated data must be impossible to link back to the original subject \autocite{Lopez2022OnTL}.
 
-\subsubsection{How is synthetic data generated?}
+\subsection{How is synthetic data generated?}
 An example of a synthetic data generation method is the Synthetic Minority Oversampling Technique, also known as SMOTE, which was used
 in the generation of the loan dataset \autocite{zoppelleto_financial_nodate}, which creates synthetic data in a dataset based on the
 other rows as previously mentioned in Section \ref{sec:Dataset}. It does this using the K-Nearest Neighbours algorithm to generate 
@@ -176,7 +181,7 @@ data points based on the averages across other similar points. SMOTE will also b
 the dataset by oversampling the minority class (approved loans), as it was discovered in Figure \ref{fig:Bar6} that there are considerably 
 more rejected loans than approved loans in this dataset.
 
-\subsection{Model drift}
+\section{Model drift}
 Model drift is a phenomenon that affects deployed production machine learning models where changes in 
 their environment over time affects their performance \autocite{nigenda_amazon_2022}. Model drift is not an 
 immediate occurrence, and can take a long time to occur, emphasising the importance of continuous model evaluation. 
@@ -201,9 +206,9 @@ Table \ref{tab:Drift} details the two primary kinds of model drift.
 \para Model drift can be a significant issue that greatly impacts the performance of ML models if it is not quickly noticed, and can 
 also be an ethical concern if the model is being used to influence decisions such as granting loans in this project. 
 Therefore, combatting model drift through methods such as continuous monitoring is necessary to ensure that the model remains accurate 
-and usable. This can be accomplished in this project through MLFlow's monitoring dashboard.
+and usable. This will be accomplished in this project through continuous monitoring via MLFlow's monitoring dashboard.
 
-\subsection{Data handling}
+\section{Data handling}
 This project must then also take into account four key elements of data handling - these being data privacy, security, 
 ethics and data protection laws. 
 
@@ -238,7 +243,7 @@ ethics and data protection laws.
 % Maybe it shouldn't be "brief". I think GDPR especially needs its own paragraph moreso than a table column.
 \end{longtable}
 
-\noindent Because this dataset consists of entirely synthetic data, very few of these concerns apply to this pipeline. 
+\noindent Because the dataset used in this pipeline consists of entirely synthetic data, very few of these data handling concerns apply. 
 However, the ethics of synthetic data generation can be called into question as there are few details on the dataset's Kaggle 
 page describing the source used for the generation of this data, and whether the real people that this data was created based 
 on are aware of this and consented to it. Aside from this, there are no further concerns as data privacy and GDPR are not 
@@ -247,8 +252,6 @@ relevant given that the data used to train the model is not real.
 
 % Example 2 (SimonRoadknight) is 21,334 words, or 18,809 without its appendices and references.
 % Example 3 (MihaiValentin) is 12,802 words.
-
-
 
 \include{SoftwareInit}
 
@@ -387,7 +390,7 @@ parameters that were stored as part of the Evaluation function can be viewed as 
 
 
 
-\section{Completed Airflow DAGs}
+\section{Completed Airflow DAGs}\label{sec:CompletedDAGs}
 Two DAGs were created as part of the pipeline. "DockerContainers" consists of two BashOperators 
 to start the two Docker containers for MariaDB Columnstore and Redis, whereas "MLOpsPipeline" 
 consists of the five tasks of the pipeline. Figure \ref{fig:DAGsList} shows the list of DAGs, 
@@ -501,14 +504,6 @@ and the other is a loan that would be granted (Figure \ref{fig:UviTruePositive})
 
 \para Both of these inputs can be confirmed to be correctly predicted as they were actually two 
 rows from the testing split of the dataset, which the model was not trained upon.
-
-\section{Potential security enhancements}\label{sec:SecurityEnhancements}
-In relation to Model Deployment, it is important to note that the use of the "docs" page is not suitable for an actual production 
-environment, as it can be manipulated by threat actors to possibly give them direct access to the 
-server's backend, meaning it is normally disabled. An actual production environment would link their 
-model to their actual web page with forms and text entry fields to input data, though this would not 
-have been feasible for this particular project due to time constraints as well as not owning a domain 
-to host the site on, meaning it is restricted to only localhost.
 
 \section{Changes over time}
 During the implementation of the pipeline, the initial package used for serializing data was PyArrow.
@@ -670,20 +665,52 @@ after changing this to indicate they had not defaulted before, the loan was appr
     \label{fig:UviCustomRow}
 \end{figure}
 
-\section{Evaluation of development challenges and future improvements}
-???
-% How would you improve upon the structure of the pipeline in the future, specifically in the context of 
-% data security and data privacy? 
-% How does your current pipeline effectively facilitate access to the ingested data by
-% both people (Data Scientists, Data Engineers, Data Analysts) and software systems? (e.g.
-% the pipeline)
-% How does your current pipeline compare to your initial plans?
-% How does your current pipeline compare to your final plan?
-% Are there any discrepancies, if so why?
-% How would you improve upon the structure of the pipeline in the future?
+\subsection{Differences from plans to final implementation}
+There were some ideas originally considered in the initial and final plans that were found to be unsuitable in implementation.
+
+\subsubsection{Initial plan}
+The original intended package intended for serializing data was Apache's
+PyArrow \autocite{apache_streaming_nodate}. However, as development of the pipeline continued, it was discovered that many of PyArrow's
+useful functions are now deprecated, and have been since 2021. This made serializing data
+and passing it between DAG stages considerably more difficult, and for this reason an alternative
+package was identified: Direct-Redis. Direct-Redis builds on top of the Redis package,
+but will instantly serialize and deserialize data when set() or get() is called, greatly expediting
+the process of storing data in and retrieving data from Redis stores \autocite{direct-redis_direct-redis_nodate}. 
+This resolved the serialization issue, meaning the pipeline worked smoothly without
+any errors, and also resulted in much cleaner and easily-readable code, despite differing 
+substantially from the initial plan.
+
+\subsubsection{Final plan}
+Part of the final plan was to initialise the MLFlow server as part of the DockerContainers DAG previously 
+mentioned in Section \ref{sec:CompletedDAGs}. However, research into this indicated that this would be poor 
+practice, as DAGs should not be used to host continuous services \autocite{apache_architecture_nodate} like MLFlow's 
+backend server, as the DAG would be permanently stuck in a "running" state. This same concept applied to another 
+idea in the final plan, which was to host the Uvicorn server for the deployed model's REST API within a DAG, 
+though this also was not done for the same reason.
+
+
+\section{Potential for future improvements}
+Overall, the produced pipeline is successful from start to finish as a seamless Airflow DAG. However, there is room 
+for potential future improvements, primarily in relation to the deployed model's security. This is because it is 
+important to note that the use of the Swagger API provided by FastAPI (the "docs" page) is not suitable for an actual production 
+environment, as it can be manipulated by threat actors to possibly give them direct unauthorized access to the 
+server's backend, meaning it is normally disabled. An actual production environment would link their 
+model to their actual web page with forms and text entry fields to input data, though this would not 
+have been feasible for this particular project due to time constraints as well as not owning a domain 
+to host the site on, meaning it is restricted to only localhost. An alternative option would be to password-protect 
+the Swagger API docs page \autocite{ray_securing_2023}, preventing access to those without the necessary credentials.
+
+\para Additionally, the source code for the pipeline also contains the credentials used to access the Columnstore 
+and Redis containers, which could potentially be used maliciously by a threat actor to steal data from or upload malicious 
+data to either service. This could be remedied through system environment variables, which could store the credentials outside 
+the code and then use them in real time as the code is executed \autocite{freecodecamp_python_2023}.  
+
+
+
 
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
+
 The implementation of this MLOps pipeline for loan approval classification demonstrates the successful integration of various
 data management and machine learning technologies to create an automated, reproducible workflow. By leveraging tools such as Docker,
 Airflow, MLflow, and FastAPI, the pipeline effectively handles data ingestion, preprocessing, model development, evaluation, and 
@@ -704,12 +731,13 @@ of other classification models such as Linear or Logistic Regression in order to
 which could then theoretically be applied in industry.
    
 
+
+
 % =========================================================================
 % MAIN NOTES:
 % 
 % Uvi Code doesn't have the GET function completed? Maybe it does but I don't think so.
 
-% You've said the docs page is a security threat. That's true, but give a source to say that if possible.
 % WHAT SECURITY ENHANCEMENTS CAN YOU MAKE TO THE PIPELINE? - MISSED FROM SHEET 4.
 
 % Following the grade of your draft plan (88%), it's established that you need to add slightly more detail to the 
