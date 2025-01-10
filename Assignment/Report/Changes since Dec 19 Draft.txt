@@ -1,6 +1,6 @@
 The feedback provided on the Dec 19 draft version was thoroughly accounted for and implemented in this final version of the report.
 This file is to inform you of changes I made to the report itself. 
-As mentioned a while ago before my draft submission, Turnitin highlights this report as 77% plagiarised, which it of course is not. 
+As mentioned a while ago before my draft submission, Turnitin highlights this report as almost completely plagiarised, which it of course is not. 
 Ironically, you could use the Turnitin viewer to see the changes I made. The parts that are not highlighted as plagiarised are new to this version.
 
 Massive changes to the deployment stage of the pipeline were made, which are instead documented within the report in
