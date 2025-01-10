@@ -1,7 +1,31 @@
 \chapter{Candidate Data Sources}
 For the first stage of the pipeline, data ingestion, three data sources will be identified in order to find 
 the one that would be most optimal for the production and deployment of a machine learning model to complete 
-a supervised learning task.
+a supervised learning task. Each data source is thoroughly analysed, answering questions on what the data is, 
+why it exists, who it was created by and how it was collected or generated. 
+
+\para Each feature of the candidate datasets is described, including details on what the data in these features 
+means. Additionally, the \textbf{type of each feature} is given, describing how the data is quantified in the feature.
+Descriptions of types can be found in Table \ref{tab:LevelsOfMeasurement}
+
+\begin{longtable}{ | p{0.1\textwidth} | p{0.5\textwidth} | p{0.3\textwidth} |}
+    \hline
+    \cellcolor{blue!25}Type & \cellcolor{blue!25}Description & \cellcolor{blue!25}Example data\\
+    \hline
+    Ratio & Quantitative (numeric) data which measures variables on a continuous scale with a 'true zero' \autocite{careerfoundry_what_2021}.
+    & Age\\
+    \hline
+    Nominal & Data without any inherent relationship or order. Can be qualitative (words, letters) or quantitative \autocite{corporate_finance_institute_nominal_nodate}.
+    & Gender, Nationality\\
+    \hline 
+    Interval & Quantitative data where values are measured at an equal distance (interval) from each other \autocite{dovetail_what_2023}. 
+    Differs from ratio data because there is no true zero, with values being able to go below or above it. & Temperature (Celsius), Volume (Decibels)\\
+    \hline
+    Ordinal & Qualitative data with an inherent relationship, order or sequence \autocite{bhandari_what_2022}. & Survey answers (Strongly disagree, slightly disagree, etc.),
+    Levels of education (Bachelor's, Master's, etc.)\\
+    \hline
+\caption{A brief overview of the different types of data.}\label{tab:LevelsOfMeasurement}
+\end{longtable}
 
 \section{Candidate 1 - Indian Liver Patient Dataset}
 This dataset \autocite{bendi_ramana_ilpd_2022} consists of real data sourced from hospitals northeast of Andhra Pradesh in India. It was obtained from the
@@ -166,7 +190,7 @@ Every row in the JSON files is part of the single "audio\_features" key, and eac
 key-value pair, such as the first row in Figure \ref{fig:spotifySnippet}, where "danceability" is the key, and 0.352 is the associated value.
 
 \noindent This dataset does consist of real data, sourced from the author's personal liked songs directly via the 
-\href{https://developer.spotify.com/documentation/web-api}{Spotify API}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
+\href{https://developer.spotify.com/documentation/web-api}{Spotify API} \autocite{spotify_web_nodate}. There are 195 rows of data, with 100 liked songs, and 95 disliked songs.
 Liked and disliked songs are separated into two JSON files, named "dislike" and "good". The two JSON files have 18 features, as depicted in Figure 
 \ref{fig:JSON-ERD}. 
 
@@ -228,7 +252,7 @@ fact that can be applied to other people. Nevertheless, the descriptions of each
             Energy & The intensity and activity of a song. For example, death metal is high energy, whereas classical music is low intensity. 1.0 is the most energetic.
             & Ratio\\
             \hline
-            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation.}\autocite{butterfield_22b_nodate} 
+            Key & The musical key the song is in, converted to an integer using \href{https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html}{standard pitch class notation} \autocite{butterfield_22b_nodate}. 
             & Ratio\\
             \hline
             Loudness & The averaged decibel volume of a song, typically between -60 and 0 dB.
@@ -305,7 +329,7 @@ schema.
 
 Unlike Candidates 1 and 2, this dataset does not consist of real data, and 
 instead consists of synthetic data. This is likely due to the fact that this dataset, if it used real data, would contain extremely personal 
-information that could not be shared online due to legislation such as GDPR, which is further discussed in Section \ref{sec:dataTerms}. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
+information that could not be shared online due to legislation such as GDPR, which is further discussed in Section \ref{sec:DataHandling}. This particular dataset is an enhanced version of \href{https://www.kaggle.com/datasets/laotse/credit-risk-dataset}{a different credit risk dataset},
 which also did not provide an original source and is also presumably synthetic data. The enhancements added were three additional 
 columns, for the hypothetical person's gender, education level and credit score. Additionally, the author balanced the dataset using 
 Synthetic Minority Oversampling Technique (SMOTE), an oversampling algorithm designed to balance datasets to produce higher
@@ -314,9 +338,9 @@ It can therefore be established that this dataset was created solely for researc
 for the creation of supervised learning models. The dataset consists of 45,000 records and 14 features, with 
 one of these being the ground truth target variable "loan\_status", which is whether the person should be given a loan or not. 
 31 notebooks on Kaggle created by the site's users utilise this dataset, with many of these choosing to solve the binary classification 
-problem that it presents, including works published by authors such as \autocite{gupta_loanification_2021}. 
+problem that it presents, including academic works published by authors such as \textcite{gupta_loanification_2021}. 
 The dataset is physically stored as a flat-file CSV, under a One Big Table (OBT) logical data schema.
-The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:ILPD-DTypes}, and 
+The data types for each column can be seen in the entity relationship diagram and Pandas code in Figures \ref{fig:Loan-ERD} and \ref{fig:Loan-DTypes}, and 
 descriptions of each column can be seen in Table \ref{tab:Loan-Types}.
 
 \begin{figure}[H]
@@ -406,7 +430,7 @@ When the dataset is ingested, it will be stored in a MariaDB Columnstore instanc
 described in Section \ref{ch:PlanMLOps}. For this pipeline, the data will be kept in the OBT schema
 due to the simplicity and efficiency of queries performed on it, and also to ensure maximum data integrity
 that could be lost if the logical structure were modified. There were other options that could have been used
-instead of OBT, represented in Table \ref{tab:Schemas}
+instead of OBT, represented in Table \ref{tab:Schemas}.
 
 
 \begin{longtable}{ |p{0.15\textwidth}| p{0.22\textwidth}| p{0.2\textwidth} | p{0.25\textwidth} | }

@@ -83,7 +83,7 @@ section.
     \hline
     Scikit-learn & 
     A large open-source Python library containing many different functionalities for machine learning \autocite{scikit-learn_scikit-learn_nodate}, 
-    such as encoders to convert strings to numerical equivalents, scalers to normalise and standardise 
+    such as encoders to convert strings to numerical equivalents, scalers to normalise or standardise 
     the data to reduce variance (described further in Section \ref{sec:Preprocessing}), as well as containing 
     methods to split data into training and testing sets, and fit, train and predict with various different 
     machine learning algorithms (described further in Section \ref{sec:Development}).\\
@@ -280,7 +280,7 @@ which refers to the manipulation and formatting of the data, such as changing th
 from numeric dates to proper date data types, as well as the handling of categorical data, such as genders, 
 which may originally be strings. Strings cannot be interpreted by machine learning models, and therefore they 
 are encoded into numbers using techniques such as label encoding, which converts the unique values in a column
-to a numerical representation, such as male being 0 and female being 1. Data is also normalised and standardised 
+to a numerical representation, such as male being 0 and female being 1. Data is also normalised or standardised 
 in this stage, meaning that numerical data is reduced to being between 0 and 1 to adjust the overall scale of the 
 data. This is especially useful with algorithms such as K-Nearest Neighbours, where large differences in distance 
 between data can mislead the classification algorithm \autocite{ibm_what_2021}.
@@ -306,7 +306,7 @@ After this, the processed dataset will be output to Redis, to be used as the inp
     Will be used alongside Pandas to query and receive data from the MariaDB Columnstore instance.\\
     \hline
     Scikit-learn & 
-    Will be used to normalise and standardise the data, as well as encode any string data into numerical 
+    Will be used to standardise the data, as well as encode any string data into numerical 
     equivalents.\\
     \hline
     Docker &
@@ -362,7 +362,7 @@ Table \ref{tab:Answers}.
 
 \subsubsection{Distributions and outliers}
 Understanding the data also means knowing how the data is typically distributed, and what constitutes an outlier. This can be 
-done through visualisations such as box plots for numerical data and bar charts for categorical data.
+done through visualisations such as bar charts for categorical data and box plots for numerical data.
 
 \begin{figure}[H]
     \centering
@@ -413,8 +413,8 @@ done through visualisations such as box plots for numerical data and bar charts 
     \label{fig:BarCharts}
 \end{figure}
 
-\para A notable observation is that the dataset is imbalanced, containing fewer records of granted 
-loans than denied loans. Additionally, the most common loan intent as inquired by Question 2 is for 
+\para Notable observations from Figure \ref{fig:BarCharts} include that the dataset is imbalanced, containing fewer records of granted 
+loans than denied loans, and that the most common loan intent as inquired by Question 2 is for 
 educational purposes, such as university student loans.
 
 \begin{figure}[H]

@@ -1,9 +1,10 @@
 The feedback provided on the Dec 19 draft version was thoroughly accounted for and implemented in this final version of the report.
-This file is to inform you of changes I made to the report itself. As mentioned a while ago before my draft submission, Turnitin highlights this report as 77% plagiarised, which it of course is not. 
+This file is to inform you of changes I made to the report itself. 
+As mentioned a while ago before my draft submission, Turnitin highlights this report as 77% plagiarised, which it of course is not. 
+Ironically, you could use the Turnitin viewer to see the changes I made. The parts that are not highlighted as plagiarised are new to this version.
 
-Massive changes to the deployment stage of the pipeline were made, which are instead documented within the report as
-Section 4.9.
-
+Massive changes to the deployment stage of the pipeline were made, which are instead documented within the report in
+Chapter 5.
 
 Specifically, the following changes were made based on feedback:
 
@@ -11,19 +12,16 @@ The data analysis section now includes actual research questions and additional 
 Extra detail about the Redis Docker container was added.
 The initialisation processes of MLFlow, Airflow and Great Expectations were described in thorough detail rather than figure captions.
 It was made more clear that the rows used to test the deployed model were taken from the testing set, which the model hadn't previously seen.
-Section 4.9 - Changes Over Time was added, which covers the significant changes made between the draft and this final version, focusing on changes made to the pipeline itself in the Preprocessing and Deployment stages.
-Section 4.9.3 specifically details changes between the plans and the final version, which was requested in the feedback.
+Chapter 5 - Changes Over Time was added, which covers the significant changes made between the draft and this final version, focusing on changes made to the pipeline itself in the Preprocessing and Deployment stages.
+Section 5.3 specifically details changes between the plans and the final version, which was requested in the feedback.
 
 
 The following changes here were made by my own decision:
 
+Added a brief description on what each data measurement level (ratio, nominal, interval, ordinal) means at the beginning of Chapter 1.
+Minor changes to some figure references that pointed to the wrong image.
 An "Evaluation and communication of wider issues" chapter (Chapter 3) was added, with the information on data handling & model drift being moved there to make it more clear that Task Sheets 3 and 4 were completed. The description of synthetic data generation was updated to include more detail on SMOTE, and contextualise it to the specific loan approval dataset.
 An extra description was added to the end of that chapter describing how many of the data handling concerns do not significantly apply to the synthetic data used in the pipeline.
 An image of the VM's snapshots taken throughout the entire development process was added as Figure 4.3.
-A section on possible future improvements was written.
-The "potential security improvements" section was moved into this future improvements section.
-
-
-
-
-
+Section 5.4 - Potential for future improvements was written.
+The "potential security improvements" section was moved into this future improvements section. 

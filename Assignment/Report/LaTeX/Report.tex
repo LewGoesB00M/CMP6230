@@ -208,7 +208,7 @@ also be an ethical concern if the model is being used to influence decisions suc
 Therefore, combatting model drift through methods such as continuous monitoring is necessary to ensure that the model remains accurate 
 and usable. This will be accomplished in this project through continuous monitoring via MLFlow's monitoring dashboard.
 
-\section{Data handling}
+\section{Data handling}\label{sec:DataHandling}
 This project must then also take into account four key elements of data handling - these being data privacy, security, 
 ethics and data protection laws. 
 
@@ -254,26 +254,7 @@ relevant given that the data used to train the model is not real.
 % Example 3 (MihaiValentin) is 12,802 words.
 
 \include{SoftwareInit}
-
-\section{Package imports}
-Many packages need to be imported for the Airflow DAG of the pipeline to succeed. These can be found 
-below, alongside descriptions in the form of Python comments, in Figures \ref{fig:PipelineDAGImports} and 
-\ref{fig:PipelineFunctionsImports}. The use of these packages within pipeline functions is detailed 
-in this report within the appropriate pipeline stage.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAGImports.png}
-    \caption{The packages necessary to run the DAG itself.}
-    \label{fig:PipelineDAGImports}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctionsImport.png}
-    \caption{The packages necessary to run the functions within each DAG.}
-    \label{fig:PipelineFunctionsImports}
-\end{figure}
+% Moved Sec 4.2 into SoftwareInit to stop page breaking.
 
 \section{Data Ingestion}\label{sec:ImpIngestion}
 
@@ -505,21 +486,12 @@ and the other is a loan that would be granted (Figure \ref{fig:UviTruePositive})
 \para Both of these inputs can be confirmed to be correctly predicted as they were actually two 
 rows from the testing split of the dataset, which the model was not trained upon.
 
-\section{Changes over time}
-During the implementation of the pipeline, the initial package used for serializing data was PyArrow.
-However, as development continued, it was discovered that many of PyArrow's useful functions are now 
-deprecated, and have been since 2021. This made serializing data and passing it between DAG stages considerably more difficult, 
-and for this reason an alternative package was identified: Direct-Redis. Direct-Redis builds on top of the Redis 
-package, but will instantly serialize and deserialize data when set() or get() is called, greatly expediting 
-the process of storing data in and retrieving data from Redis stores \autocite{direct-redis_direct-redis_nodate}.
-This resolved the serialization issue, meaning the pipeline worked smoothly without any errors, and also 
-resulted in much cleaner and easily-readable code. An additional alternative would have been to 
-use Pickle for all serialization rather than just that of the model, which would have been functionally identical.
+\chapter{Updates to original implementation}
+After the original pipeline was created throughout Sections \ref{sec:PkgImports} to \ref{sec:ImpDeployment}, 
+some inefficiencies were noted across the preprocessing and deployment stages which needed to be addressed  to ensure 
+maximum usability of the pipeline.
 
-\para Additionally, after the original draft pipeline was created, some inefficiencies were noted across the preprocessing and deployment 
-stages which were later addressed.
-
-\subsection{Preprocessing}
+\section{Preprocessing}
 The encoding of the data colossally increased the dimensionality of the dataset as a by-product of one-hot encoding.
 This could have been slightly reduced by instead using label encoding on the previous loan defaults column, as one-hot encoding 
 created unnecessary columns for "Yes" and "No", though only one of these could ever be true at a time, meaning a simple 1 or 0
@@ -553,7 +525,7 @@ in the "home/lewis/CMP6230" directory with a name dictated by the string.
     \label{fig:SerializeScaler}
 \end{figure}
 
-\subsection{Deployment}\label{subsec:NewDeployment}
+\section{Deployment}\label{subsec:NewDeployment}
 
 There were also some major issues regarding the model's deployment and accessing predictions for the model. Figure \ref{fig:UviClasses} 
 depicts how twenty-three columns originally had to be entered prior to receiving a prediction. This was due to the one-hot encoding 
@@ -665,10 +637,10 @@ after changing this to indicate they had not defaulted before, the loan was appr
     \label{fig:UviCustomRow}
 \end{figure}
 
-\subsection{Differences from plans to final implementation}
+\section{Differences from plans to final implementation}
 There were some ideas originally considered in the initial and final plans that were found to be unsuitable in implementation.
 
-\subsubsection{Initial plan}
+\subsection{Changes from initial plan}
 The original intended package intended for serializing data was Apache's
 PyArrow \autocite{apache_streaming_nodate}. However, as development of the pipeline continued, it was discovered that many of PyArrow's
 useful functions are now deprecated, and have been since 2021. This made serializing data
@@ -677,10 +649,10 @@ package was identified: Direct-Redis. Direct-Redis builds on top of the Redis pa
 but will instantly serialize and deserialize data when set() or get() is called, greatly expediting
 the process of storing data in and retrieving data from Redis stores \autocite{direct-redis_direct-redis_nodate}. 
 This resolved the serialization issue, meaning the pipeline worked smoothly without
-any errors, and also resulted in much cleaner and easily-readable code, despite differing 
+any errors, and also resulted in much cleaner and easily readable code, despite differing 
 substantially from the initial plan.
 
-\subsubsection{Final plan}
+\subsection{Changes from final plan}
 Part of the final plan was to initialise the MLFlow server as part of the DockerContainers DAG previously 
 mentioned in Section \ref{sec:CompletedDAGs}. However, research into this indicated that this would be poor 
 practice, as DAGs should not be used to host continuous services \autocite{apache_architecture_nodate} like MLFlow's 
@@ -703,9 +675,7 @@ the Swagger API docs page \autocite{ray_securing_2023}, preventing access to tho
 \para Additionally, the source code for the pipeline also contains the credentials used to access the Columnstore 
 and Redis containers, which could potentially be used maliciously by a threat actor to steal data from or upload malicious 
 data to either service. This could be remedied through system environment variables, which could store the credentials outside 
-the code and then use them in real time as the code is executed \autocite{freecodecamp_python_2023}.  
-
-
+the code and then use them in real time as the code is executed with the use of Python's OS module \autocite{freecodecamp_python_2023}.  
 
 
 \chapter*{Conclusion}

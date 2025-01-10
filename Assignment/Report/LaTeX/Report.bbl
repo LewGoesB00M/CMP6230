@@ -449,6 +449,52 @@
       \endverb
       \keyw{Dataset}
     \endentry
+    \entry{bhandari_what_2022}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a8abfbaa93b3dc6a025c0a1e42eb8fba}{%
+           family={Bhandari},
+           familyi={B\bibinitperiod},
+           given={Pritha},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{fullhash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{fullhashraw}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{bibnamehash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{authorbibnamehash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{authornamehash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{authorfullhash}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \strng{authorfullhashraw}{a8abfbaa93b3dc6a025c0a1e42eb8fba}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Ordinal data is classified into categories within a variable that have a natural rank order. However, the distances between the categories are uneven or}
+      \field{day}{18}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{shorttitle}{What Is Ordinal Data?}
+      \field{title}{What Is Ordinal Data? {|} Examples \& Definition}
+      \field{titleaddon}{Scribbr}
+      \field{urlday}{10}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\G9MII9PB\\ordinal-data-meaning.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.scribbr.co.uk/stats/ordinal-data-meaning/
+      \endverb
+      \verb{url}
+      \verb https://www.scribbr.co.uk/stats/ordinal-data-meaning/
+      \endverb
+    \endentry
     \entry{butterfield_22b_nodate}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=ba7478fb46c21cd7069f6f7450705da1}{%
@@ -488,6 +534,49 @@
       \endverb
       \verb{url}
       \verb https://smbutterfield.github.io/ibmt17-18/22-intro-to-non-diatonic-materials/b2-tx-pcintnotation.html
+      \endverb
+    \endentry
+    \entry{careerfoundry_what_2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0d621960c1a17fd12e3722c313477eea}{%
+           family={{CareerFoundry}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{fullhash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{fullhashraw}{0d621960c1a17fd12e3722c313477eea}
+      \strng{bibnamehash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{authorbibnamehash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{authornamehash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{authorfullhash}{0d621960c1a17fd12e3722c313477eea}
+      \strng{authorfullhashraw}{0d621960c1a17fd12e3722c313477eea}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{What is ratio data and how is it analyzed? What do ratio data examples look like? Learn everything you need to know in this beginner-friendly guide.}
+      \field{day}{23}
+      \field{langid}{american}
+      \field{month}{3}
+      \field{note}{Section: Data Analytics}
+      \field{shorttitle}{What is Ratio Data?}
+      \field{title}{What is Ratio Data? Definition, Characteristics and Examples}
+      \field{urlday}{10}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\UVVQ45V2\\what-is-ratio-data.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://careerfoundry.com/en/blog/data-analytics/what-is-ratio-data/
+      \endverb
+      \verb{url}
+      \verb https://careerfoundry.com/en/blog/data-analytics/what-is-ratio-data/
       \endverb
     \endentry
     \entry{cfi_r-squared_nodate}{online}{}{}
@@ -600,6 +689,44 @@
       \endverb
       \verb{url}
       \verb https://www.cloudflare.com/learning/privacy/what-is-data-privacy/
+      \endverb
+    \endentry
+    \entry{corporate_finance_institute_nominal_nodate}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1de6caef4383ce1942bdfbf02f66c84e}{%
+           family={{Corporate Finance Institute}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{fullhash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{fullhashraw}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{bibnamehash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{authorbibnamehash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{authornamehash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{authorfullhash}{1de6caef4383ce1942bdfbf02f66c84e}
+      \strng{authorfullhashraw}{1de6caef4383ce1942bdfbf02f66c84e}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In statistics, nominal data (also known as nominal scale) is a type of data that is used to label variables without providing any quantitative value.}
+      \field{langid}{american}
+      \field{title}{Nominal Data}
+      \field{titleaddon}{Corporate Finance Institute}
+      \field{urlday}{10}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\47TXVFFC\\nominal-data.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://corporatefinanceinstitute.com/resources/data-science/nominal-data/
+      \endverb
+      \verb{url}
+      \verb https://corporatefinanceinstitute.com/resources/data-science/nominal-data/
       \endverb
     \endentry
     \entry{creative_commons_deed_nodate}{online}{}{}
@@ -826,6 +953,46 @@
       \endverb
       \verb{url}
       \verb https://hub.docker.com/r/mariadb/columnstore
+      \endverb
+    \endentry
+    \entry{dovetail_what_2023}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fa91989ffecb24a32874f05bfb36f0fc}{%
+           family={{Dovetail}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{fullhash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{fullhashraw}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{bibnamehash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{authorbibnamehash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{authornamehash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{authorfullhash}{fa91989ffecb24a32874f05bfb36f0fc}
+      \strng{authorfullhashraw}{fa91989ffecb24a32874f05bfb36f0fc}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Learn the nuances of interval data, how to collect it effectively and efficiently, and get examples of using this type of data in real-world applications.}
+      \field{langid}{english}
+      \field{shorttitle}{What Is Interval Data?}
+      \field{title}{What Is Interval Data? Definitive Guide With Examples}
+      \field{urlday}{10}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\Lewis\\Zotero\\storage\\KSQ2WZAQ\\what-is-interval-data.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://dovetail.com/research/what-is-interval-data/
+      \endverb
+      \verb{url}
+      \verb https://dovetail.com/research/what-is-interval-data/
       \endverb
     \endentry
     \entry{fastapi_fastapi_nodate}{online}{}{}

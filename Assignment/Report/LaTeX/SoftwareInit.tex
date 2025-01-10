@@ -1,4 +1,4 @@
-\chapter{Implementing the MLOps Pipeline}
+\chapter{Implementing the MLOps Pipeline}\label{ch:Imp}
 
 \section{Initial Software Setup}
 This section details the configuration of the key software and packages within the pipeline. The installation 
@@ -60,14 +60,14 @@ detailed in Figures \ref{fig:imbLearnInstall}, \ref{fig:AirflowGXInstall}, and \
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/Conda/ImbalancedLearn.png}
-    \caption{Installing the imbalanced-learn package.}
+    \caption{Installing the imbalanced-learn package to access SMOTE.}
     \label{fig:imbLearnInstall}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{Implementation/Conda/GXAirflow.png}
-    \caption{Installing the airflow-provider-great-expectations package.}
+    \caption{Installing the airflow-provider-great-expectations package for easy use of GX within the Airflow DAG.}
     \label{fig:AirflowGXInstall}
 \end{figure}
 
@@ -350,6 +350,11 @@ to create a new suite of expectations.
     \label{fig:GXCheckpoint1}
 \end{figure}
 
+\noindent As with the data source and suite, a Jupyter Notebook is opened upon the checkpoint's creation, giving a final overview 
+of the properties of the checkpoint such as its name, connected data source and connected suite. The final block of the 
+notebook (Figure \ref{fig:GXCheckpoint2}) saves the checkpoint to a YAML file (Figure \ref{fig:GXCheckpoint3}) and outputs
+the properties which were confirmed to be correct. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=.75\linewidth]{Implementation/GX/Initialisation/10.png}
@@ -363,5 +368,23 @@ to create a new suite of expectations.
     \caption{Confirming the existence of the checkpoint YAML file.}
     \label{fig:GXCheckpoint3}
 \end{figure}
-% Possibly unneeded. If used, 10.png would need to be cropped but that's hard to do without removing key info
-% as the key info is actually at the bottom of the image.
+
+\section{Package imports}\label{sec:PkgImports}
+Many packages need to be imported for the Airflow DAG of the pipeline to succeed. These can be found 
+below, alongside descriptions in the form of Python comments, in Figures \ref{fig:PipelineDAGImports} and 
+\ref{fig:PipelineFunctionsImports}. The use of these packages within pipeline functions is detailed 
+in this report within the appropriate pipeline stage.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineDAGImports.png}
+    \caption{The packages necessary to run the DAG itself.}
+    \label{fig:PipelineDAGImports}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Implementation/.Code/PipelineFunctionsImport.png}
+    \caption{The packages necessary to run the functions within each DAG.}
+    \label{fig:PipelineFunctionsImports}
+\end{figure}
